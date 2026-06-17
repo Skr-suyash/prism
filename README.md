@@ -1,13 +1,13 @@
-# GridLock Round 2 — Operational Priority Scoring System
+# GridLock v2.0 — Operational Priority Scoring System
 
 ## Problem Statement
 
 > How can AI-driven parking intelligence detect illegal parking hotspots and quantify their impact on traffic flow to enable targeted enforcement?
 
-Enforcement is patrol-based and reactive. No heatmap of parking violations vs. congestion impact exists, and it is difficult to prioritize enforcement zones. This system produces a **per-violation operational priority score** by combining two independent components:
+Enforcement is historically patrol-based and reactive. No heatmap of parking violations vs. actual congestion impact exists, making it difficult to prioritize enforcement zones. GridLock produces a **per-violation operational priority score** by combining two independent components:
 
 - **Component A** — A transparent, domain-justified **congestion impact formula** (rule-based)
-- **Component B** — A learned **escalation propensity model** (XGBoost classifier)
+- **Component B** — A learned **escalation propensity model** (XGBoost v2.3 classifier with 24 engineered features)
 
 Neither alone is sufficient. Together they answer: *"Which violations are both high-impact AND being systematically ignored by the pipeline?"*
 
@@ -15,199 +15,113 @@ Neither alone is sufficient. Together they answer: *"Which violations are both h
 
 ## Quick Start
 
+GridLock v2.0 has been upgraded to a production-grade microservices architecture.
+
+### 1. Start the FastAPI Backend
+The backend processes ~300k records on startup, engineers 24 features dynamically, and serves the scored aggregations via REST API.
 ```bash
-# Run the full pipeline (all 6 phases)
-python main.py
-
-# Run without SHAP analysis (if shap not installed)
-python main.py --skip-shap
-
-# Run individual phases
-python data_preprocessing.py
-python congestion_impact.py
-python escalation_model.py
-python shap_analysis.py
-python priority_scoring.py
+# From the repository root
+python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-**Runtime**: ~24 seconds for the full pipeline on 298,450 records.
+### 2. Start the Next.js Frontend
+The frontend is a React 19 / Next.js application featuring an interactive dual heatmap and live rank-flip tables.
+```bash
+# In a new terminal
+cd frontend
+npm install
+npm run dev
+```
+
+Visit the live dashboard at **http://localhost:3000**
 
 ---
 
-## Architecture
+## Architecture Blueprint
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    data_preprocessing.py                     │
-│  Load CSV → Parse Datetime (IST) → Feature Engineering       │
-│  → Filter Non-Parking → Label Encode → Save Parquet          │
-└─────────────────┬───────────────────────────┬───────────────┘
-                  │                           │
-    ┌─────────────▼──────────┐   ┌────────────▼──────────────┐
-    │  congestion_impact.py  │   │   escalation_model.py     │
-    │  Component A (Formula) │   │  Component B (XGBoost)    │
-    │                        │   │                           │
-    │  base_offence_weight   │   │  Target: approved/rejected│
-    │  × junction_multiplier │   │  Features: 7 features     │
-    │  × vehicle_weight      │   │  AUC-ROC: 0.6798         │
-    │  × hour_multiplier     │   │                           │
-    └─────────────┬──────────┘   └─────┬──────────┬──────────┘
-                  │                    │          │
-                  │                    │    ┌─────▼──────────┐
-                  │                    │    │ shap_analysis.py│
-                  │                    │    │ SHAP Explainer  │
-                  │                    │    └────────────────┘
-                  │                    │
-           ┌──────▼────────────────────▼────────┐
-           │        priority_scoring.py          │
-           │                                     │
-           │  operational_priority =              │
-           │    congestion_impact ×               │
-           │    escalation_propensity             │
-           │                                     │
-           │  → Zone Rankings                    │
-           │  → Rank Flip Table                  │
-           │  → High-Priority Ignored List       │
-           └─────────────────────────────────────┘
+flipkard-gridlock/
+├── backend/                  # FastAPI Application
+│   ├── api/                  # REST endpoints (/zones, /rank-flip, /heatmap, /score)
+│   ├── engine/
+│   │   ├── rules.py          # Component A (1.0 - 5.0 String-matching weights)
+│   │   └── inference.py      # Component B (24-feature XGBoost Inference)
+│   ├── services/
+│   │   └── priority_service.py # Core orchestration and caching
+│   └── models/               # XGBoost v2.3 artifacts
+├── frontend/                 # Next.js App Router
+│   ├── app/                  # Main dashboard layout
+│   └── components/
+│       ├── DualHeatmap.tsx   # React-Leaflet synced maps
+│       ├── RankFlipTable.tsx # Diverging bar chart for zone priority
+│       └── MetricsCards.tsx  # KPI summary
+└── datasets/                 # Raw anonymized CSV
 ```
 
 ---
 
 ## Component A — Congestion Impact Formula
 
-A transparent multiplicative formula. No model, no proxy — defensible domain logic:
+A transparent multiplicative formula evaluating the physical gridlock potential of a violation:
 
 ```
 congestion_impact = base_offence_weight × junction_multiplier × vehicle_weight × hour_multiplier
 ```
 
-### Weight Tables
-
-**Base Offence Weight** (by blocking severity):
-
-| Code | Violation | Weight |
-|------|-----------|--------|
-| 107 | Parking in a Main Road | 2.5 |
-| 109 | Double Parking | 2.5 |
-| 108 | Parking Opposite Another Vehicle | 2.2 |
-| 104 | Parking Near Road Crossing | 2.0 |
-| 106 | Parking Near Traffic Light/Zebra | 2.0 |
-| 111 | Parking Near Bus Stop/School/Hospital | 1.8 |
-| 105 | Parking on Footpath | 1.5 |
-| 112 | Wrong Parking | 1.3 |
-| 113 | No Parking | 1.3 |
-
-**Junction Multiplier**: No Junction = 1.0, Named Junction = 1.6
-
-**Vehicle Weight**: Scooter/Moped = 1.0, Auto = 1.2, Car = 1.4, Maxi-Cab/LGV = 1.8, Bus/HGV = 2.2
-
-**Hour Multiplier** (IST): Peak (7-10 AM, 5-8 PM) = 1.5, Midnight (12-5 AM) = 0.6, Other = 1.0
-
-**Result**: Scores range from 0.78 to 13.20 (mean: 2.27)
+### Weight Tables (Upgraded to v2.3 Scale)
+The old integer lookup has been replaced with fuzzy string matching against violation names (Scale 1.0 - 5.0).
+- **Offence Weights**: "BLOCKING THE PASSAGE" (5.0), "DOUBLE PARKING" (4.2), "PARKING NEAR ROAD CROSSING" (4.0).
+- **Junction Multiplier**: No Junction = 1.0, Named Junction = 1.6
+- **Vehicle Weight**: Scooter = 1.0, Auto = 1.2, Car = 1.4, Bus/Truck = 2.2
+- **Hour Multiplier**: Peak (7-9 AM, 5-7 PM) = 1.5, Midnight (12-4 AM) = 0.6, Other = 1.0
 
 ---
 
 ## Component B — Escalation Propensity Model
 
-An XGBoost classifier modeling institutional behaviour:
-- **Target**: `validation_status == 'approved'` (binary)
-- **Training data**: 115,400 approved + 49,754 rejected = 165,154 records
-- **Excluded from training**: 133,296 records (NaN, created1, processing, duplicate) — scored at inference
-
-### Model Performance
-
-| Metric | Value |
-|--------|-------|
-| AUC-ROC | 0.6798 |
-| Accuracy | 63.5% |
-| F1 Score | 0.7119 |
-
-### SHAP Feature Importance
-
-| Rank | Feature | Relative Importance |
-|------|---------|-------------------|
-| 1 | Hour of Day (IST) | 6.9× |
-| 2 | Violation Type | 5.1× |
-| 3 | Vehicle Type | 4.9× |
-| 4 | Center Code | 3.2× |
-| 5 | Day of Week | 3.2× |
-| 6 | Police Station | 3.1× |
-| 7 | Junction Proximity | 1.0× |
-
-**Key Finding**: The institution's escalation decisions are dominated by *when* a violation occurs (hour, day), not *where* (junction). This divergence from the congestion formula is actionable — enforcement prioritization is time-driven, while congestion impact is location-driven. The combined score corrects for this.
+An XGBoost classifier modeling human/institutional dispatch behaviour.
+- **Model**: XGBoost v2.3
+- **Features**: 24 engineered features (Cyclic time encodings, Target Mean Encoding, Frequency Encoding, Spatial Distance).
+- **Purpose**: Calculates the probability `(0.0 to 1.0)` that the institution will actually enforce/escalate the ticket without algorithmic intervention.
 
 ---
 
-## Combined Priority Score
+## The Operational Priority Formula
+
+We are looking for hidden bottlenecks—high-impact violations that the system currently ignores.
 
 ```
-operational_priority = congestion_impact × escalation_propensity
+operational_priority = congestion_impact × (1 − escalation_propensity)
 ```
 
-A **high-severity violation with low escalation propensity** is the most dangerous case — real-world impact is high but the system historically fails to pursue it.
-
-- **12,279 high-impact ignored violations** identified
-- Top affected zones: Shivajinagar (2,509), Vijayanagara (1,109), City Market (892)
+A **high-severity violation with low escalation propensity** is the most dangerous case — real-world impact is massive (Component A), but the system is statistically predicted to ignore it (Component B). The `(1 - P)` formula mathematically elevates these hidden bottlenecks to the top of the dispatch queue.
 
 ---
 
-## Rank Flip Table — "The System Is Patrolling the Wrong Places"
+## Dashboard Visualizations
 
-| Zone | Count Rank | Priority Rank | Change | Junction% |
-|------|-----------|--------------|--------|-----------|
-| Cubbon Park | 28 | 17 | **+11** | 85% |
-| Wilson Garden | 30 | 20 | **+10** | 79% |
-| Chamarajpet | 23 | 16 | **+7** | 98% |
-| HSR Layout | 15 | 29 | **-14** | 0% |
-| Pulikeshinagar | 20 | 32 | **-12** | 0% |
-| Electronic City | 19 | 30 | **-11** | 0% |
+### 1. Dual Heatmap ("Count vs. Priority")
+- **Left Map**: Raw violation density. Highlights where the most tickets are written (often noise).
+- **Right Map**: Operational Priority. Highlights where the actual high-impact, ignored gridlock is occurring.
+- **Yellow Markers**: Pinpoints the top 500 most critical individual violations in the city.
 
-Zones with high junction density are systematically under-prioritized despite their congestion impact. Zones with zero junctions are over-patrolled.
-
----
-
-## Output Files
-
-All outputs are saved to `outputs/`:
-
-| File | Description |
-|------|-------------|
-| `scored_violations.csv` | Per-violation scores (298,450 records) |
-| `zone_rankings.csv` | Zone-level ranking table (54 zones) |
-| `rank_flip_table.csv` | Naive count vs priority rank comparison |
-| `high_priority_ignored.csv` | High-impact, low-propensity violations (12,279) |
-| `model_metrics.txt` | Classification report |
-| `escalation_model.json` | Saved XGBoost model |
-| `shap_summary.png` | SHAP beeswarm plot |
-| `shap_bar.png` | SHAP bar plot |
-| `shap_analysis.txt` | SHAP numerical analysis |
-| `roc_curve.png` | ROC curve |
-| `confusion_matrix.png` | Confusion matrix |
-| `xgb_feature_importance.png` | XGBoost native feature importance |
-| `rank_flip_chart.png` | Zone rank flip visualization |
-| `processed_violations.parquet` | Preprocessed data |
-| `label_encoders.pkl` | Fitted label encoders |
-
----
-
-## Dataset
-
-- **Source**: Bengaluru parking violations (Nov 2023 – May 2024)
-- **Records**: 298,450 with 24 columns
-- **File**: `datasets/jan to may police violation_anonymized791b166.csv`
+### 2. Rank Flip Table ("The System Is Patrolling the Wrong Places")
+Compares a zone's naive ranking (by raw ticket volume) against its priority ranking (by the model's score). 
+- **Green Arrows (Positive Flip)**: Underpatrolled zones. Low raw volume, but highly severe ignored violations.
+- **Red Arrows (Negative Flip)**: Overpatrolled zones. Massive ticket volume, but mostly low-severity noise.
 
 ---
 
 ## Dependencies
 
-```
-pandas >= 3.0
-numpy >= 2.0
-scikit-learn >= 1.9
-xgboost >= 3.2
-shap >= 0.52
-matplotlib >= 3.10
-seaborn >= 0.13
-```
+**Backend**
+- `fastapi >= 0.115`
+- `uvicorn >= 0.30`
+- `xgboost >= 3.0`
+- `pandas >= 2.0`, `scikit-learn >= 1.8`
 
-Install SHAP: `pip install shap`
+**Frontend**
+- `next >= 15.0`
+- `react >= 19.0`
+- `leaflet` & `leaflet.heat`
+- `tailwindcss`

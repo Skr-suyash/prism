@@ -42,3 +42,7 @@ venv.bak/
 *.swp
 *.swo
 .DS_Store
+
+# Datasets and Large Files
+*.csv
+*.pkl
