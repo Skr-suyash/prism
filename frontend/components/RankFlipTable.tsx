@@ -7,27 +7,17 @@ import { TrendingUp, TrendingDown, Minus, MapPin, Zap, AlertTriangle } from "luc
 function DeltaBadge({ delta }: { delta: number }) {
   if (delta > 0) {
     return (
-      <div className="flex items-center gap-1.5">
-        <div className="flex items-center gap-0.5 text-emerald-600 font-bold text-[13px]">
-          <TrendingUp className="w-3.5 h-3.5" />
-          +{delta}
-        </div>
-        <span className="text-[9px] uppercase tracking-wider font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">
-          Underpatrolled
-        </span>
+      <div className="flex items-center gap-0.5 text-emerald-600 font-bold text-[13px]">
+        <TrendingUp className="w-3.5 h-3.5" />
+        +{delta}
       </div>
     );
   }
   if (delta < 0) {
     return (
-      <div className="flex items-center gap-1.5">
-        <div className="flex items-center gap-0.5 text-rose-600 font-bold text-[13px]">
-          <TrendingDown className="w-3.5 h-3.5" />
-          {delta}
-        </div>
-        <span className="text-[9px] uppercase tracking-wider font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded">
-          Overpatrolled
-        </span>
+      <div className="flex items-center gap-0.5 text-rose-600 font-bold text-[13px]">
+        <TrendingDown className="w-3.5 h-3.5" />
+        {delta}
       </div>
     );
   }
