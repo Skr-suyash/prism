@@ -2,13 +2,14 @@
 Priority Service — Core business logic orchestrator.
 
 Handles:
-  1. Startup: load CSV → preprocess → score all records → cache
+  1. Startup: load from JSON cache (fast) OR full compute (slow fallback)
   2. Zone aggregation & rank flip computation
   3. Heatmap sampling
   4. Single-violation real-time scoring
 """
 
 import ast
+import json
 import re
 from pathlib import Path
 
@@ -22,7 +23,15 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATASET_PATH = os.path.join(BASE_DIR, "datasets", "jan to may police violation_anonymized791b166.csv")
+CACHE_DIR = Path(BASE_DIR) / "backend" / "cache"
 MAX_HEATMAP_POINTS = 15_000
+
+COLUMNS = [
+    'id', 'latitude', 'longitude', 'address', 'device_id', 'vehicle_type', 'brand',
+    'violation_type', 'offence_code', 'created_datetime', 'col10', 'updated_datetime',
+    'developer_id', 'user_id', 'center_code', 'police_station', 'is_active',
+    'junction_name', 'col18', 'col19', 'col20', 'vehicle_class', 'validation_status', 'approved_datetime'
+]
 
 
 def _safe_parse_json(val):
@@ -42,24 +51,53 @@ class PriorityService:
     def __init__(self) -> None:
         self.model = EscalationModel()
         self.df: pd.DataFrame | None = None
-        self.zone_agg: pd.DataFrame | None = None
+        self.zone_cache: list[dict] | None = None
         self.heatmap_cache: list[dict] | None = None
         self.hourly_cache: dict | None = None
         self.metrics_cache: dict | None = None
         self.global_freqs: dict = {}
 
     def initialize(self) -> None:
+        """Try loading from cache first, fall back to full compute."""
         print("[PriorityService] Loading model artifacts ...")
         self.model.load()
 
-        print("[PriorityService] Loading dataset ...")
-        # Raw dataset has no headers, so we explicitly define them
-        COLUMNS = [
-            'id', 'latitude', 'longitude', 'address', 'device_id', 'vehicle_type', 'brand', 
-            'violation_type', 'offence_code', 'created_datetime', 'col10', 'updated_datetime', 
-            'developer_id', 'user_id', 'center_code', 'police_station', 'is_active', 
-            'junction_name', 'col18', 'col19', 'col20', 'vehicle_class', 'validation_status', 'approved_datetime'
+        if self._load_from_cache():
+            print("[PriorityService] Ready (loaded from cache).")
+            return
+
+        print("[PriorityService] Cache not found, running full compute...")
+        self._full_compute()
+        print("[PriorityService] Ready.")
+
+    def _load_from_cache(self) -> bool:
+        """Attempt to load all payloads from JSON cache files."""
+        required = [
+            "priority_zones.json", "priority_heatmap.json",
+            "priority_hourly.json", "priority_metrics.json",
+            "priority_global_freqs.json"
         ]
+        for fname in required:
+            if not (CACHE_DIR / fname).exists():
+                print(f"  Cache miss: {fname}")
+                return False
+
+        print("[PriorityService] Loading from cache...")
+        with open(CACHE_DIR / "priority_zones.json") as f:
+            self.zone_cache = json.load(f)
+        with open(CACHE_DIR / "priority_heatmap.json") as f:
+            self.heatmap_cache = json.load(f)
+        with open(CACHE_DIR / "priority_hourly.json") as f:
+            self.hourly_cache = json.load(f)
+        with open(CACHE_DIR / "priority_metrics.json") as f:
+            self.metrics_cache = json.load(f)
+        with open(CACHE_DIR / "priority_global_freqs.json") as f:
+            self.global_freqs = json.load(f)
+        return True
+
+    def _full_compute(self) -> None:
+        """Full compute path (original logic). Only used if cache is missing."""
+        print("[PriorityService] Loading dataset ...")
         df = pd.read_csv(DATASET_PATH, names=COLUMNS)
         print(f"  Loaded {len(df):,} records")
 
@@ -81,11 +119,10 @@ class PriorityService:
         df["operational_priority"] = df["congestion_impact"] * (1.0 - df["escalation_propensity"])
 
         self.df = df
-        self._build_zone_agg()
+        self._build_zone_cache()
         self._build_heatmap_cache()
         self._build_hourly_cache()
         self._build_metrics_cache()
-        print("[PriorityService] Ready.")
 
     def _preprocess(self, df: pd.DataFrame) -> pd.DataFrame:
         print("[PriorityService] Preprocessing ...")
@@ -110,7 +147,7 @@ class PriorityService:
         df["center_code"] = df["center_code"].fillna(-1).astype(int)
         return df
 
-    def _build_zone_agg(self) -> None:
+    def _build_zone_cache(self) -> None:
         z = self.df.groupby("police_station").agg(
             count=("id", "count"),
             lat=("latitude", "mean"),
@@ -124,7 +161,7 @@ class PriorityService:
         z["count_rank"] = z["count"].rank(ascending=False).astype(int)
         z["priority_rank"] = z["total_priority"].rank(ascending=False).astype(int)
         z["rank_change"] = z["count_rank"] - z["priority_rank"]
-        self.zone_agg = z
+        self.zone_cache = z.round(4).to_dict(orient="records")
 
     def _build_heatmap_cache(self) -> None:
         df = self.df
@@ -180,13 +217,15 @@ class PriorityService:
             "mean_priority": round(float(self.df["operational_priority"].mean()), 4),
         }
 
+    # ── API methods ────────────────────────────────────────────────────────
+
     def get_zones(self) -> list[dict]:
-        return self.zone_agg.round(4).to_dict(orient="records")
+        return self.zone_cache
 
     def get_rank_flip(self, top_n: int = 10) -> list[dict]:
-        z = self.zone_agg.copy()
-        z = z.reindex(z["rank_change"].abs().sort_values(ascending=False).index).head(top_n)
-        return z.round(4).to_dict(orient="records")
+        zones = self.zone_cache
+        sorted_zones = sorted(zones, key=lambda z: abs(z.get("rank_change", 0)), reverse=True)
+        return sorted_zones[:top_n]
 
     def get_metrics(self) -> dict:
         return self.metrics_cache
@@ -197,10 +236,15 @@ class PriorityService:
         return self.heatmap_cache
 
     def get_zone_circles(self) -> list[dict]:
-        z = self.zone_agg.copy()
-        mn, mx = z["total_priority"].min(), z["total_priority"].max()
-        z["priority_norm"] = (z["total_priority"] - mn) / (mx - mn) if mx > mn else 0.5
-        return z.round(4).to_dict(orient="records")
+        zones = self.zone_cache
+        priorities = [z["total_priority"] for z in zones]
+        mn, mx = min(priorities), max(priorities)
+        result = []
+        for z in zones:
+            z_copy = dict(z)
+            z_copy["priority_norm"] = round((z["total_priority"] - mn) / (mx - mn), 4) if mx > mn else 0.5
+            result.append(z_copy)
+        return result
 
     def get_hourly(self) -> dict:
         return self.hourly_cache

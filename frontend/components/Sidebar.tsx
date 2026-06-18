@@ -11,13 +11,8 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   const navItems = [
-    { name: "Overview", icon: LayoutGrid, path: "#" },
-    { name: "Surveillance", icon: Camera, path: "#" },
     { name: "Traffic", icon: Car, path: "/" },
-    { name: "Accidents", icon: AlertTriangle, path: "#" },
-    { name: "Parking", icon: ParkingSquare, path: "#" },
-    { name: "E-Challan", icon: FileText, path: "#" },
-    { name: "Reports", icon: BarChart3, path: "#" },
+    { name: "Offender Network", icon: FileText, path: "/network" },
     { name: "Data Quality", icon: CheckCircle, path: "/misclassification" },
   ];
 
