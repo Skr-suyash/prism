@@ -123,4 +123,8 @@ export const api = {
   getClusters: () => get<ClusterData>("/api/f5/clusters"),
   getOffenders: () => get<OffenderData>("/api/f5/offenders"),
   getHubs: () => get<HubData[]>("/api/f5/hubs"),
+  // Feature 6
+  getEnforcementMatrix: () => get<any>("/api/f6/matrix"),
+  allocateOfficers: (officers: number, maxPerCell: number = 3) => 
+    get<any>(`/api/f6/allocate?officers=${officers}&max_per_cell=${maxPerCell}`),
 };
