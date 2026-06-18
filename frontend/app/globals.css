@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@source "../components";
+
+
+
+html,
+body {
+  height: 100%;
+}
+
+/* Leaflet z-index fix for Tailwind */
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 400 !important;
+}
+.leaflet-control {
+  z-index: 800 !important;
+}

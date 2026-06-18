@@ -1,0 +1,28 @@
+{
+  "feature_columns": [
+    "primary_violation_encoded",
+    "vehicle_type_clean_encoded",
+    "police_station_te",
+    "center_code_te",
+    "hour_sin",
+    "hour_cos",
+    "dow_sin",
+    "dow_cos",
+    "hour",
+    "day_of_week",
+    "is_peak_hour",
+    "is_night",
+    "is_weekend",
+    "hour_bin",
+    "is_junction",
+    "peak_x_junction",
+    "weekend_x_night",
+    "police_station_freq",
+    "vehicle_type_freq",
+    "violation_freq",
+    "latitude",
+    "longitude",
+    "dist_from_center",
+    "n_violations"
+  ]
+}
