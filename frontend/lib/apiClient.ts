@@ -48,6 +48,34 @@ export interface ScoreResult {
   operational_priority: number;
 }
 
+export interface MisclassificationSummary {
+  total_records: number;
+  records_updated: number;
+  mismatches: number;
+  mismatch_rate: number;
+  top_swaps: { swap: string; count: number }[];
+}
+
+export interface ConfusionCell {
+  from_type: string;
+  to_type: string;
+  count: number;
+}
+
+export interface HourlyCorrection {
+  hour: number;
+  total: number;
+  corrections: number;
+  rate: number;
+}
+
+export interface StationCorrection {
+  station: string;
+  total: number;
+  corrections: number;
+  rate: number;
+}
+
 async function get<T>(path: string): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`);
   if (!res.ok) throw new Error(`GET ${path} failed: ${res.status}`);
@@ -62,4 +90,8 @@ export const api = {
     get<HeatmapPoint[]>(hour !== undefined ? `/api/f2/heatmap?hour=${hour}` : "/api/f2/heatmap"),
   getZoneCircles: () => get<ZoneData[]>("/api/f2/zones"),
   getHourly: () => get<HourlyData>("/api/f2/hourly"),
+  getMisclassificationSummary: () => get<MisclassificationSummary>("/api/f4/summary"),
+  getConfusionMatrix: () => get<ConfusionCell[]>("/api/f4/confusion-matrix"),
+  getHourlyCorrections: () => get<HourlyCorrection[]>("/api/f4/temporal"),
+  getStationCorrections: () => get<StationCorrection[]>("/api/f4/stations"),
 };
