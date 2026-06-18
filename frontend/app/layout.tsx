@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Sidebar from "@/components/Sidebar";
+import TopNav from "@/components/TopNav";
 import "./globals.css";
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -19,8 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full bg-zinc-950 text-zinc-100 font-[family-name:var(--font-inter)]">
-        {children}
+      <body className="min-h-full bg-[#f8f9fa] text-gray-900 font-[family-name:var(--font-inter)] overflow-hidden flex">
+        <Sidebar />
+        <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+          <TopNav />
+          <main className="flex-1 overflow-y-auto p-6">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
