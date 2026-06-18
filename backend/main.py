@@ -17,20 +17,22 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.api import routes_f1, routes_f2, routes_f4, routes_f5
+from backend.api import routes_f1, routes_f2, routes_f3, routes_f4, routes_f5
 from backend.services.priority_service import PriorityService
 from backend.services.misclassification_service import MisclassificationService
 from backend.services.network_service import NetworkService
+from backend.services.audit_service import AuditService
 
 # Global service references for recompute endpoint
 _priority_svc: PriorityService | None = None
 _misclass_svc: MisclassificationService | None = None
 _network_svc: NetworkService | None = None
+_audit_svc: AuditService | None = None
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global _priority_svc, _misclass_svc, _network_svc
+    global _priority_svc, _misclass_svc, _network_svc, _audit_svc
 
     svc = PriorityService()
     svc.initialize()
@@ -48,6 +50,11 @@ async def lifespan(app: FastAPI):
     routes_f5.set_service(net_svc)
     _network_svc = net_svc
 
+    audit_svc = AuditService()
+    audit_svc.initialize()  # Loads from cache or precomputes
+    routes_f3.set_service(audit_svc)
+    _audit_svc = audit_svc
+
     yield
 
 
@@ -63,6 +70,7 @@ app.add_middleware(
 
 app.include_router(routes_f1.router)
 app.include_router(routes_f2.router)
+app.include_router(routes_f3.router)
 app.include_router(routes_f4.router)
 app.include_router(routes_f5.router)
 
@@ -85,6 +93,8 @@ def _run_precompute():
         _misclass_svc.initialize()
     if _network_svc:
         _network_svc.initialize()
+    if _audit_svc:
+        _audit_svc.initialize()
 
 
 @app.post("/admin/recompute")

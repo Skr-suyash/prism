@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-"""
-╔══════════════════════════════════════════════════════════════════════════════╗
-║  Feature 1 — Severity-Weighted Congestion Index (v2.3 — Pure ML)             ║
-║  Kaggle Script · XGBoost Classifier + Domain Rule Engine                     ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-"""
 
 import warnings
 warnings.filterwarnings("ignore")

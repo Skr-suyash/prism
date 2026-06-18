@@ -20,6 +20,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import joblib
 
 # ── Configuration ──────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent
@@ -363,6 +364,89 @@ def run_precompute():
 
     print(f"  Done in {time.time() - t:.1f}s")
 
+    # ── Phase 7: Blindspot Audit Cache (Isolation Forest) ──────────────────
+    t = time.time()
+    print("[Phase 7] Building Blindspot Audit cache...")
+
+    scaler_path = BASE_DIR / "backend" / "models" / "blindspot_scaler.pkl"
+    isoforest_path = BASE_DIR / "backend" / "models" / "blindspot_isoforest.pkl"
+
+    if scaler_path.exists() and isoforest_path.exists():
+        audit_scaler = joblib.load(scaler_path)
+        audit_model = joblib.load(isoforest_path)
+
+        # Prepare audit-specific columns from the raw df
+        audit_df = df.copy()
+        audit_df["created_datetime_parsed"] = pd.to_datetime(
+            audit_df["created_datetime"], errors="coerce"
+        )
+        audit_df = audit_df.dropna(subset=["police_station", "created_datetime_parsed"])
+
+        # violation_type: clean from list format to primary string
+        audit_df["violation_clean"] = (
+            audit_df["violation_type"].astype(str)
+            .str.replace(r'\[|\]|"', "", regex=True)
+            .str.split(",").str[0].str.strip()
+        )
+        audit_df["hour_bin"] = audit_df["created_datetime_parsed"].dt.hour // 6
+
+        # Ensure boolean flags exist
+        if "data_sent_to_scita" in audit_df.columns:
+            audit_df["is_synced"] = audit_df["data_sent_to_scita"].astype(bool).astype(int)
+        else:
+            audit_df["is_synced"] = 0
+
+        if "validation_status" in audit_df.columns:
+            vs = audit_df["validation_status"].astype(str).str.lower().str.strip()
+            audit_df["is_rejected"] = (vs == "rejected").astype(int)
+            audit_df["is_duplicate"] = (vs == "duplicate").astype(int)
+        else:
+            audit_df["is_rejected"] = 0
+            audit_df["is_duplicate"] = 0
+
+        # Aggregate
+        id_col = "id" if "id" in audit_df.columns else audit_df.columns[0]
+        buckets = (
+            audit_df.groupby(["police_station", "hour_bin", "violation_clean"])
+            .agg(
+                volume=(id_col, "count"),
+                sync_rate=("is_synced", "mean"),
+                rejection_rate=("is_rejected", "mean"),
+                duplicate_rate=("is_duplicate", "mean"),
+            )
+            .reset_index()
+        )
+        buckets = buckets[buckets["volume"] >= 50].copy()
+        buckets["volume_log"] = np.log1p(buckets["volume"])
+
+        feature_cols = ["volume_log", "sync_rate", "rejection_rate", "duplicate_rate"]
+        X_scaled = audit_scaler.transform(buckets[feature_cols])
+        buckets["anomaly_score"] = audit_model.score_samples(X_scaled) * -1
+        buckets["is_blindspot"] = audit_model.predict(X_scaled) == -1
+
+        n_bs = buckets["is_blindspot"].sum()
+        print(f"  {len(buckets)} buckets, {n_bs} blindspots")
+
+        quadrant = [
+            {
+                "station": str(row["police_station"]),
+                "hour_bin": int(row["hour_bin"]),
+                "violation": str(row["violation_clean"]),
+                "volume": int(row["volume"]),
+                "sync_rate": round(float(row["sync_rate"]), 4),
+                "rejection_rate": round(float(row["rejection_rate"]), 4),
+                "duplicate_rate": round(float(row["duplicate_rate"]), 4),
+                "anomaly_score": round(float(row["anomaly_score"]), 4),
+                "is_blindspot": bool(row["is_blindspot"]),
+            }
+            for _, row in buckets.iterrows()
+        ]
+        save_json(quadrant, "audit_quadrant.json")
+    else:
+        print("  ⚠ Missing blindspot model files, skipping audit cache.")
+
+    print(f"  Done in {time.time() - t:.1f}s")
+
     # ── Summary ────────────────────────────────────────────────────────────
     total = time.time() - total_start
     files = list(CACHE_DIR.glob("*.json"))
@@ -376,3 +460,4 @@ def run_precompute():
 
 if __name__ == "__main__":
     run_precompute()
+
