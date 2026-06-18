@@ -18,15 +18,15 @@ class MisclassificationService:
         # or just fallback to the existing ones
         
         # Ensure we're using the columns
-        if 'vehicle_type' not in df.columns or 'updated_vehicle_type' not in df.columns:
+        if 'vehicle_type' not in df.columns or 'vehicle_class' not in df.columns:
             print("[MisclassificationService] Missing required columns!")
             return
 
         vt = df['vehicle_type'].astype(str).str.strip().str.upper()
-        uvt = df['updated_vehicle_type'].astype(str).str.strip().str.upper()
+        uvt = df['vehicle_class'].astype(str).str.strip().str.upper()
         
         # Find valid updates (where updated_vehicle_type is not empty/nan string)
-        has_update_mask = df['updated_vehicle_type'].notna() & (df['updated_vehicle_type'] != '') & (uvt != 'NAN')
+        has_update_mask = df['vehicle_class'].notna() & (df['vehicle_class'] != '') & (uvt != 'NAN') & (uvt != 'NULL')
         records_with_update = has_update_mask.sum()
         
         # Find mismatches

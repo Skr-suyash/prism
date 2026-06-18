@@ -18,7 +18,10 @@ import pandas as pd
 from backend.engine.inference import EscalationModel
 from backend.engine.rules import compute_congestion_impact, compute_single
 
-DATASET_PATH = "C:/programming/Hackathons/FK Gridlock round2/jan to may police violation_anonymized791b166.csv"
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DATASET_PATH = os.path.join(BASE_DIR, "datasets", "jan to may police violation_anonymized791b166.csv")
 MAX_HEATMAP_POINTS = 15_000
 
 
@@ -50,7 +53,14 @@ class PriorityService:
         self.model.load()
 
         print("[PriorityService] Loading dataset ...")
-        df = pd.read_csv(DATASET_PATH)
+        # Raw dataset has no headers, so we explicitly define them
+        COLUMNS = [
+            'id', 'latitude', 'longitude', 'address', 'device_id', 'vehicle_type', 'brand', 
+            'violation_type', 'offence_code', 'created_datetime', 'col10', 'updated_datetime', 
+            'developer_id', 'user_id', 'center_code', 'police_station', 'is_active', 
+            'junction_name', 'col18', 'col19', 'col20', 'vehicle_class', 'validation_status', 'approved_datetime'
+        ]
+        df = pd.read_csv(DATASET_PATH, names=COLUMNS)
         print(f"  Loaded {len(df):,} records")
 
         df = self._preprocess(df)
