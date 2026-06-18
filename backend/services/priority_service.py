@@ -18,7 +18,7 @@ import pandas as pd
 from backend.engine.inference import EscalationModel
 from backend.engine.rules import compute_congestion_impact, compute_single
 
-DATASET_PATH = Path(__file__).resolve().parent.parent.parent / "jan to may police violation_anonymized791b166.csv"
+DATASET_PATH = "C:/programming/Hackathons/FK Gridlock round2/jan to may police violation_anonymized791b166.csv"
 MAX_HEATMAP_POINTS = 15_000
 
 
