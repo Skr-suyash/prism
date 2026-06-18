@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutGrid, Camera, Car, AlertTriangle, ParkingSquare, FileText, BarChart3, ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
+import { LayoutGrid, Camera, Car, AlertTriangle, ParkingSquare, FileText, BarChart3, ChevronLeft, ChevronRight, CheckCircle, ShieldAlert } from "lucide-react";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -14,6 +14,7 @@ export default function Sidebar() {
     { name: "Traffic", icon: Car, path: "/" },
     { name: "Offender Network", icon: FileText, path: "/network" },
     { name: "Data Quality", icon: CheckCircle, path: "/misclassification" },
+    { name: "Shift Planner", icon: ShieldAlert, path: "/enforcement" },
   ];
 
   return (
