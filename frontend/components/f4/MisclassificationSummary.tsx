@@ -13,8 +13,8 @@ export default function MisclassificationSummary() {
 
   if (!summary) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {[0, 1, 2, 3].map((i) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[0, 1, 2].map((i) => (
           <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex items-center justify-between">
             <div className="w-16 h-16 rounded-full bg-gray-100 animate-pulse" />
             <div className="flex flex-col items-end gap-2">
@@ -28,16 +28,6 @@ export default function MisclassificationSummary() {
   }
 
   const cards = [
-    {
-      key: "total_records",
-      label: "Total Records",
-      value: summary.total_records.toLocaleString(),
-      sub: "All violations",
-      icon: Database,
-      color: "text-purple-600",
-      gradientId: "grad-f4-purple",
-      stops: [{ offset: "0%", color: "#9333ea" }, { offset: "100%", color: "#db2777" }],
-    },
     {
       key: "records_updated",
       label: "Records Updated",
@@ -71,7 +61,7 @@ export default function MisclassificationSummary() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {cards.map(({ key, label, value, sub, icon: Icon, color, gradientId, stops }) => {
         return (
           <div
@@ -101,14 +91,20 @@ export default function MisclassificationSummary() {
               </div>
             </div>
 
-            <div className="text-right ml-4">
-              <h3 className="text-[12px] font-bold text-gray-700 tracking-wide uppercase mb-1">
+            <div className="text-right ml-4 flex-1 min-w-0">
+              <h3 
+                className="text-[11px] xl:text-[12px] font-bold text-gray-700 tracking-wider uppercase mb-1" 
+                title={label}
+              >
                 {label}
               </h3>
               <div className="text-2xl font-extrabold text-gray-900 tracking-tight">
                 {value}
               </div>
-              <p className="text-xs text-rose-500 font-semibold mt-1">
+              <p 
+                className={`text-[11px] xl:text-xs ${color} font-semibold mt-1`}
+                title={sub}
+              >
                 {sub}
               </p>
             </div>

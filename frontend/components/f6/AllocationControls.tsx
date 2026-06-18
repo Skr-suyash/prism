@@ -87,20 +87,19 @@ export default function AllocationControls({
       </div>
 
       {/* Coverage Stats */}
-      <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-5 rounded-xl shadow-md text-white flex-1 flex flex-col justify-center relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-10 -mt-10" />
+      <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex-1 flex flex-col justify-center relative overflow-hidden">
         
-        <h3 className="text-sm font-medium text-gray-400 mb-1">Priority Covered</h3>
+        <h3 className="text-sm font-bold text-gray-800 mb-1">Priority Covered</h3>
         <div className="flex items-baseline gap-2 mb-2">
-          <span className="text-4xl font-black">{loading ? "..." : coveragePct.toFixed(1)}%</span>
+          <span className="text-4xl font-black text-purple-600">{loading ? "..." : coveragePct.toFixed(1)}%</span>
         </div>
         
         <div className="mt-auto space-y-2 text-xs">
-          <div className="flex justify-between items-center text-gray-300">
+          <div className="flex justify-between items-center text-gray-500 font-medium">
             <span>Uniform Deployment</span>
-            <span className="font-bold">{loading ? "..." : uniformPct.toFixed(1)}%</span>
+            <span className="font-bold text-gray-700">{loading ? "..." : uniformPct.toFixed(1)}%</span>
           </div>
-          <div className="flex justify-between items-center text-green-400 font-bold bg-green-400/10 p-2 rounded-lg border border-green-400/20">
+          <div className="flex justify-between items-center text-emerald-600 font-bold bg-emerald-50 p-2 rounded-lg border border-emerald-100">
             <span className="flex items-center gap-1"><TrendingUp className="w-3 h-3" /> Efficiency Gain</span>
             <span>+{loading ? "..." : efficiencyGain.toFixed(1)}%</span>
           </div>

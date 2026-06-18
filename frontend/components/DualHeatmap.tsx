@@ -153,7 +153,7 @@ export default function DualHeatmap() {
       {/* Header */}
       <div className="px-6 py-5 border-b border-gray-100 flex flex-col md:flex-row md:items-center gap-4 bg-gray-50/50">
         <div className="flex-1 min-w-0">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-purple-600">Feature 2</p>
+          
           <h2 className="text-lg font-bold text-gray-800 mt-0.5">Congested Roads vs Enforcement</h2>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">Synchronized pan & zoom · Pan either map to compare</p>
         </div>
