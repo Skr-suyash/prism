@@ -363,6 +363,64 @@ def run_precompute():
 
     print(f"  Done in {time.time() - t:.1f}s")
 
+    # ── Phase 7: Enforcement Shift Recommender Matrix ──────────────────────
+    t = time.time()
+    print("[Phase 7] Building Enforcement Shift Matrix (8-hour shifts)...")
+
+    SHIFT_LABELS = ["Night Shift (00-08)", "Day Shift (08-16)", "Evening Shift (16-24)"]
+
+    def hour_to_shift(h):
+        if pd.isna(h):
+            return 0
+        h = int(h)
+        if h < 8:
+            return 0  # Night
+        elif h < 16:
+            return 1  # Day
+        else:
+            return 2  # Evening
+
+    df['shift_slot'] = df['hour'].apply(hour_to_shift)
+
+    zone_shift = df.groupby(['police_station', 'shift_slot']).agg(
+        total_priority=('operational_priority', 'sum'),
+        violation_count=('id', 'count'),
+        mean_priority=('operational_priority', 'mean'),
+        lat=('latitude', 'mean'),
+        lng=('longitude', 'mean'),
+    ).reset_index()
+
+    zone_shift['slot_label'] = zone_shift['shift_slot'].map(lambda s: SHIFT_LABELS[s])
+
+    # Round for cleaner JSON
+    zone_shift['total_priority'] = zone_shift['total_priority'].round(2)
+    zone_shift['mean_priority'] = zone_shift['mean_priority'].round(4)
+    zone_shift['lat'] = zone_shift['lat'].round(4)
+    zone_shift['lng'] = zone_shift['lng'].round(4)
+
+    # Sort by total_priority descending
+    zone_shift = zone_shift.sort_values('total_priority', ascending=False)
+
+    matrix_records = zone_shift.to_dict(orient='records')
+    # Convert numpy types
+    for row in matrix_records:
+        for key, val in row.items():
+            if isinstance(val, (np.integer,)):
+                row[key] = int(val)
+            elif isinstance(val, (np.floating,)):
+                row[key] = float(val)
+
+    total_citywide = float(df['operational_priority'].sum())
+
+    save_json({
+        "matrix": matrix_records,
+        "total_citywide_priority": round(total_citywide, 2),
+        "shift_labels": SHIFT_LABELS,
+        "total_zones": int(df['police_station'].nunique()),
+    }, "enforcement_matrix.json")
+
+    print(f"  Done in {time.time() - t:.1f}s")
+
     # ── Summary ────────────────────────────────────────────────────────────
     total = time.time() - total_start
     files = list(CACHE_DIR.glob("*.json"))
