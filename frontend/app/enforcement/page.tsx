@@ -98,6 +98,7 @@ export default function EnforcementPage() {
           showSimulation={showSimulation}
           setShowSimulation={setShowSimulation}
           residualRiskPct={residualRiskPct}
+          allocations={allocationData?.allocations || []}
         />
       </div>
 
