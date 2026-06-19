@@ -106,7 +106,7 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSim
                   
                   return (
                     <td key={slotIdx} className="py-1 px-1">
-                      <div className="relative group w-full h-10 rounded flex items-center justify-center overflow-hidden border border-gray-100 transition-colors duration-500"
+                      <div className="relative group w-full h-10 rounded flex items-center justify-center border border-gray-100 transition-colors duration-500"
                            style={{ backgroundColor: bgColor }}>
                         
                         {hasOfficers && (

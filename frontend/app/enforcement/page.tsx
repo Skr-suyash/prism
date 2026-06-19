@@ -70,14 +70,11 @@ export default function EnforcementPage() {
   }
 
   return (
-    <div className="p-8 max-w-7xl mx-auto flex flex-col gap-6 h-[calc(100vh-2rem)] overflow-y-auto">
+    <div className="p-8 max-w-7xl mx-auto flex flex-col gap-6">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-2 text-purple-600 bg-purple-50 w-fit px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            <ShieldAlert className="w-4 h-4" />
-            Feature 6
-          </div>
+          
           <h1 className="text-3xl font-black tracking-tight text-gray-900">Enforcement Shift Recommender</h1>
           <p className="text-gray-500 mt-1 max-w-2xl">
             A greedy allocation algorithm that assigns available officers to the most critical (zone × shift) slots to maximize the impact on citywide traffic congestion.

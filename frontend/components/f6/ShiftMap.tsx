@@ -7,7 +7,7 @@ import { Map } from "react-map-gl/maplibre";
 import { Shield, Clock } from "lucide-react";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-const BASEMAP = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
+const BASEMAP = "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json";
 
 const INITIAL_VIEW = {
   longitude: 77.5946,
@@ -68,30 +68,30 @@ export default function ShiftMap({ allocations, showSimulation, shiftLabels, act
   }, [activeDeployments, showSimulation]);
 
   return (
-    <div className="bg-gray-900 rounded-xl border border-gray-800 shadow-sm overflow-hidden flex flex-col h-[500px] relative group">
+    <div className="bg-gray-50 rounded-xl border border-gray-200 shadow-sm overflow-hidden flex flex-col h-[500px] relative group">
       
       {/* Top Overlay: Shift Selector */}
       <div className="absolute top-4 left-4 right-4 z-10 flex justify-between items-start pointer-events-none">
-        <div className="bg-gray-800/90 border border-gray-700 backdrop-blur-md rounded-xl px-4 py-2.5 max-w-[240px] shadow-lg">
-          <p className={`text-[10px] font-bold uppercase tracking-widest ${showSimulation ? "text-green-400" : "text-purple-400"}`}>
+        <div className="bg-white/90 border border-gray-200/50 backdrop-blur-md rounded-xl px-4 py-2.5 max-w-[240px] shadow-sm">
+          <p className={`text-[10px] font-bold uppercase tracking-widest ${showSimulation ? "text-green-600" : "text-purple-600"}`}>
             {showSimulation ? "Projected Impact" : "Current Deployments"}
           </p>
-          <p className="text-sm font-bold text-white mt-0.5 leading-snug flex items-center gap-1.5">
+          <p className="text-sm font-bold text-gray-800 mt-0.5 leading-snug flex items-center gap-1.5">
             <Shield className="w-4 h-4" />
             Live Strategy Map
           </p>
         </div>
 
         {/* Shift Toggle Buttons */}
-        <div className="flex bg-gray-800/90 border border-gray-700 backdrop-blur-md p-1 rounded-lg shadow-lg pointer-events-auto">
+        <div className="flex bg-white/90 border border-gray-200/50 backdrop-blur-md p-1 rounded-lg shadow-sm pointer-events-auto">
           {shiftLabels.map((label, idx) => (
             <button
               key={idx}
               onClick={() => setActiveShift(idx)}
               className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all flex items-center gap-1.5 ${
                 activeShift === idx 
-                  ? "bg-gray-700 text-white shadow-sm" 
-                  : "text-gray-400 hover:text-gray-200"
+                  ? "bg-gray-100 text-gray-800 shadow-sm" 
+                  : "text-gray-500 hover:text-gray-700"
               }`}
             >
               <Clock className="w-3 h-3" />
@@ -115,7 +115,7 @@ export default function ShiftMap({ allocations, showSimulation, shiftLabels, act
         {/* Tooltip */}
         {hoverInfo && hoverInfo.object && (
           <div
-            className="absolute z-50 pointer-events-none bg-gray-900 text-white p-3 rounded-lg shadow-xl text-xs border border-gray-700 min-w-[200px]"
+            className="absolute z-50 pointer-events-none bg-white text-gray-800 p-3 rounded-lg shadow-xl text-xs border border-gray-200 min-w-[200px]"
             style={{
               left: hoverInfo.x,
               top: hoverInfo.y,
@@ -123,20 +123,20 @@ export default function ShiftMap({ allocations, showSimulation, shiftLabels, act
               marginTop: "-16px",
             }}
           >
-            <div className="font-bold border-b border-gray-700 pb-2 mb-2 text-gray-200">
+            <div className="font-bold border-b border-gray-100 pb-2 mb-2 text-gray-800">
               {hoverInfo.object.zone}
             </div>
-            <div className="flex justify-between mb-1 text-gray-400">
+            <div className="flex justify-between mb-1 text-gray-500">
               <span>Officers Deployed:</span> 
-              <span className="text-white font-black">{hoverInfo.object.officers}</span>
+              <span className="text-gray-900 font-black">{hoverInfo.object.officers}</span>
             </div>
-            <div className="flex justify-between text-gray-400">
+            <div className="flex justify-between text-gray-500">
               <span>Priority Targeted:</span> 
-              <span className="text-white font-medium">{hoverInfo.object.total_priority.toFixed(0)}</span>
+              <span className="text-gray-900 font-medium">{hoverInfo.object.total_priority.toFixed(0)}</span>
             </div>
             
             {/* Pointer Triangle */}
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-gray-900 border-b border-r border-gray-700 transform rotate-45" />
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-b border-r border-gray-200 transform rotate-45" />
           </div>
         )}
       </div>
