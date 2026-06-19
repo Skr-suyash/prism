@@ -76,6 +76,48 @@ export interface StationCorrection {
   rate: number;
 }
 
+export interface ForecastSummary {
+  total_predicted_24h: number;
+  n_stations: number;
+  forecast_start: string;
+  forecast_end: string;
+  model_version: string;
+  mae: number;
+  rmse: number;
+  peak_hour_mae: number;
+  top_station: string;
+  top_station_hour: number;
+  top_station_count: number;
+}
+
+export interface ForecastDispatch {
+  station: string;
+  hour: number;
+  predicted_violation_count: number;
+}
+
+export interface ForecastHourlyTotal {
+  hour: number;
+  predicted_total: number;
+}
+
+export interface ForecastHeatmapRow {
+  station: string;
+  hours: Record<string, number>;
+}
+
+export interface StationForecastData {
+  station: string;
+  mae: number;
+  mape: number;
+  hourly: {
+    station: string;
+    hour: number;
+    datetime: string;
+    predicted_violation_count: number;
+  }[];
+}
+
 async function get<T>(path: string): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`);
   if (!res.ok) throw new Error(`GET ${path} failed: ${res.status}`);
@@ -86,10 +128,18 @@ export const api = {
   getZones: () => get<ZoneData[]>("/api/f1/zones"),
   getRankFlip: (n = 10) => get<ZoneData[]>(`/api/f1/rank-flip?top_n=${n}`),
   getMetrics: () => get<Metrics>("/api/f1/metrics"),
+  
   getHeatmap: (hour?: number) =>
     get<HeatmapPoint[]>(hour !== undefined ? `/api/f2/heatmap?hour=${hour}` : "/api/f2/heatmap"),
   getZoneCircles: () => get<ZoneData[]>("/api/f2/zones"),
   getHourly: () => get<HourlyData>("/api/f2/hourly"),
+  
+  getForecastSummary: () => get<ForecastSummary>("/api/f3/summary"),
+  getForecastDispatch: () => get<ForecastDispatch[]>("/api/f3/dispatch"),
+  getForecastHourlyTotals: () => get<ForecastHourlyTotal[]>("/api/f3/hourly-totals"),
+  getForecastHeatmap: () => get<ForecastHeatmapRow[]>("/api/f3/heatmap"),
+  getStationForecast: (station: string) => get<StationForecastData>(`/api/f3/station/${encodeURIComponent(station)}`),
+  
   getMisclassificationSummary: () => get<MisclassificationSummary>("/api/f4/summary"),
   getConfusionMatrix: () => get<ConfusionCell[]>("/api/f4/confusion-matrix"),
   getHourlyCorrections: () => get<HourlyCorrection[]>("/api/f4/temporal"),

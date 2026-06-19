@@ -13,9 +13,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.api import routes_f1, routes_f2, routes_f4
+from backend.api import routes_f1, routes_f2, routes_f3, routes_f4
 from backend.services.priority_service import PriorityService
 from backend.services.misclassification_service import MisclassificationService
+from backend.services.forecast_service import ForecastService
 
 
 @asynccontextmanager
@@ -28,6 +29,11 @@ async def lifespan(app: FastAPI):
     misc_svc = MisclassificationService()
     misc_svc.initialize(svc.df)
     routes_f4.set_service(misc_svc)
+    
+    forecast_svc = ForecastService()
+    forecast_svc.initialize()
+    routes_f3.set_service(forecast_svc)
+    
     yield
 
 
@@ -43,6 +49,7 @@ app.add_middleware(
 
 app.include_router(routes_f1.router)
 app.include_router(routes_f2.router)
+app.include_router(routes_f3.router)
 app.include_router(routes_f4.router)
 
 

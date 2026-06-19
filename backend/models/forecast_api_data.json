@@ -1,0 +1,8387 @@
+{
+  "generated_at": "2026-06-19 10:47:15.377172+00:00",
+  "forecast_start": "2024-04-08 18:00:00+00:00",
+  "forecast_end": "2024-04-09 17:00:00+00:00",
+  "model_version": "v2_enhanced",
+  "metrics": {
+    "overall_mae": 1.2528,
+    "overall_rmse": 4.3444,
+    "peak_hour_mae": 2.5944,
+    "best_iteration": 1922,
+    "n_features": 40
+  },
+  "forecasts": [
+    {
+      "station": "Upparpet",
+      "hour": 3,
+      "predicted_violation_count": 21.12
+    },
+    {
+      "station": "Upparpet",
+      "hour": 4,
+      "predicted_violation_count": 17.97
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 3,
+      "predicted_violation_count": 17.26
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 6,
+      "predicted_violation_count": 15.28
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 4,
+      "predicted_violation_count": 15.06
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 4,
+      "predicted_violation_count": 13.89
+    },
+    {
+      "station": "Upparpet",
+      "hour": 5,
+      "predicted_violation_count": 13.24
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 5,
+      "predicted_violation_count": 13.15
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 5,
+      "predicted_violation_count": 12.72
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 3,
+      "predicted_violation_count": 12.23
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 2,
+      "predicted_violation_count": 11.84
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 6,
+      "predicted_violation_count": 11.45
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 5,
+      "predicted_violation_count": 10.51
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 2,
+      "predicted_violation_count": 10.49
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 5,
+      "predicted_violation_count": 10.21
+    },
+    {
+      "station": "Upparpet",
+      "hour": 2,
+      "predicted_violation_count": 9.53
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 21,
+      "predicted_violation_count": 9.42
+    },
+    {
+      "station": "Upparpet",
+      "hour": 0,
+      "predicted_violation_count": 8.97
+    },
+    {
+      "station": "Upparpet",
+      "hour": 19,
+      "predicted_violation_count": 8.95
+    },
+    {
+      "station": "Upparpet",
+      "hour": 6,
+      "predicted_violation_count": 8.77
+    },
+    {
+      "station": "Upparpet",
+      "hour": 1,
+      "predicted_violation_count": 8.65
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 0,
+      "predicted_violation_count": 8.51
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 1,
+      "predicted_violation_count": 8.38
+    },
+    {
+      "station": "City Market",
+      "hour": 4,
+      "predicted_violation_count": 7.55
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 6,
+      "predicted_violation_count": 7.5
+    },
+    {
+      "station": "Upparpet",
+      "hour": 23,
+      "predicted_violation_count": 6.91
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 19,
+      "predicted_violation_count": 6.68
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 5,
+      "predicted_violation_count": 6.67
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 23,
+      "predicted_violation_count": 6.59
+    },
+    {
+      "station": "City Market",
+      "hour": 5,
+      "predicted_violation_count": 6.53
+    },
+    {
+      "station": "Halasur",
+      "hour": 23,
+      "predicted_violation_count": 6.25
+    },
+    {
+      "station": "City Market",
+      "hour": 2,
+      "predicted_violation_count": 5.75
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 4,
+      "predicted_violation_count": 5.7
+    },
+    {
+      "station": "City Market",
+      "hour": 3,
+      "predicted_violation_count": 5.58
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 0,
+      "predicted_violation_count": 5.46
+    },
+    {
+      "station": "Upparpet",
+      "hour": 21,
+      "predicted_violation_count": 5.29
+    },
+    {
+      "station": "Halasur",
+      "hour": 22,
+      "predicted_violation_count": 5.17
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 22,
+      "predicted_violation_count": 5.12
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 18,
+      "predicted_violation_count": 5.08
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 4,
+      "predicted_violation_count": 4.9
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 5,
+      "predicted_violation_count": 4.87
+    },
+    {
+      "station": "City Market",
+      "hour": 19,
+      "predicted_violation_count": 4.84
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 7,
+      "predicted_violation_count": 4.56
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 6,
+      "predicted_violation_count": 4.56
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 6,
+      "predicted_violation_count": 4.55
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 22,
+      "predicted_violation_count": 4.31
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 3,
+      "predicted_violation_count": 4.29
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 2,
+      "predicted_violation_count": 4.23
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 0,
+      "predicted_violation_count": 4.2
+    },
+    {
+      "station": "Upparpet",
+      "hour": 20,
+      "predicted_violation_count": 4.07
+    },
+    {
+      "station": "City Market",
+      "hour": 0,
+      "predicted_violation_count": 3.84
+    },
+    {
+      "station": "City Market",
+      "hour": 6,
+      "predicted_violation_count": 3.83
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 4,
+      "predicted_violation_count": 3.76
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 4,
+      "predicted_violation_count": 3.61
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 21,
+      "predicted_violation_count": 3.57
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 22,
+      "predicted_violation_count": 3.43
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 22,
+      "predicted_violation_count": 3.32
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 3,
+      "predicted_violation_count": 3.28
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 23,
+      "predicted_violation_count": 3.24
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 22,
+      "predicted_violation_count": 3.2
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 21,
+      "predicted_violation_count": 3.14
+    },
+    {
+      "station": "Upparpet",
+      "hour": 22,
+      "predicted_violation_count": 3.12
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 8,
+      "predicted_violation_count": 3.12
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 2,
+      "predicted_violation_count": 3.07
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 5,
+      "predicted_violation_count": 3.03
+    },
+    {
+      "station": "Halasur",
+      "hour": 6,
+      "predicted_violation_count": 2.98
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 23,
+      "predicted_violation_count": 2.98
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 3,
+      "predicted_violation_count": 2.98
+    },
+    {
+      "station": "Halasur",
+      "hour": 5,
+      "predicted_violation_count": 2.9
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 2,
+      "predicted_violation_count": 2.83
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 21,
+      "predicted_violation_count": 2.8
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 1,
+      "predicted_violation_count": 2.77
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 1,
+      "predicted_violation_count": 2.76
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 23,
+      "predicted_violation_count": 2.74
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 23,
+      "predicted_violation_count": 2.71
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 7,
+      "predicted_violation_count": 2.68
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 6,
+      "predicted_violation_count": 2.66
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 0,
+      "predicted_violation_count": 2.63
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 21,
+      "predicted_violation_count": 2.6
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 5,
+      "predicted_violation_count": 2.59
+    },
+    {
+      "station": "Electronic City",
+      "hour": 7,
+      "predicted_violation_count": 2.57
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 6,
+      "predicted_violation_count": 2.52
+    },
+    {
+      "station": "Upparpet",
+      "hour": 8,
+      "predicted_violation_count": 2.46
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 5,
+      "predicted_violation_count": 2.41
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 3,
+      "predicted_violation_count": 2.41
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 23,
+      "predicted_violation_count": 2.39
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 21,
+      "predicted_violation_count": 2.37
+    },
+    {
+      "station": "City Market",
+      "hour": 18,
+      "predicted_violation_count": 2.28
+    },
+    {
+      "station": "City Market",
+      "hour": 20,
+      "predicted_violation_count": 2.22
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 1,
+      "predicted_violation_count": 2.21
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 2,
+      "predicted_violation_count": 2.21
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 23,
+      "predicted_violation_count": 2.19
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 5,
+      "predicted_violation_count": 2.15
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 7,
+      "predicted_violation_count": 2.15
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 5,
+      "predicted_violation_count": 2.11
+    },
+    {
+      "station": "Upparpet",
+      "hour": 7,
+      "predicted_violation_count": 2.1
+    },
+    {
+      "station": "Halasur",
+      "hour": 2,
+      "predicted_violation_count": 2.09
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 0,
+      "predicted_violation_count": 2.08
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 21,
+      "predicted_violation_count": 2.05
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 20,
+      "predicted_violation_count": 2.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 6,
+      "predicted_violation_count": 2.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 4,
+      "predicted_violation_count": 1.98
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 6,
+      "predicted_violation_count": 1.98
+    },
+    {
+      "station": "City Market",
+      "hour": 22,
+      "predicted_violation_count": 1.98
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 21,
+      "predicted_violation_count": 1.98
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 0,
+      "predicted_violation_count": 1.95
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 6,
+      "predicted_violation_count": 1.94
+    },
+    {
+      "station": "City Market",
+      "hour": 1,
+      "predicted_violation_count": 1.92
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 5,
+      "predicted_violation_count": 1.92
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 1,
+      "predicted_violation_count": 1.9
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 21,
+      "predicted_violation_count": 1.88
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 22,
+      "predicted_violation_count": 1.85
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 4,
+      "predicted_violation_count": 1.83
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 5,
+      "predicted_violation_count": 1.82
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 3,
+      "predicted_violation_count": 1.81
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 21,
+      "predicted_violation_count": 1.81
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 22,
+      "predicted_violation_count": 1.79
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 9,
+      "predicted_violation_count": 1.76
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 7,
+      "predicted_violation_count": 1.76
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 20,
+      "predicted_violation_count": 1.75
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 23,
+      "predicted_violation_count": 1.75
+    },
+    {
+      "station": "City Market",
+      "hour": 23,
+      "predicted_violation_count": 1.74
+    },
+    {
+      "station": "Electronic City",
+      "hour": 6,
+      "predicted_violation_count": 1.73
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 23,
+      "predicted_violation_count": 1.7
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 0,
+      "predicted_violation_count": 1.68
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 23,
+      "predicted_violation_count": 1.67
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 2,
+      "predicted_violation_count": 1.66
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 22,
+      "predicted_violation_count": 1.65
+    },
+    {
+      "station": "Madiwala",
+      "hour": 19,
+      "predicted_violation_count": 1.64
+    },
+    {
+      "station": "Halasur",
+      "hour": 4,
+      "predicted_violation_count": 1.64
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 22,
+      "predicted_violation_count": 1.64
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 22,
+      "predicted_violation_count": 1.62
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 20,
+      "predicted_violation_count": 1.6
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 20,
+      "predicted_violation_count": 1.6
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 0,
+      "predicted_violation_count": 1.6
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 2,
+      "predicted_violation_count": 1.58
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 5,
+      "predicted_violation_count": 1.56
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 0,
+      "predicted_violation_count": 1.56
+    },
+    {
+      "station": "Halasur",
+      "hour": 3,
+      "predicted_violation_count": 1.53
+    },
+    {
+      "station": "Electronic City",
+      "hour": 8,
+      "predicted_violation_count": 1.5
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 4,
+      "predicted_violation_count": 1.47
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 22,
+      "predicted_violation_count": 1.46
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 2,
+      "predicted_violation_count": 1.45
+    },
+    {
+      "station": "Halasur",
+      "hour": 21,
+      "predicted_violation_count": 1.45
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 22,
+      "predicted_violation_count": 1.44
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 21,
+      "predicted_violation_count": 1.41
+    },
+    {
+      "station": "Upparpet",
+      "hour": 9,
+      "predicted_violation_count": 1.4
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 2,
+      "predicted_violation_count": 1.4
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 6,
+      "predicted_violation_count": 1.39
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 4,
+      "predicted_violation_count": 1.38
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 7,
+      "predicted_violation_count": 1.37
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 20,
+      "predicted_violation_count": 1.36
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 4,
+      "predicted_violation_count": 1.35
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 3,
+      "predicted_violation_count": 1.33
+    },
+    {
+      "station": "City Market",
+      "hour": 21,
+      "predicted_violation_count": 1.33
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 23,
+      "predicted_violation_count": 1.32
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 3,
+      "predicted_violation_count": 1.3
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 2,
+      "predicted_violation_count": 1.29
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 21,
+      "predicted_violation_count": 1.28
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 6,
+      "predicted_violation_count": 1.28
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 19,
+      "predicted_violation_count": 1.27
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 21,
+      "predicted_violation_count": 1.26
+    },
+    {
+      "station": "Electronic City",
+      "hour": 5,
+      "predicted_violation_count": 1.24
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 0,
+      "predicted_violation_count": 1.24
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 21,
+      "predicted_violation_count": 1.24
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 23,
+      "predicted_violation_count": 1.24
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 5,
+      "predicted_violation_count": 1.23
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 1,
+      "predicted_violation_count": 1.23
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 3,
+      "predicted_violation_count": 1.23
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 21,
+      "predicted_violation_count": 1.22
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 2,
+      "predicted_violation_count": 1.22
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 22,
+      "predicted_violation_count": 1.21
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 1,
+      "predicted_violation_count": 1.2
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 3,
+      "predicted_violation_count": 1.19
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 20,
+      "predicted_violation_count": 1.19
+    },
+    {
+      "station": "Bellandur",
+      "hour": 21,
+      "predicted_violation_count": 1.19
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 1,
+      "predicted_violation_count": 1.18
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 8,
+      "predicted_violation_count": 1.17
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 4,
+      "predicted_violation_count": 1.17
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 23,
+      "predicted_violation_count": 1.16
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 1,
+      "predicted_violation_count": 1.15
+    },
+    {
+      "station": "Bellandur",
+      "hour": 22,
+      "predicted_violation_count": 1.1
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 1,
+      "predicted_violation_count": 1.09
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 7,
+      "predicted_violation_count": 1.08
+    },
+    {
+      "station": "Hebbala",
+      "hour": 23,
+      "predicted_violation_count": 1.07
+    },
+    {
+      "station": "Bellandur",
+      "hour": 23,
+      "predicted_violation_count": 1.07
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 7,
+      "predicted_violation_count": 1.07
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 19,
+      "predicted_violation_count": 1.06
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 5,
+      "predicted_violation_count": 1.05
+    },
+    {
+      "station": "Hebbala",
+      "hour": 22,
+      "predicted_violation_count": 1.05
+    },
+    {
+      "station": "Madiwala",
+      "hour": 5,
+      "predicted_violation_count": 1.05
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 8,
+      "predicted_violation_count": 1.03
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 5,
+      "predicted_violation_count": 1.03
+    },
+    {
+      "station": "Bellandur",
+      "hour": 4,
+      "predicted_violation_count": 1.02
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 2,
+      "predicted_violation_count": 1.01
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 20,
+      "predicted_violation_count": 1.0
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 3,
+      "predicted_violation_count": 0.99
+    },
+    {
+      "station": "Hebbala",
+      "hour": 5,
+      "predicted_violation_count": 0.98
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 6,
+      "predicted_violation_count": 0.98
+    },
+    {
+      "station": "Bellandur",
+      "hour": 5,
+      "predicted_violation_count": 0.97
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 6,
+      "predicted_violation_count": 0.97
+    },
+    {
+      "station": "Hennuru",
+      "hour": 8,
+      "predicted_violation_count": 0.96
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 1,
+      "predicted_violation_count": 0.95
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 5,
+      "predicted_violation_count": 0.94
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 20,
+      "predicted_violation_count": 0.94
+    },
+    {
+      "station": "Electronic City",
+      "hour": 21,
+      "predicted_violation_count": 0.94
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 3,
+      "predicted_violation_count": 0.93
+    },
+    {
+      "station": "Adugodi",
+      "hour": 22,
+      "predicted_violation_count": 0.93
+    },
+    {
+      "station": "Bellandur",
+      "hour": 20,
+      "predicted_violation_count": 0.92
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 0,
+      "predicted_violation_count": 0.91
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 6,
+      "predicted_violation_count": 0.9
+    },
+    {
+      "station": "Bellandur",
+      "hour": 0,
+      "predicted_violation_count": 0.9
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 20,
+      "predicted_violation_count": 0.9
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 6,
+      "predicted_violation_count": 0.89
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 0,
+      "predicted_violation_count": 0.89
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 1,
+      "predicted_violation_count": 0.89
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 4,
+      "predicted_violation_count": 0.88
+    },
+    {
+      "station": "Halasur",
+      "hour": 1,
+      "predicted_violation_count": 0.88
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 21,
+      "predicted_violation_count": 0.87
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 0,
+      "predicted_violation_count": 0.86
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 2,
+      "predicted_violation_count": 0.85
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 20,
+      "predicted_violation_count": 0.85
+    },
+    {
+      "station": "Adugodi",
+      "hour": 6,
+      "predicted_violation_count": 0.85
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 22,
+      "predicted_violation_count": 0.85
+    },
+    {
+      "station": "Madiwala",
+      "hour": 4,
+      "predicted_violation_count": 0.84
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 5,
+      "predicted_violation_count": 0.84
+    },
+    {
+      "station": "Halasur",
+      "hour": 0,
+      "predicted_violation_count": 0.83
+    },
+    {
+      "station": "Hebbala",
+      "hour": 6,
+      "predicted_violation_count": 0.83
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 4,
+      "predicted_violation_count": 0.83
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 2,
+      "predicted_violation_count": 0.82
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 19,
+      "predicted_violation_count": 0.8
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 1,
+      "predicted_violation_count": 0.8
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 21,
+      "predicted_violation_count": 0.79
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 5,
+      "predicted_violation_count": 0.78
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 20,
+      "predicted_violation_count": 0.78
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 21,
+      "predicted_violation_count": 0.77
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 3,
+      "predicted_violation_count": 0.77
+    },
+    {
+      "station": "City Market",
+      "hour": 7,
+      "predicted_violation_count": 0.77
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 6,
+      "predicted_violation_count": 0.77
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 23,
+      "predicted_violation_count": 0.76
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 20,
+      "predicted_violation_count": 0.76
+    },
+    {
+      "station": "Bellandur",
+      "hour": 6,
+      "predicted_violation_count": 0.76
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 0,
+      "predicted_violation_count": 0.76
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 7,
+      "predicted_violation_count": 0.74
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 22,
+      "predicted_violation_count": 0.73
+    },
+    {
+      "station": "Hennuru",
+      "hour": 5,
+      "predicted_violation_count": 0.73
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 6,
+      "predicted_violation_count": 0.72
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 5,
+      "predicted_violation_count": 0.72
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 4,
+      "predicted_violation_count": 0.72
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 4,
+      "predicted_violation_count": 0.72
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 6,
+      "predicted_violation_count": 0.72
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 7,
+      "predicted_violation_count": 0.71
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 22,
+      "predicted_violation_count": 0.71
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 22,
+      "predicted_violation_count": 0.7
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 19,
+      "predicted_violation_count": 0.7
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 22,
+      "predicted_violation_count": 0.7
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 23,
+      "predicted_violation_count": 0.69
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 22,
+      "predicted_violation_count": 0.68
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 23,
+      "predicted_violation_count": 0.68
+    },
+    {
+      "station": "Hennuru",
+      "hour": 23,
+      "predicted_violation_count": 0.67
+    },
+    {
+      "station": "Adugodi",
+      "hour": 21,
+      "predicted_violation_count": 0.66
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 4,
+      "predicted_violation_count": 0.66
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 8,
+      "predicted_violation_count": 0.66
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 22,
+      "predicted_violation_count": 0.66
+    },
+    {
+      "station": "Madiwala",
+      "hour": 23,
+      "predicted_violation_count": 0.65
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 21,
+      "predicted_violation_count": 0.65
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 8,
+      "predicted_violation_count": 0.65
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 4,
+      "predicted_violation_count": 0.65
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 20,
+      "predicted_violation_count": 0.65
+    },
+    {
+      "station": "Madiwala",
+      "hour": 6,
+      "predicted_violation_count": 0.63
+    },
+    {
+      "station": "Adugodi",
+      "hour": 5,
+      "predicted_violation_count": 0.63
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 0,
+      "predicted_violation_count": 0.63
+    },
+    {
+      "station": "Bellandur",
+      "hour": 2,
+      "predicted_violation_count": 0.63
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 7,
+      "predicted_violation_count": 0.63
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 3,
+      "predicted_violation_count": 0.63
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 23,
+      "predicted_violation_count": 0.63
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 20,
+      "predicted_violation_count": 0.62
+    },
+    {
+      "station": "Electronic City",
+      "hour": 1,
+      "predicted_violation_count": 0.62
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 5,
+      "predicted_violation_count": 0.62
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 23,
+      "predicted_violation_count": 0.62
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 6,
+      "predicted_violation_count": 0.62
+    },
+    {
+      "station": "Whitefield",
+      "hour": 5,
+      "predicted_violation_count": 0.62
+    },
+    {
+      "station": "Adugodi",
+      "hour": 23,
+      "predicted_violation_count": 0.61
+    },
+    {
+      "station": "Hebbala",
+      "hour": 0,
+      "predicted_violation_count": 0.61
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 5,
+      "predicted_violation_count": 0.61
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 7,
+      "predicted_violation_count": 0.61
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 20,
+      "predicted_violation_count": 0.6
+    },
+    {
+      "station": "Adugodi",
+      "hour": 4,
+      "predicted_violation_count": 0.6
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 7,
+      "predicted_violation_count": 0.6
+    },
+    {
+      "station": "Adugodi",
+      "hour": 2,
+      "predicted_violation_count": 0.6
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 7,
+      "predicted_violation_count": 0.6
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 20,
+      "predicted_violation_count": 0.59
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 0,
+      "predicted_violation_count": 0.59
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 2,
+      "predicted_violation_count": 0.59
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 7,
+      "predicted_violation_count": 0.59
+    },
+    {
+      "station": "Whitefield",
+      "hour": 2,
+      "predicted_violation_count": 0.59
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 21,
+      "predicted_violation_count": 0.58
+    },
+    {
+      "station": "Hennuru",
+      "hour": 22,
+      "predicted_violation_count": 0.58
+    },
+    {
+      "station": "Bellandur",
+      "hour": 7,
+      "predicted_violation_count": 0.58
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 3,
+      "predicted_violation_count": 0.58
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 6,
+      "predicted_violation_count": 0.58
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 19,
+      "predicted_violation_count": 0.57
+    },
+    {
+      "station": "Bellandur",
+      "hour": 1,
+      "predicted_violation_count": 0.57
+    },
+    {
+      "station": "Hebbala",
+      "hour": 21,
+      "predicted_violation_count": 0.57
+    },
+    {
+      "station": "Hebbala",
+      "hour": 4,
+      "predicted_violation_count": 0.57
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 21,
+      "predicted_violation_count": 0.57
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 6,
+      "predicted_violation_count": 0.57
+    },
+    {
+      "station": "Hennuru",
+      "hour": 21,
+      "predicted_violation_count": 0.57
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 23,
+      "predicted_violation_count": 0.56
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 5,
+      "predicted_violation_count": 0.56
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 6,
+      "predicted_violation_count": 0.55
+    },
+    {
+      "station": "Bellandur",
+      "hour": 3,
+      "predicted_violation_count": 0.55
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 4,
+      "predicted_violation_count": 0.55
+    },
+    {
+      "station": "Madiwala",
+      "hour": 21,
+      "predicted_violation_count": 0.55
+    },
+    {
+      "station": "City Market",
+      "hour": 8,
+      "predicted_violation_count": 0.55
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 2,
+      "predicted_violation_count": 0.55
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 19,
+      "predicted_violation_count": 0.55
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 1,
+      "predicted_violation_count": 0.55
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 0,
+      "predicted_violation_count": 0.54
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 5,
+      "predicted_violation_count": 0.54
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 23,
+      "predicted_violation_count": 0.54
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 7,
+      "predicted_violation_count": 0.54
+    },
+    {
+      "station": "Electronic City",
+      "hour": 20,
+      "predicted_violation_count": 0.54
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 4,
+      "predicted_violation_count": 0.53
+    },
+    {
+      "station": "Hebbala",
+      "hour": 3,
+      "predicted_violation_count": 0.53
+    },
+    {
+      "station": "Electronic City",
+      "hour": 23,
+      "predicted_violation_count": 0.53
+    },
+    {
+      "station": "Electronic City",
+      "hour": 4,
+      "predicted_violation_count": 0.52
+    },
+    {
+      "station": "Adugodi",
+      "hour": 20,
+      "predicted_violation_count": 0.52
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 21,
+      "predicted_violation_count": 0.52
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 3,
+      "predicted_violation_count": 0.52
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 4,
+      "predicted_violation_count": 0.52
+    },
+    {
+      "station": "Electronic City",
+      "hour": 22,
+      "predicted_violation_count": 0.51
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 20,
+      "predicted_violation_count": 0.51
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 0,
+      "predicted_violation_count": 0.51
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 3,
+      "predicted_violation_count": 0.51
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 6,
+      "predicted_violation_count": 0.51
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 20,
+      "predicted_violation_count": 0.5
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 6,
+      "predicted_violation_count": 0.5
+    },
+    {
+      "station": "Hennuru",
+      "hour": 6,
+      "predicted_violation_count": 0.5
+    },
+    {
+      "station": "Hebbala",
+      "hour": 7,
+      "predicted_violation_count": 0.49
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 22,
+      "predicted_violation_count": 0.49
+    },
+    {
+      "station": "Madiwala",
+      "hour": 22,
+      "predicted_violation_count": 0.49
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 0,
+      "predicted_violation_count": 0.49
+    },
+    {
+      "station": "Whitefield",
+      "hour": 23,
+      "predicted_violation_count": 0.49
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 7,
+      "predicted_violation_count": 0.49
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 8,
+      "predicted_violation_count": 0.48
+    },
+    {
+      "station": "Whitefield",
+      "hour": 4,
+      "predicted_violation_count": 0.47
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 5,
+      "predicted_violation_count": 0.47
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 6,
+      "predicted_violation_count": 0.47
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 22,
+      "predicted_violation_count": 0.47
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 23,
+      "predicted_violation_count": 0.46
+    },
+    {
+      "station": "Whitefield",
+      "hour": 22,
+      "predicted_violation_count": 0.46
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 7,
+      "predicted_violation_count": 0.46
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 1,
+      "predicted_violation_count": 0.46
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 5,
+      "predicted_violation_count": 0.45
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 22,
+      "predicted_violation_count": 0.45
+    },
+    {
+      "station": "Adugodi",
+      "hour": 3,
+      "predicted_violation_count": 0.45
+    },
+    {
+      "station": "Madiwala",
+      "hour": 7,
+      "predicted_violation_count": 0.45
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 23,
+      "predicted_violation_count": 0.45
+    },
+    {
+      "station": "Hebbala",
+      "hour": 2,
+      "predicted_violation_count": 0.44
+    },
+    {
+      "station": "Electronic City",
+      "hour": 0,
+      "predicted_violation_count": 0.44
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 8,
+      "predicted_violation_count": 0.44
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 21,
+      "predicted_violation_count": 0.44
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 5,
+      "predicted_violation_count": 0.43
+    },
+    {
+      "station": "Whitefield",
+      "hour": 3,
+      "predicted_violation_count": 0.43
+    },
+    {
+      "station": "Whitefield",
+      "hour": 21,
+      "predicted_violation_count": 0.42
+    },
+    {
+      "station": "Adugodi",
+      "hour": 1,
+      "predicted_violation_count": 0.42
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 2,
+      "predicted_violation_count": 0.42
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 1,
+      "predicted_violation_count": 0.42
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 22,
+      "predicted_violation_count": 0.41
+    },
+    {
+      "station": "Whitefield",
+      "hour": 6,
+      "predicted_violation_count": 0.41
+    },
+    {
+      "station": "Madiwala",
+      "hour": 2,
+      "predicted_violation_count": 0.41
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 6,
+      "predicted_violation_count": 0.41
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 9,
+      "predicted_violation_count": 0.41
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 19,
+      "predicted_violation_count": 0.41
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 2,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Bellandur",
+      "hour": 8,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Adugodi",
+      "hour": 7,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 2,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 22,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 22,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 21,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 8,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 3,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 23,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "City Market",
+      "hour": 16,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Hebbala",
+      "hour": 1,
+      "predicted_violation_count": 0.4
+    },
+    {
+      "station": "Electronic City",
+      "hour": 2,
+      "predicted_violation_count": 0.39
+    },
+    {
+      "station": "High ground",
+      "hour": 21,
+      "predicted_violation_count": 0.39
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 22,
+      "predicted_violation_count": 0.39
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 19,
+      "predicted_violation_count": 0.38
+    },
+    {
+      "station": "Adugodi",
+      "hour": 0,
+      "predicted_violation_count": 0.38
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 7,
+      "predicted_violation_count": 0.38
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 21,
+      "predicted_violation_count": 0.38
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 3,
+      "predicted_violation_count": 0.37
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 8,
+      "predicted_violation_count": 0.37
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 23,
+      "predicted_violation_count": 0.37
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 0,
+      "predicted_violation_count": 0.37
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 20,
+      "predicted_violation_count": 0.37
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 23,
+      "predicted_violation_count": 0.36
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 0,
+      "predicted_violation_count": 0.35
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 20,
+      "predicted_violation_count": 0.35
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 1,
+      "predicted_violation_count": 0.35
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 8,
+      "predicted_violation_count": 0.35
+    },
+    {
+      "station": "High ground",
+      "hour": 2,
+      "predicted_violation_count": 0.35
+    },
+    {
+      "station": "High ground",
+      "hour": 23,
+      "predicted_violation_count": 0.35
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 4,
+      "predicted_violation_count": 0.35
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 22,
+      "predicted_violation_count": 0.35
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 1,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 0,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Electronic City",
+      "hour": 3,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 1,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Hennuru",
+      "hour": 1,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 21,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "High ground",
+      "hour": 22,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 2,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 20,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 21,
+      "predicted_violation_count": 0.34
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 8,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 1,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 21,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 8,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Hebbala",
+      "hour": 20,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 4,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 2,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 21,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 23,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Whitefield",
+      "hour": 0,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 21,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Whitefield",
+      "hour": 1,
+      "predicted_violation_count": 0.33
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 1,
+      "predicted_violation_count": 0.32
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 0,
+      "predicted_violation_count": 0.32
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 7,
+      "predicted_violation_count": 0.32
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 20,
+      "predicted_violation_count": 0.32
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 21,
+      "predicted_violation_count": 0.32
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 5,
+      "predicted_violation_count": 0.32
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 7,
+      "predicted_violation_count": 0.32
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 5,
+      "predicted_violation_count": 0.31
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 20,
+      "predicted_violation_count": 0.31
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 23,
+      "predicted_violation_count": 0.31
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 22,
+      "predicted_violation_count": 0.31
+    },
+    {
+      "station": "Whitefield",
+      "hour": 19,
+      "predicted_violation_count": 0.31
+    },
+    {
+      "station": "High ground",
+      "hour": 0,
+      "predicted_violation_count": 0.31
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 6,
+      "predicted_violation_count": 0.3
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 21,
+      "predicted_violation_count": 0.3
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 7,
+      "predicted_violation_count": 0.3
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 17,
+      "predicted_violation_count": 0.3
+    },
+    {
+      "station": "Whitefield",
+      "hour": 7,
+      "predicted_violation_count": 0.3
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 21,
+      "predicted_violation_count": 0.3
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 8,
+      "predicted_violation_count": 0.3
+    },
+    {
+      "station": "High ground",
+      "hour": 4,
+      "predicted_violation_count": 0.29
+    },
+    {
+      "station": "Madiwala",
+      "hour": 20,
+      "predicted_violation_count": 0.29
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 23,
+      "predicted_violation_count": 0.29
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 23,
+      "predicted_violation_count": 0.29
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 23,
+      "predicted_violation_count": 0.29
+    },
+    {
+      "station": "Hennuru",
+      "hour": 20,
+      "predicted_violation_count": 0.29
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 19,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 6,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 7,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "City Market",
+      "hour": 17,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 7,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Hennuru",
+      "hour": 7,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 5,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 7,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Hennuru",
+      "hour": 2,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 3,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Madiwala",
+      "hour": 3,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 5,
+      "predicted_violation_count": 0.28
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 19,
+      "predicted_violation_count": 0.27
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 3,
+      "predicted_violation_count": 0.27
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 8,
+      "predicted_violation_count": 0.27
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 7,
+      "predicted_violation_count": 0.27
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 20,
+      "predicted_violation_count": 0.27
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 19,
+      "predicted_violation_count": 0.27
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 7,
+      "predicted_violation_count": 0.27
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 22,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 19,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 4,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 22,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "Halasur",
+      "hour": 8,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "High ground",
+      "hour": 3,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 0,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "Hennuru",
+      "hour": 4,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 22,
+      "predicted_violation_count": 0.26
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 1,
+      "predicted_violation_count": 0.25
+    },
+    {
+      "station": "High ground",
+      "hour": 5,
+      "predicted_violation_count": 0.25
+    },
+    {
+      "station": "Whitefield",
+      "hour": 20,
+      "predicted_violation_count": 0.25
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 19,
+      "predicted_violation_count": 0.25
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 0,
+      "predicted_violation_count": 0.25
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 3,
+      "predicted_violation_count": 0.25
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 6,
+      "predicted_violation_count": 0.24
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 5,
+      "predicted_violation_count": 0.24
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 0,
+      "predicted_violation_count": 0.24
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 6,
+      "predicted_violation_count": 0.24
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 7,
+      "predicted_violation_count": 0.24
+    },
+    {
+      "station": "Madiwala",
+      "hour": 8,
+      "predicted_violation_count": 0.24
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 3,
+      "predicted_violation_count": 0.23
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 3,
+      "predicted_violation_count": 0.23
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 5,
+      "predicted_violation_count": 0.23
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 23,
+      "predicted_violation_count": 0.23
+    },
+    {
+      "station": "Halasur",
+      "hour": 7,
+      "predicted_violation_count": 0.23
+    },
+    {
+      "station": "High ground",
+      "hour": 20,
+      "predicted_violation_count": 0.23
+    },
+    {
+      "station": "Hebbala",
+      "hour": 8,
+      "predicted_violation_count": 0.23
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 4,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 4,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 2,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 2,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 1,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 19,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 7,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 0,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 19,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Adugodi",
+      "hour": 8,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 22,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "High ground",
+      "hour": 1,
+      "predicted_violation_count": 0.22
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 9,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 2,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 21,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 4,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 4,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 6,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "Hennuru",
+      "hour": 3,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 20,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 0,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 20,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 6,
+      "predicted_violation_count": 0.21
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 1,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Hennuru",
+      "hour": 0,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 2,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 8,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 1,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 23,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "High ground",
+      "hour": 6,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 8,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Adugodi",
+      "hour": 19,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 6,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "City Market",
+      "hour": 9,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 19,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Halasur",
+      "hour": 20,
+      "predicted_violation_count": 0.2
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 3,
+      "predicted_violation_count": 0.19
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 9,
+      "predicted_violation_count": 0.19
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 8,
+      "predicted_violation_count": 0.19
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 4,
+      "predicted_violation_count": 0.19
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 20,
+      "predicted_violation_count": 0.19
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 19,
+      "predicted_violation_count": 0.19
+    },
+    {
+      "station": "Madiwala",
+      "hour": 0,
+      "predicted_violation_count": 0.19
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 1,
+      "predicted_violation_count": 0.18
+    },
+    {
+      "station": "Madiwala",
+      "hour": 1,
+      "predicted_violation_count": 0.18
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 23,
+      "predicted_violation_count": 0.18
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 9,
+      "predicted_violation_count": 0.18
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 1,
+      "predicted_violation_count": 0.18
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 16,
+      "predicted_violation_count": 0.18
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 7,
+      "predicted_violation_count": 0.18
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 1,
+      "predicted_violation_count": 0.18
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 2,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 8,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 9,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 0,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 8,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 20,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 7,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 9,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 2,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 19,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 22,
+      "predicted_violation_count": 0.17
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 3,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 20,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 21,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "Whitefield",
+      "hour": 8,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 7,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 9,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 4,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 12,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 3,
+      "predicted_violation_count": 0.16
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 2,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 2,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 1,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 6,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 1,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "Halasur",
+      "hour": 19,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 9,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 23,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 0,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 8,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 20,
+      "predicted_violation_count": 0.15
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 2,
+      "predicted_violation_count": 0.14
+    },
+    {
+      "station": "Bellandur",
+      "hour": 19,
+      "predicted_violation_count": 0.14
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 20,
+      "predicted_violation_count": 0.14
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 0,
+      "predicted_violation_count": 0.14
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 4,
+      "predicted_violation_count": 0.14
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 3,
+      "predicted_violation_count": 0.13
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 20,
+      "predicted_violation_count": 0.13
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 8,
+      "predicted_violation_count": 0.13
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 21,
+      "predicted_violation_count": 0.13
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 4,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 22,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 5,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "High ground",
+      "hour": 7,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "High ground",
+      "hour": 19,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 0,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 20,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 2,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 8,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 1,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 4,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 9,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 4,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 8,
+      "predicted_violation_count": 0.12
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 5,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 20,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 8,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 9,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 7,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 8,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 3,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 8,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 8,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 18,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Electronic City",
+      "hour": 9,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 22,
+      "predicted_violation_count": 0.11
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 1,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "Adugodi",
+      "hour": 9,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 7,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 22,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 6,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 23,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 23,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 19,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 19,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 4,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "Adugodi",
+      "hour": 11,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 6,
+      "predicted_violation_count": 0.1
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 7,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 21,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 1,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 3,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 11,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 3,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 8,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 11,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 19,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 8,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 5,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 2,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 1,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 18,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 8,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 9,
+      "predicted_violation_count": 0.09
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 12,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 9,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "City Market",
+      "hour": 15,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 11,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 2,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 4,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 4,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 1,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Hennuru",
+      "hour": 10,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 19,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 8,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 18,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 9,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 23,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 2,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 0,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 10,
+      "predicted_violation_count": 0.08
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 9,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Banashankari",
+      "hour": 21,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 17,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 7,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 2,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 3,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 1,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Halasur",
+      "hour": 9,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 3,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 0,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 20,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 0,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 7,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 19,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 3,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 0,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 18,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 9,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 8,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 10,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 8,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Adugodi",
+      "hour": 12,
+      "predicted_violation_count": 0.07
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 3,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Adugodi",
+      "hour": 10,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 1,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 19,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Bellandur",
+      "hour": 9,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Hennuru",
+      "hour": 19,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 9,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 8,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 19,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 19,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 19,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 20,
+      "predicted_violation_count": 0.06
+    },
+    {
+      "station": "Hebbala",
+      "hour": 9,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 9,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 18,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 3,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 10,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Electronic City",
+      "hour": 11,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Adugodi",
+      "hour": 13,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Hennuru",
+      "hour": 18,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 19,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 2,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 9,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 6,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "No Police Station",
+      "hour": 6,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Madiwala",
+      "hour": 18,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 10,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Upparpet",
+      "hour": 10,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 10,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 8,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Hebbala",
+      "hour": 19,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Halasur",
+      "hour": 18,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 20,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 19,
+      "predicted_violation_count": 0.05
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 11,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Hennuru",
+      "hour": 11,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 9,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 21,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 11,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Upparpet",
+      "hour": 11,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 18,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 11,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "High ground",
+      "hour": 9,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "High ground",
+      "hour": 8,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 19,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 11,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 9,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 9,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Banashankari",
+      "hour": 5,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 17,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 19,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 4,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 18,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Peenya",
+      "hour": 22,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 23,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 21,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "No Police Station",
+      "hour": 21,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Madiwala",
+      "hour": 9,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 7,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 11,
+      "predicted_violation_count": 0.04
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 9,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 19,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 11,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Upparpet",
+      "hour": 18,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 8,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 19,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 15,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Kengeri",
+      "hour": 6,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Kengeri",
+      "hour": 5,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Peenya",
+      "hour": 21,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Kengeri",
+      "hour": 23,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Kengeri",
+      "hour": 22,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Kengeri",
+      "hour": 21,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Peenya",
+      "hour": 6,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 9,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Peenya",
+      "hour": 5,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 9,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 7,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Electronic City",
+      "hour": 10,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 17,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 11,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 5,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 12,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 23,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 22,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 18,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Peenya",
+      "hour": 23,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Whitefield",
+      "hour": 9,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 19,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Bellandur",
+      "hour": 11,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 10,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 22,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 11,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "No Police Station",
+      "hour": 23,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "No Police Station",
+      "hour": 22,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 19,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 11,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 18,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 5,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Whitefield",
+      "hour": 11,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Electronic City",
+      "hour": 19,
+      "predicted_violation_count": 0.03
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "City Market",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 0,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 13,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 18,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 11,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Whitefield",
+      "hour": 18,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Banashankari",
+      "hour": 7,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 18,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 17,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 11,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 18,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Peenya",
+      "hour": 7,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 0,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 9,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Peenya",
+      "hour": 3,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 9,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 9,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 18,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Banashankari",
+      "hour": 23,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Bellandur",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 18,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 9,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Peenya",
+      "hour": 20,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 20,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 18,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 8,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "No Police Station",
+      "hour": 20,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 13,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "No Police Station",
+      "hour": 5,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Hebbala",
+      "hour": 11,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 9,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 18,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 17,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Whitefield",
+      "hour": 10,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 12,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 16,
+      "predicted_violation_count": 0.02
+    },
+    {
+      "station": "Hennuru",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Hennuru",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Hennuru",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Madiwala",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 20,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 3,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 2,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Peenya",
+      "hour": 1,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Peenya",
+      "hour": 0,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 1,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banashankari",
+      "hour": 8,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banashankari",
+      "hour": 6,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banashankari",
+      "hour": 3,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banashankari",
+      "hour": 2,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 16,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Hennuru",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 16,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 0,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Peenya",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 16,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chikkabanavara",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 16,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jayanagara",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "City Market",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Hennuru",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kengeri",
+      "hour": 8,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kengeri",
+      "hour": 7,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kengeri",
+      "hour": 4,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kengeri",
+      "hour": 3,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kengeri",
+      "hour": 2,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.R. Pura",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kengeri",
+      "hour": 0,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 16,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Peenya",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Peenya",
+      "hour": 4,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Peenya",
+      "hour": 2,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banashankari",
+      "hour": 22,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banashankari",
+      "hour": 20,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Electronic City",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 16,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kengeri",
+      "hour": 20,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 7,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 6,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Thalagattapura",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 1,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Halasur",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Adugodi",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kengeri",
+      "hour": 1,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 16,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Bellandur",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Kamakshipalya",
+      "hour": 11,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 19,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "No Police Station",
+      "hour": 1,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "No Police Station",
+      "hour": 0,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 16,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 15,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "No Police Station",
+      "hour": 19,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Whitefield",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Whitefield",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Whitefield",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 14,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 13,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "No Police Station",
+      "hour": 4,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "No Police Station",
+      "hour": 3,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "No Police Station",
+      "hour": 2,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 8,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Banashankari",
+      "hour": 1,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 9,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Wilson Garden",
+      "hour": 12,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Hebbala",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 18,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 17,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "No Police Station",
+      "hour": 8,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Madiwala",
+      "hour": 10,
+      "predicted_violation_count": 0.01
+    },
+    {
+      "station": "Madiwala",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Bellandur",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Whitefield",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Whitefield",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Whitefield",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Electronic City",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 19,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Electronic City",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Electronic City",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Electronic City",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Electronic City",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 3,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 2,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 4,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 19,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 19,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 9,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hour": 8,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jalahalli",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kengeri",
+      "hour": 9,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hebbala",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hebbala",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hebbala",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hebbala",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hebbala",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Upparpet",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hennuru",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hennuru",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "R.T. Nagar",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hebbala",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Basavanagudi",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Upparpet",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Upparpet",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Upparpet",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Upparpet",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Upparpet",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hebbala",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Cubbon Park",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Vijayanagara",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Byatarayanapura",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Jnanabharathi",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasuru Gate",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Adugodi",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Adugodi",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Adugodi",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Adugodi",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "City Market",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "City Market",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "City Market",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chamarajpet",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasur",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasur",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasur",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasur",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasur",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasur",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mico Layout",
+      "hour": 19,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sadashivanagar",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Magadi Road",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Halasur",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HSR Layout",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "J.P. Nagar",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "HAL Old Airport",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Bellandur",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Bellandur",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Bellandur",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Bellandur",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Bellandur",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Chikkajala",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "High ground",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Hulimavu",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.G. Halli",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banaswadi",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 19,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 4,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 0,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Peenya",
+      "hour": 8,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Mahadevapura",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Electronic City",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yelahanka",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Banashankari",
+      "hour": 9,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Madiwala",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Madiwala",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Madiwala",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Madiwala",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Madiwala",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 9,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 7,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Sheshadripuram",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "Ashok Nagar",
+      "hour": 18,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 16,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 15,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 14,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 13,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 12,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 11,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "K.S. Layout",
+      "hour": 10,
+      "predicted_violation_count": 0.0
+    },
+    {
+      "station": "No Police Station",
+      "hour": 17,
+      "predicted_violation_count": 0.0
+    }
+  ],
+  "station_metrics": {
+    "Upparpet": {
+      "mae": 8.2158,
+      "mape": 138.4
+    },
+    "Malleshwaram": {
+      "mae": 4.8087,
+      "mape": 93.5
+    },
+    "Kodigehalli": {
+      "mae": 4.477,
+      "mape": 111.4
+    },
+    "City Market": {
+      "mae": 4.4264,
+      "mape": 102.6
+    },
+    "Shivajinagar": {
+      "mae": 3.9573,
+      "mape": 95.5
+    },
+    "Rajajinagar": {
+      "mae": 3.6247,
+      "mape": 78.0
+    },
+    "HAL Old Airport": {
+      "mae": 2.1386,
+      "mape": 111.9
+    },
+    "Mahadevapura": {
+      "mae": 2.1035,
+      "mape": 76.9
+    },
+    "Basavanagudi": {
+      "mae": 2.1015,
+      "mape": 76.8
+    },
+    "Vijayanagara": {
+      "mae": 2.0496,
+      "mape": 74.1
+    },
+    "K.R. Pura": {
+      "mae": 1.8721,
+      "mape": 65.5
+    },
+    "Jayanagara": {
+      "mae": 1.7571,
+      "mape": 64.8
+    },
+    "Magadi Road": {
+      "mae": 1.5805,
+      "mape": 70.6
+    },
+    "Wilson Garden": {
+      "mae": 1.4062,
+      "mape": 61.3
+    },
+    "Halasur": {
+      "mae": 1.3481,
+      "mape": 67.1
+    },
+    "Adugodi": {
+      "mae": 1.1908,
+      "mape": 65.9
+    },
+    "Bellandur": {
+      "mae": 1.065,
+      "mape": 54.6
+    },
+    "Halasuru Gate": {
+      "mae": 1.0422,
+      "mape": 57.2
+    },
+    "Hennuru": {
+      "mae": 1.0218,
+      "mape": 85.2
+    },
+    "Pulikeshinagar(F.Town)": {
+      "mae": 0.9461,
+      "mape": 66.0
+    },
+    "Banaswadi": {
+      "mae": 0.9422,
+      "mape": 63.5
+    },
+    "HSR Layout": {
+      "mae": 0.9293,
+      "mape": 75.2
+    },
+    "Electronic City": {
+      "mae": 0.9143,
+      "mape": 71.1
+    },
+    "Banashankari": {
+      "mae": 0.8889,
+      "mape": 73.2
+    },
+    "Jeevanbheemanagar": {
+      "mae": 0.8718,
+      "mape": 56.2
+    },
+    "Sadashivanagar": {
+      "mae": 0.8447,
+      "mape": 63.6
+    },
+    "Chikkajala": {
+      "mae": 0.8323,
+      "mape": 74.0
+    },
+    "Chamarajpet": {
+      "mae": 0.7523,
+      "mape": 63.0
+    },
+    "Hulimavu": {
+      "mae": 0.7007,
+      "mape": 90.8
+    },
+    "Mico Layout": {
+      "mae": 0.6313,
+      "mape": 61.0
+    },
+    "High ground": {
+      "mae": 0.6238,
+      "mape": 75.4
+    },
+    "Sheshadripuram": {
+      "mae": 0.6195,
+      "mape": 68.9
+    },
+    "Cubbon Park": {
+      "mae": 0.6112,
+      "mape": 67.1
+    },
+    "Byatarayanapura": {
+      "mae": 0.5533,
+      "mape": 66.9
+    },
+    "Chikkabanavara": {
+      "mae": 0.5037,
+      "mape": 74.0
+    },
+    "Yelahanka": {
+      "mae": 0.4795,
+      "mape": 78.8
+    },
+    "Whitefield": {
+      "mae": 0.4748,
+      "mape": 68.9
+    },
+    "Kamakshipalya": {
+      "mae": 0.4463,
+      "mape": 75.9
+    },
+    "Ashok Nagar": {
+      "mae": 0.4438,
+      "mape": 73.9
+    },
+    "V.V.Puram (C.Pet)": {
+      "mae": 0.4391,
+      "mape": 84.5
+    },
+    "Hebbala": {
+      "mae": 0.4203,
+      "mape": 60.5
+    },
+    "Thalagattapura": {
+      "mae": 0.4201,
+      "mape": 75.3
+    },
+    "Yeshwanthpura": {
+      "mae": 0.3788,
+      "mape": 68.1
+    },
+    "Jalahalli": {
+      "mae": 0.3738,
+      "mape": 75.7
+    },
+    "Peenya": {
+      "mae": 0.3673,
+      "mape": 72.8
+    },
+    "R.T. Nagar": {
+      "mae": 0.3526,
+      "mape": 78.1
+    },
+    "Devanahalli Airport": {
+      "mae": 0.3234,
+      "mape": 89.9
+    },
+    "Madiwala": {
+      "mae": 0.3025,
+      "mape": 74.8
+    },
+    "K.G. Halli": {
+      "mae": 0.283,
+      "mape": 88.1
+    },
+    "J.P. Nagar": {
+      "mae": 0.2584,
+      "mape": 78.6
+    },
+    "No Police Station": {
+      "mae": 0.2553,
+      "mape": 90.6
+    },
+    "Jnanabharathi": {
+      "mae": 0.2263,
+      "mape": 73.8
+    },
+    "K.S. Layout": {
+      "mae": 0.2131,
+      "mape": 71.9
+    },
+    "Kengeri": {
+      "mae": 0.0925,
+      "mape": 90.6
+    },
+    "0": {
+      "mae": 0.0031,
+      "mape": NaN
+    }
+  },
+  "heatmap_data": [
+    {
+      "station": "Upparpet",
+      "hours": {
+        "3": 21.12,
+        "4": 17.97,
+        "5": 13.24,
+        "2": 9.53,
+        "0": 8.97,
+        "19": 8.95,
+        "6": 8.77,
+        "1": 8.65,
+        "23": 6.91,
+        "21": 5.29,
+        "20": 4.07,
+        "22": 3.12,
+        "8": 2.46,
+        "7": 2.1,
+        "9": 1.4,
+        "10": 0.05,
+        "11": 0.04,
+        "18": 0.03,
+        "12": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0
+      }
+    },
+    {
+      "station": "Shivajinagar",
+      "hours": {
+        "3": 17.26,
+        "6": 15.28,
+        "4": 13.89,
+        "5": 10.51,
+        "2": 10.49,
+        "0": 5.46,
+        "7": 4.56,
+        "22": 3.2,
+        "8": 3.12,
+        "23": 2.98,
+        "1": 2.77,
+        "21": 1.81,
+        "9": 1.76,
+        "19": 0.7,
+        "20": 0.6,
+        "18": 0.11,
+        "12": 0.08,
+        "11": 0.08,
+        "10": 0.05,
+        "13": 0.02,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0
+      }
+    },
+    {
+      "station": "Malleshwaram",
+      "hours": {
+        "4": 15.06,
+        "5": 12.72,
+        "3": 12.23,
+        "2": 11.84,
+        "6": 11.45,
+        "0": 8.51,
+        "1": 8.38,
+        "23": 6.59,
+        "22": 4.31,
+        "21": 2.37,
+        "7": 1.76,
+        "20": 1.36,
+        "8": 1.03,
+        "9": 0.41,
+        "19": 0.38,
+        "12": 0.16,
+        "11": 0.09,
+        "10": 0.07,
+        "17": 0.01,
+        "16": 0.01,
+        "15": 0.01,
+        "14": 0.01,
+        "13": 0.01,
+        "18": 0.01
+      }
+    },
+    {
+      "station": "Kodigehalli",
+      "hours": {
+        "5": 13.15,
+        "6": 7.5,
+        "4": 4.9,
+        "7": 2.68,
+        "3": 2.41,
+        "23": 2.19,
+        "0": 2.08,
+        "21": 2.05,
+        "22": 1.85,
+        "20": 1.75,
+        "2": 1.4,
+        "8": 1.17,
+        "1": 1.09,
+        "19": 0.22,
+        "9": 0.17,
+        "11": 0.03,
+        "10": 0.02,
+        "13": 0.0,
+        "12": 0.0,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0
+      }
+    },
+    {
+      "station": "Rajajinagar",
+      "hours": {
+        "5": 10.21,
+        "21": 9.42,
+        "4": 5.7,
+        "22": 5.12,
+        "6": 4.56,
+        "3": 4.29,
+        "0": 4.2,
+        "23": 3.24,
+        "2": 3.07,
+        "1": 2.76,
+        "20": 1.6,
+        "7": 1.37,
+        "19": 1.27,
+        "8": 0.65,
+        "9": 0.05,
+        "18": 0.03,
+        "15": 0.01,
+        "14": 0.01,
+        "13": 0.01,
+        "12": 0.01,
+        "11": 0.01,
+        "10": 0.01,
+        "17": 0.01,
+        "16": 0.01
+      }
+    },
+    {
+      "station": "City Market",
+      "hours": {
+        "4": 7.55,
+        "5": 6.53,
+        "2": 5.75,
+        "3": 5.58,
+        "19": 4.84,
+        "0": 3.84,
+        "6": 3.83,
+        "18": 2.28,
+        "20": 2.22,
+        "22": 1.98,
+        "1": 1.92,
+        "23": 1.74,
+        "21": 1.33,
+        "7": 0.77,
+        "8": 0.55,
+        "16": 0.4,
+        "17": 0.28,
+        "9": 0.2,
+        "15": 0.08,
+        "10": 0.02,
+        "12": 0.01,
+        "14": 0.0,
+        "13": 0.0,
+        "11": 0.0
+      }
+    },
+    {
+      "station": "K.R. Pura",
+      "hours": {
+        "19": 6.68,
+        "18": 5.08,
+        "5": 3.03,
+        "6": 2.66,
+        "20": 1.6,
+        "4": 1.38,
+        "7": 1.08,
+        "2": 1.01,
+        "22": 0.85,
+        "3": 0.58,
+        "21": 0.57,
+        "23": 0.56,
+        "0": 0.54,
+        "1": 0.34,
+        "8": 0.33,
+        "17": 0.3,
+        "16": 0.18,
+        "9": 0.08,
+        "11": 0.04,
+        "15": 0.03,
+        "14": 0.01,
+        "13": 0.01,
+        "12": 0.01,
+        "10": 0.01
+      }
+    },
+    {
+      "station": "Magadi Road",
+      "hours": {
+        "5": 6.67,
+        "6": 4.55,
+        "4": 3.61,
+        "22": 3.32,
+        "21": 3.14,
+        "1": 2.21,
+        "2": 2.21,
+        "7": 2.15,
+        "0": 1.95,
+        "23": 1.75,
+        "3": 1.33,
+        "20": 0.9,
+        "8": 0.35,
+        "19": 0.19,
+        "9": 0.11,
+        "11": 0.03,
+        "10": 0.02,
+        "12": 0.01,
+        "18": 0.01,
+        "15": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "14": 0.0,
+        "13": 0.0
+      }
+    },
+    {
+      "station": "Halasur",
+      "hours": {
+        "23": 6.25,
+        "22": 5.17,
+        "6": 2.98,
+        "5": 2.9,
+        "2": 2.09,
+        "4": 1.64,
+        "3": 1.53,
+        "21": 1.45,
+        "1": 0.88,
+        "0": 0.83,
+        "8": 0.26,
+        "7": 0.23,
+        "20": 0.2,
+        "19": 0.15,
+        "9": 0.07,
+        "18": 0.05,
+        "11": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "10": 0.0
+      }
+    },
+    {
+      "station": "Wilson Garden",
+      "hours": {
+        "5": 4.87,
+        "2": 4.23,
+        "4": 3.76,
+        "3": 3.28,
+        "21": 2.6,
+        "6": 2.52,
+        "22": 1.46,
+        "23": 1.16,
+        "0": 0.91,
+        "1": 0.89,
+        "20": 0.62,
+        "7": 0.59,
+        "8": 0.48,
+        "19": 0.22,
+        "9": 0.18,
+        "11": 0.09,
+        "18": 0.09,
+        "10": 0.08,
+        "17": 0.03,
+        "16": 0.01,
+        "15": 0.01,
+        "14": 0.01,
+        "13": 0.01,
+        "12": 0.01
+      }
+    },
+    {
+      "station": "Hulimavu",
+      "hours": {
+        "21": 3.57,
+        "20": 2.01,
+        "22": 1.79,
+        "0": 0.86,
+        "5": 0.56,
+        "6": 0.55,
+        "23": 0.54,
+        "4": 0.35,
+        "8": 0.33,
+        "7": 0.32,
+        "3": 0.23,
+        "2": 0.17,
+        "1": 0.09,
+        "9": 0.06,
+        "19": 0.03,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "10": 0.0
+      }
+    },
+    {
+      "station": "HAL Old Airport",
+      "hours": {
+        "22": 3.43,
+        "21": 2.8,
+        "0": 2.63,
+        "23": 2.39,
+        "4": 1.98,
+        "5": 1.92,
+        "1": 1.9,
+        "3": 1.81,
+        "2": 1.66,
+        "20": 1.0,
+        "6": 0.72,
+        "7": 0.49,
+        "8": 0.4,
+        "19": 0.28,
+        "9": 0.15,
+        "11": 0.03,
+        "12": 0.0,
+        "10": 0.0,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0
+      }
+    },
+    {
+      "station": "Jayanagara",
+      "hours": {
+        "3": 2.98,
+        "2": 2.83,
+        "5": 2.11,
+        "6": 1.98,
+        "4": 1.83,
+        "23": 1.67,
+        "22": 1.64,
+        "0": 1.6,
+        "21": 1.28,
+        "1": 1.23,
+        "20": 0.85,
+        "7": 0.74,
+        "8": 0.2,
+        "19": 0.09,
+        "18": 0.07,
+        "10": 0.05,
+        "9": 0.04,
+        "17": 0.02,
+        "14": 0.01,
+        "13": 0.01,
+        "12": 0.01,
+        "11": 0.01,
+        "16": 0.01,
+        "15": 0.01
+      }
+    },
+    {
+      "station": "Basavanagudi",
+      "hours": {
+        "23": 2.74,
+        "5": 2.59,
+        "21": 1.88,
+        "0": 1.68,
+        "22": 1.62,
+        "4": 1.47,
+        "6": 1.39,
+        "3": 1.19,
+        "2": 0.82,
+        "1": 0.8,
+        "7": 0.6,
+        "20": 0.5,
+        "8": 0.37,
+        "9": 0.05,
+        "19": 0.05,
+        "10": 0.01,
+        "18": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0
+      }
+    },
+    {
+      "station": "Vijayanagara",
+      "hours": {
+        "23": 2.71,
+        "5": 2.15,
+        "21": 1.98,
+        "22": 1.65,
+        "0": 1.56,
+        "3": 1.3,
+        "2": 1.29,
+        "6": 1.28,
+        "1": 1.18,
+        "4": 1.17,
+        "20": 0.94,
+        "7": 0.61,
+        "19": 0.27,
+        "9": 0.19,
+        "8": 0.19,
+        "17": 0.0,
+        "10": 0.0,
+        "18": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0
+      }
+    },
+    {
+      "station": "Electronic City",
+      "hours": {
+        "7": 2.57,
+        "6": 1.73,
+        "8": 1.5,
+        "5": 1.24,
+        "21": 0.94,
+        "1": 0.62,
+        "20": 0.54,
+        "23": 0.53,
+        "4": 0.52,
+        "22": 0.51,
+        "0": 0.44,
+        "2": 0.39,
+        "3": 0.34,
+        "9": 0.11,
+        "11": 0.05,
+        "10": 0.03,
+        "19": 0.03,
+        "12": 0.01,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0
+      }
+    },
+    {
+      "station": "Kamakshipalya",
+      "hours": {
+        "5": 2.41,
+        "6": 1.94,
+        "4": 0.88,
+        "22": 0.73,
+        "7": 0.71,
+        "23": 0.62,
+        "21": 0.52,
+        "0": 0.51,
+        "1": 0.42,
+        "3": 0.4,
+        "2": 0.34,
+        "8": 0.3,
+        "20": 0.27,
+        "9": 0.17,
+        "19": 0.06,
+        "10": 0.02,
+        "18": 0.01,
+        "17": 0.01,
+        "16": 0.01,
+        "15": 0.01,
+        "14": 0.01,
+        "13": 0.01,
+        "12": 0.01,
+        "11": 0.01
+      }
+    },
+    {
+      "station": "Thalagattapura",
+      "hours": {
+        "6": 2.0,
+        "5": 1.82,
+        "7": 1.07,
+        "4": 0.55,
+        "21": 0.4,
+        "22": 0.35,
+        "1": 0.33,
+        "23": 0.29,
+        "0": 0.25,
+        "3": 0.25,
+        "8": 0.17,
+        "2": 0.17,
+        "20": 0.11,
+        "19": 0.08,
+        "12": 0.02,
+        "18": 0.01,
+        "17": 0.01,
+        "16": 0.01,
+        "15": 0.01,
+        "14": 0.01,
+        "13": 0.01,
+        "11": 0.01,
+        "10": 0.01,
+        "9": 0.01
+      }
+    },
+    {
+      "station": "Jeevanbheemanagar",
+      "hours": {
+        "23": 1.7,
+        "2": 1.58,
+        "22": 1.44,
+        "4": 1.35,
+        "0": 1.24,
+        "5": 1.23,
+        "3": 1.23,
+        "21": 1.22,
+        "1": 1.2,
+        "6": 0.89,
+        "8": 0.66,
+        "7": 0.63,
+        "20": 0.32,
+        "19": 0.25,
+        "9": 0.16,
+        "11": 0.04,
+        "13": 0.02,
+        "16": 0.02,
+        "10": 0.01,
+        "18": 0.01,
+        "17": 0.01,
+        "15": 0.0,
+        "14": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "Madiwala",
+      "hours": {
+        "19": 1.64,
+        "5": 1.05,
+        "4": 0.84,
+        "23": 0.65,
+        "6": 0.63,
+        "21": 0.55,
+        "22": 0.49,
+        "7": 0.45,
+        "2": 0.41,
+        "20": 0.29,
+        "3": 0.28,
+        "8": 0.24,
+        "0": 0.19,
+        "1": 0.18,
+        "18": 0.05,
+        "9": 0.04,
+        "11": 0.01,
+        "10": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "Cubbon Park",
+      "hours": {
+        "5": 1.56,
+        "2": 1.45,
+        "23": 1.32,
+        "3": 0.99,
+        "6": 0.97,
+        "1": 0.95,
+        "0": 0.89,
+        "21": 0.87,
+        "4": 0.72,
+        "22": 0.66,
+        "20": 0.51,
+        "7": 0.28,
+        "19": 0.26,
+        "8": 0.12,
+        "18": 0.05,
+        "9": 0.04,
+        "11": 0.03,
+        "12": 0.01,
+        "10": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0
+      }
+    },
+    {
+      "station": "Mahadevapura",
+      "hours": {
+        "21": 1.41,
+        "23": 1.24,
+        "22": 1.21,
+        "20": 1.19,
+        "1": 1.15,
+        "19": 1.06,
+        "5": 1.05,
+        "6": 0.9,
+        "2": 0.85,
+        "0": 0.76,
+        "4": 0.72,
+        "3": 0.51,
+        "7": 0.46,
+        "8": 0.17,
+        "9": 0.07,
+        "18": 0.04,
+        "10": 0.02,
+        "15": 0.01,
+        "11": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "Yeshwanthpura",
+      "hours": {
+        "21": 1.26,
+        "5": 0.94,
+        "4": 0.83,
+        "19": 0.8,
+        "20": 0.78,
+        "3": 0.77,
+        "23": 0.69,
+        "22": 0.68,
+        "0": 0.63,
+        "2": 0.59,
+        "6": 0.57,
+        "1": 0.34,
+        "7": 0.28,
+        "8": 0.11,
+        "9": 0.08,
+        "18": 0.03,
+        "11": 0.02,
+        "10": 0.02,
+        "12": 0.01,
+        "17": 0.01,
+        "14": 0.0,
+        "13": 0.0,
+        "16": 0.0,
+        "15": 0.0
+      }
+    },
+    {
+      "station": "Chamarajpet",
+      "hours": {
+        "21": 1.24,
+        "2": 1.22,
+        "5": 0.84,
+        "6": 0.72,
+        "22": 0.7,
+        "23": 0.68,
+        "4": 0.65,
+        "20": 0.65,
+        "3": 0.63,
+        "0": 0.59,
+        "19": 0.55,
+        "1": 0.55,
+        "7": 0.18,
+        "8": 0.11,
+        "9": 0.04,
+        "18": 0.04,
+        "11": 0.01,
+        "10": 0.01,
+        "16": 0.01,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "17": 0.0,
+        "15": 0.0
+      }
+    },
+    {
+      "station": "Bellandur",
+      "hours": {
+        "21": 1.19,
+        "22": 1.1,
+        "23": 1.07,
+        "4": 1.02,
+        "5": 0.97,
+        "20": 0.92,
+        "0": 0.9,
+        "6": 0.76,
+        "2": 0.63,
+        "7": 0.58,
+        "1": 0.57,
+        "3": 0.55,
+        "8": 0.4,
+        "19": 0.14,
+        "9": 0.06,
+        "11": 0.03,
+        "10": 0.02,
+        "12": 0.01,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0
+      }
+    },
+    {
+      "station": "Hebbala",
+      "hours": {
+        "23": 1.07,
+        "22": 1.05,
+        "5": 0.98,
+        "6": 0.83,
+        "0": 0.61,
+        "21": 0.57,
+        "4": 0.57,
+        "3": 0.53,
+        "7": 0.49,
+        "2": 0.44,
+        "1": 0.4,
+        "20": 0.33,
+        "8": 0.23,
+        "9": 0.05,
+        "19": 0.05,
+        "11": 0.02,
+        "10": 0.01,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "18": 0.0,
+        "17": 0.0
+      }
+    },
+    {
+      "station": "Byatarayanapura",
+      "hours": {
+        "5": 1.03,
+        "6": 0.98,
+        "21": 0.79,
+        "23": 0.76,
+        "22": 0.71,
+        "4": 0.66,
+        "7": 0.6,
+        "20": 0.59,
+        "2": 0.42,
+        "19": 0.41,
+        "0": 0.35,
+        "1": 0.32,
+        "3": 0.28,
+        "8": 0.27,
+        "9": 0.09,
+        "18": 0.08,
+        "10": 0.05,
+        "11": 0.04,
+        "17": 0.02,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "Hennuru",
+      "hours": {
+        "8": 0.96,
+        "5": 0.73,
+        "23": 0.67,
+        "22": 0.58,
+        "21": 0.57,
+        "6": 0.5,
+        "1": 0.34,
+        "20": 0.29,
+        "7": 0.28,
+        "2": 0.28,
+        "4": 0.26,
+        "3": 0.21,
+        "0": 0.2,
+        "10": 0.08,
+        "19": 0.06,
+        "18": 0.05,
+        "11": 0.04,
+        "14": 0.01,
+        "13": 0.01,
+        "12": 0.01,
+        "15": 0.01,
+        "9": 0.01,
+        "17": 0.0,
+        "16": 0.0
+      }
+    },
+    {
+      "station": "Halasuru Gate",
+      "hours": {
+        "3": 0.93,
+        "5": 0.78,
+        "2": 0.55,
+        "4": 0.53,
+        "6": 0.5,
+        "22": 0.49,
+        "0": 0.49,
+        "23": 0.46,
+        "1": 0.46,
+        "20": 0.34,
+        "21": 0.33,
+        "19": 0.27,
+        "7": 0.24,
+        "8": 0.07,
+        "17": 0.04,
+        "18": 0.02,
+        "9": 0.02,
+        "11": 0.01,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "10": 0.0,
+        "16": 0.0,
+        "15": 0.0
+      }
+    },
+    {
+      "station": "Adugodi",
+      "hours": {
+        "22": 0.93,
+        "6": 0.85,
+        "21": 0.66,
+        "5": 0.63,
+        "23": 0.61,
+        "4": 0.6,
+        "2": 0.6,
+        "20": 0.52,
+        "3": 0.45,
+        "1": 0.42,
+        "7": 0.4,
+        "0": 0.38,
+        "8": 0.22,
+        "19": 0.2,
+        "9": 0.1,
+        "11": 0.1,
+        "12": 0.07,
+        "10": 0.06,
+        "13": 0.05,
+        "18": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0
+      }
+    },
+    {
+      "station": "Pulikeshinagar(F.Town)",
+      "hours": {
+        "21": 0.77,
+        "6": 0.51,
+        "5": 0.47,
+        "22": 0.45,
+        "23": 0.37,
+        "7": 0.32,
+        "3": 0.23,
+        "1": 0.22,
+        "4": 0.21,
+        "2": 0.2,
+        "8": 0.2,
+        "20": 0.14,
+        "0": 0.14,
+        "9": 0.07,
+        "19": 0.03,
+        "11": 0.02,
+        "10": 0.02,
+        "17": 0.01,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "18": 0.0
+      }
+    },
+    {
+      "station": "Chikkabanavara",
+      "hours": {
+        "6": 0.77,
+        "5": 0.72,
+        "21": 0.58,
+        "23": 0.4,
+        "7": 0.38,
+        "20": 0.37,
+        "0": 0.32,
+        "22": 0.31,
+        "2": 0.21,
+        "4": 0.21,
+        "1": 0.18,
+        "8": 0.12,
+        "17": 0.07,
+        "19": 0.06,
+        "3": 0.05,
+        "13": 0.01,
+        "12": 0.01,
+        "11": 0.01,
+        "10": 0.01,
+        "9": 0.01,
+        "18": 0.01,
+        "16": 0.01,
+        "15": 0.01,
+        "14": 0.01
+      }
+    },
+    {
+      "station": "Chikkajala",
+      "hours": {
+        "20": 0.76,
+        "22": 0.7,
+        "21": 0.65,
+        "23": 0.63,
+        "6": 0.62,
+        "19": 0.57,
+        "5": 0.54,
+        "7": 0.54,
+        "8": 0.44,
+        "0": 0.37,
+        "4": 0.33,
+        "2": 0.33,
+        "3": 0.27,
+        "9": 0.21,
+        "1": 0.2,
+        "11": 0.04,
+        "10": 0.03,
+        "18": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "Sadashivanagar",
+      "hours": {
+        "5": 0.62,
+        "6": 0.58,
+        "22": 0.47,
+        "2": 0.4,
+        "3": 0.37,
+        "21": 0.3,
+        "7": 0.3,
+        "23": 0.29,
+        "1": 0.25,
+        "4": 0.22,
+        "0": 0.17,
+        "20": 0.13,
+        "8": 0.13,
+        "19": 0.05,
+        "18": 0.01,
+        "9": 0.01,
+        "11": 0.0,
+        "10": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "Whitefield",
+      "hours": {
+        "5": 0.62,
+        "2": 0.59,
+        "23": 0.49,
+        "4": 0.47,
+        "22": 0.46,
+        "3": 0.43,
+        "21": 0.42,
+        "6": 0.41,
+        "0": 0.33,
+        "1": 0.33,
+        "19": 0.31,
+        "7": 0.3,
+        "20": 0.25,
+        "8": 0.16,
+        "9": 0.03,
+        "11": 0.03,
+        "18": 0.02,
+        "10": 0.02,
+        "14": 0.01,
+        "13": 0.01,
+        "12": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0
+      }
+    },
+    {
+      "station": "Sheshadripuram",
+      "hours": {
+        "5": 0.61,
+        "3": 0.52,
+        "4": 0.52,
+        "6": 0.41,
+        "2": 0.4,
+        "22": 0.4,
+        "21": 0.38,
+        "1": 0.35,
+        "0": 0.34,
+        "23": 0.33,
+        "7": 0.27,
+        "20": 0.21,
+        "19": 0.1,
+        "8": 0.06,
+        "9": 0.03,
+        "10": 0.0,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0
+      }
+    },
+    {
+      "station": "Jalahalli",
+      "hours": {
+        "6": 0.47,
+        "5": 0.45,
+        "21": 0.44,
+        "22": 0.4,
+        "23": 0.29,
+        "7": 0.28,
+        "4": 0.22,
+        "20": 0.16,
+        "2": 0.15,
+        "0": 0.12,
+        "8": 0.11,
+        "3": 0.11,
+        "1": 0.1,
+        "19": 0.07,
+        "18": 0.02,
+        "9": 0.02,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "10": 0.0
+      }
+    },
+    {
+      "station": "Devanahalli Airport",
+      "hours": {
+        "23": 0.45,
+        "22": 0.41,
+        "21": 0.34,
+        "5": 0.31,
+        "20": 0.31,
+        "0": 0.26,
+        "2": 0.22,
+        "6": 0.21,
+        "4": 0.16,
+        "1": 0.15,
+        "3": 0.13,
+        "7": 0.11,
+        "19": 0.06,
+        "8": 0.05,
+        "10": 0.02,
+        "9": 0.02,
+        "18": 0.02,
+        "11": 0.0,
+        "12": 0.0,
+        "13": 0.0,
+        "14": 0.0,
+        "15": 0.0,
+        "16": 0.0,
+        "17": 0.0
+      }
+    },
+    {
+      "station": "HSR Layout",
+      "hours": {
+        "5": 0.43,
+        "23": 0.31,
+        "21": 0.3,
+        "6": 0.24,
+        "22": 0.22,
+        "0": 0.21,
+        "20": 0.21,
+        "4": 0.19,
+        "1": 0.18,
+        "7": 0.16,
+        "8": 0.15,
+        "9": 0.12,
+        "3": 0.09,
+        "2": 0.09,
+        "19": 0.06,
+        "10": 0.02,
+        "18": 0.01,
+        "11": 0.01,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "17": 0.0
+      }
+    },
+    {
+      "station": "High ground",
+      "hours": {
+        "21": 0.39,
+        "2": 0.35,
+        "23": 0.35,
+        "22": 0.34,
+        "0": 0.31,
+        "4": 0.29,
+        "3": 0.26,
+        "5": 0.25,
+        "20": 0.23,
+        "1": 0.22,
+        "6": 0.2,
+        "7": 0.12,
+        "19": 0.12,
+        "9": 0.04,
+        "8": 0.04,
+        "17": 0.0,
+        "11": 0.0,
+        "10": 0.0,
+        "18": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "Ashok Nagar",
+      "hours": {
+        "22": 0.39,
+        "23": 0.36,
+        "21": 0.32,
+        "5": 0.32,
+        "6": 0.3,
+        "7": 0.27,
+        "4": 0.26,
+        "0": 0.24,
+        "2": 0.22,
+        "1": 0.2,
+        "3": 0.19,
+        "20": 0.17,
+        "8": 0.11,
+        "19": 0.1,
+        "11": 0.04,
+        "9": 0.03,
+        "12": 0.03,
+        "10": 0.02,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "18": 0.0
+      }
+    },
+    {
+      "station": "Yelahanka",
+      "hours": {
+        "20": 0.35,
+        "21": 0.33,
+        "22": 0.26,
+        "5": 0.23,
+        "23": 0.2,
+        "6": 0.2,
+        "19": 0.17,
+        "3": 0.16,
+        "0": 0.15,
+        "2": 0.14,
+        "4": 0.12,
+        "7": 0.09,
+        "8": 0.09,
+        "1": 0.08,
+        "18": 0.01,
+        "9": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "10": 0.0
+      }
+    },
+    {
+      "station": "Mico Layout",
+      "hours": {
+        "21": 0.34,
+        "6": 0.28,
+        "5": 0.28,
+        "22": 0.26,
+        "0": 0.22,
+        "20": 0.19,
+        "1": 0.18,
+        "23": 0.18,
+        "7": 0.17,
+        "3": 0.16,
+        "2": 0.15,
+        "4": 0.14,
+        "8": 0.07,
+        "9": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "18": 0.0,
+        "10": 0.0,
+        "19": 0.0
+      }
+    },
+    {
+      "station": "K.G. Halli",
+      "hours": {
+        "21": 0.33,
+        "5": 0.28,
+        "22": 0.26,
+        "23": 0.23,
+        "6": 0.21,
+        "1": 0.15,
+        "20": 0.12,
+        "4": 0.12,
+        "7": 0.1,
+        "3": 0.09,
+        "8": 0.09,
+        "0": 0.07,
+        "2": 0.05,
+        "19": 0.04,
+        "18": 0.02,
+        "9": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "10": 0.0
+      }
+    },
+    {
+      "station": "Jnanabharathi",
+      "hours": {
+        "6": 0.24,
+        "5": 0.24,
+        "7": 0.22,
+        "21": 0.21,
+        "22": 0.17,
+        "23": 0.15,
+        "2": 0.12,
+        "4": 0.1,
+        "8": 0.09,
+        "0": 0.08,
+        "1": 0.07,
+        "3": 0.06,
+        "20": 0.05,
+        "18": 0.02,
+        "9": 0.02,
+        "17": 0.01,
+        "19": 0.01,
+        "10": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0
+      }
+    },
+    {
+      "station": "Banaswadi",
+      "hours": {
+        "19": 0.2,
+        "6": 0.15,
+        "20": 0.15,
+        "21": 0.13,
+        "1": 0.12,
+        "4": 0.12,
+        "5": 0.11,
+        "22": 0.1,
+        "8": 0.08,
+        "23": 0.08,
+        "2": 0.08,
+        "3": 0.07,
+        "9": 0.03,
+        "7": 0.03,
+        "18": 0.02,
+        "11": 0.01,
+        "10": 0.01,
+        "0": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "J.P. Nagar",
+      "hours": {
+        "21": 0.16,
+        "22": 0.11,
+        "6": 0.1,
+        "23": 0.1,
+        "5": 0.09,
+        "1": 0.09,
+        "4": 0.08,
+        "7": 0.07,
+        "2": 0.07,
+        "3": 0.07,
+        "20": 0.07,
+        "0": 0.07,
+        "19": 0.04,
+        "8": 0.03,
+        "18": 0.02,
+        "9": 0.02,
+        "11": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "10": 0.0
+      }
+    },
+    {
+      "station": "R.T. Nagar",
+      "hours": {
+        "22": 0.12,
+        "5": 0.12,
+        "23": 0.1,
+        "6": 0.1,
+        "21": 0.09,
+        "2": 0.08,
+        "4": 0.08,
+        "3": 0.07,
+        "0": 0.07,
+        "7": 0.07,
+        "1": 0.06,
+        "20": 0.06,
+        "19": 0.03,
+        "8": 0.02,
+        "9": 0.01,
+        "11": 0.0,
+        "10": 0.0,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0
+      }
+    },
+    {
+      "station": "Banashankari",
+      "hours": {
+        "21": 0.07,
+        "5": 0.04,
+        "7": 0.02,
+        "23": 0.02,
+        "8": 0.01,
+        "6": 0.01,
+        "3": 0.01,
+        "2": 0.01,
+        "22": 0.01,
+        "20": 0.01,
+        "1": 0.01,
+        "19": 0.0,
+        "18": 0.0,
+        "4": 0.0,
+        "0": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "10": 0.0,
+        "9": 0.0
+      }
+    },
+    {
+      "station": "K.S. Layout",
+      "hours": {
+        "6": 0.05,
+        "23": 0.04,
+        "21": 0.04,
+        "7": 0.04,
+        "22": 0.03,
+        "5": 0.03,
+        "0": 0.02,
+        "20": 0.02,
+        "3": 0.01,
+        "2": 0.01,
+        "1": 0.01,
+        "9": 0.01,
+        "8": 0.01,
+        "4": 0.0,
+        "19": 0.0,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "10": 0.0
+      }
+    },
+    {
+      "station": "No Police Station",
+      "hours": {
+        "6": 0.05,
+        "21": 0.04,
+        "23": 0.03,
+        "22": 0.03,
+        "20": 0.02,
+        "5": 0.02,
+        "1": 0.01,
+        "0": 0.01,
+        "19": 0.01,
+        "4": 0.01,
+        "3": 0.01,
+        "2": 0.01,
+        "8": 0.01,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.0,
+        "13": 0.0,
+        "14": 0.0,
+        "15": 0.0,
+        "18": 0.0,
+        "16": 0.0,
+        "9": 0.0,
+        "7": 0.0,
+        "17": 0.0
+      }
+    },
+    {
+      "station": "V.V.Puram (C.Pet)",
+      "hours": {
+        "21": 0.04,
+        "4": 0.04,
+        "5": 0.03,
+        "23": 0.03,
+        "22": 0.03,
+        "19": 0.03,
+        "0": 0.02,
+        "20": 0.01,
+        "17": 0.01,
+        "15": 0.01,
+        "7": 0.01,
+        "6": 0.01,
+        "1": 0.01,
+        "3": 0.0,
+        "2": 0.0,
+        "18": 0.0,
+        "16": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "10": 0.0,
+        "9": 0.0,
+        "8": 0.0
+      }
+    },
+    {
+      "station": "Peenya",
+      "hours": {
+        "22": 0.04,
+        "21": 0.03,
+        "6": 0.03,
+        "5": 0.03,
+        "23": 0.03,
+        "7": 0.02,
+        "3": 0.02,
+        "20": 0.02,
+        "1": 0.01,
+        "0": 0.01,
+        "18": 0.01,
+        "9": 0.01,
+        "4": 0.01,
+        "2": 0.01,
+        "17": 0.0,
+        "16": 0.0,
+        "19": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "11": 0.0,
+        "10": 0.0,
+        "8": 0.0
+      }
+    },
+    {
+      "station": "Kengeri",
+      "hours": {
+        "6": 0.03,
+        "5": 0.03,
+        "23": 0.03,
+        "22": 0.03,
+        "21": 0.03,
+        "8": 0.01,
+        "7": 0.01,
+        "4": 0.01,
+        "3": 0.01,
+        "2": 0.01,
+        "0": 0.01,
+        "20": 0.01,
+        "1": 0.01,
+        "11": 0.0,
+        "10": 0.0,
+        "19": 0.0,
+        "18": 0.0,
+        "17": 0.0,
+        "16": 0.0,
+        "15": 0.0,
+        "14": 0.0,
+        "13": 0.0,
+        "12": 0.0,
+        "9": 0.0
+      }
+    }
+  ],
+  "dispatch_priority": [
+    {
+      "station": "Upparpet",
+      "hour": 3,
+      "predicted_violation_count": 21.12
+    },
+    {
+      "station": "Upparpet",
+      "hour": 4,
+      "predicted_violation_count": 17.97
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 3,
+      "predicted_violation_count": 17.26
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 6,
+      "predicted_violation_count": 15.28
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 4,
+      "predicted_violation_count": 15.06
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 4,
+      "predicted_violation_count": 13.89
+    },
+    {
+      "station": "Upparpet",
+      "hour": 5,
+      "predicted_violation_count": 13.24
+    },
+    {
+      "station": "Kodigehalli",
+      "hour": 5,
+      "predicted_violation_count": 13.15
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 5,
+      "predicted_violation_count": 12.72
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 3,
+      "predicted_violation_count": 12.23
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 2,
+      "predicted_violation_count": 11.84
+    },
+    {
+      "station": "Malleshwaram",
+      "hour": 6,
+      "predicted_violation_count": 11.45
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 5,
+      "predicted_violation_count": 10.51
+    },
+    {
+      "station": "Shivajinagar",
+      "hour": 2,
+      "predicted_violation_count": 10.49
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 5,
+      "predicted_violation_count": 10.21
+    },
+    {
+      "station": "Upparpet",
+      "hour": 2,
+      "predicted_violation_count": 9.53
+    },
+    {
+      "station": "Rajajinagar",
+      "hour": 21,
+      "predicted_violation_count": 9.42
+    },
+    {
+      "station": "Upparpet",
+      "hour": 0,
+      "predicted_violation_count": 8.97
+    },
+    {
+      "station": "Upparpet",
+      "hour": 19,
+      "predicted_violation_count": 8.95
+    },
+    {
+      "station": "Upparpet",
+      "hour": 6,
+      "predicted_violation_count": 8.77
+    }
+  ]
+}
