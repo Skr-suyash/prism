@@ -35,3 +35,13 @@ def get_hourly_totals():
 @router.get("/station/{station}")
 def get_station_forecast(station: str):
     return service.get_station_forecast(station)
+
+
+@router.get("/stations")
+def get_stations():
+    return service.get_station_list()
+
+
+@router.get("/station-hourly/{station}")
+def get_station_hourly(station: str):
+    return service.get_station_hourly_totals(station)

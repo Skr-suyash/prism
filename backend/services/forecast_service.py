@@ -99,3 +99,26 @@ class ForecastService:
             "mape": station_metrics.get("mape"),
             "hourly": station_data,
         }
+
+    def get_station_list(self):
+        """Return list of all station names."""
+        if not self.data:
+            return []
+        return [row["station"] for row in self.data.get("heatmap_data", [])]
+
+    def get_station_hourly_totals(self, station: str):
+        """Aggregate predicted violations by hour for a specific station."""
+        if not self.data:
+            return []
+
+        forecasts = self.data.get("forecasts", [])
+        hourly = {}
+        for f in forecasts:
+            if f["station"] == station:
+                h = f["hour"]
+                hourly[h] = hourly.get(h, 0) + f["predicted_violation_count"]
+
+        return [
+            {"hour": h, "predicted_total": round(hourly.get(h, 0), 1)}
+            for h in range(24)
+        ]

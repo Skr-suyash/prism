@@ -159,11 +159,13 @@ export const api = {
   getZoneCircles: () => get<ZoneData[]>("/api/f2/zones"),
   getHourly: () => get<HourlyData>("/api/f2/hourly"),
   
-  getForecastSummary: () => get<ForecastSummary>("/api/f3/summary"),
-  getForecastDispatch: () => get<ForecastDispatch[]>("/api/f3/dispatch"),
-  getForecastHourlyTotals: () => get<ForecastHourlyTotal[]>("/api/f3/hourly-totals"),
-  getForecastHeatmap: () => get<ForecastHeatmapRow[]>("/api/f3/heatmap"),
-  getStationForecast: (station: string) => get<StationForecastData>(`/api/f3/station/${encodeURIComponent(station)}`),
+  getForecastSummary: () => get<ForecastSummary>("/api/f7/summary"),
+  getForecastDispatch: () => get<ForecastDispatch[]>("/api/f7/dispatch"),
+  getForecastHourlyTotals: () => get<ForecastHourlyTotal[]>("/api/f7/hourly-totals"),
+  getForecastHeatmap: () => get<ForecastHeatmapRow[]>("/api/f7/heatmap"),
+  getStationForecast: (station: string) => get<StationForecastData>(`/api/f7/station/${encodeURIComponent(station)}`),
+  getStationList: () => get<string[]>("/api/f7/stations"),
+  getStationHourlyTotals: (station: string) => get<ForecastHourlyTotal[]>(`/api/f7/station-hourly/${encodeURIComponent(station)}`),
   
   getMisclassificationSummary: () => get<MisclassificationSummary>("/api/f4/summary"),
   getConfusionMatrix: () => get<ConfusionCell[]>("/api/f4/confusion-matrix"),
