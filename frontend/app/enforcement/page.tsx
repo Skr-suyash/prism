@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { api } from "@/lib/apiClient";
 import ShiftHeatmap from "@/components/f6/ShiftHeatmap";
+import ShiftMap from "@/components/f6/ShiftMap";
 import AllocationControls from "@/components/f6/AllocationControls";
 import { ShieldAlert } from "lucide-react";
 
@@ -14,6 +15,30 @@ export default function EnforcementPage() {
   const [maxPerCell, setMaxPerCell] = useState(3);
   
   const [loading, setLoading] = useState(true);
+  const [showSimulation, setShowSimulation] = useState(false);
+  const [activeShift, setActiveShift] = useState(0); // 0: Night, 1: Day, 2: Evening
+
+  // Deterrence factor function
+  function getDeterrenceFactor(n: number): number {
+    if (n <= 0) return 0;
+    if (n === 1) return 0.40;
+    if (n === 2) return 0.60;
+    if (n === 3) return 0.75;
+    return 0.85;
+  }
+
+  // Compute residual risk
+  const residualRiskPct = useMemo(() => {
+    if (!allocationData || !matrixData) return 100;
+    const totalPriority = allocationData.total_citywide_priority;
+    if (!totalPriority) return 100;
+    
+    let deterredPriority = 0;
+    for (const a of allocationData.allocations) {
+      deterredPriority += a.total_priority * getDeterrenceFactor(a.officers);
+    }
+    return ((totalPriority - deterredPriority) / totalPriority) * 100;
+  }, [allocationData, matrixData]);
 
   // Load the base matrix once
   useEffect(() => {
@@ -70,15 +95,30 @@ export default function EnforcementPage() {
           coveragePct={allocationData?.coverage_pct || 0}
           uniformPct={allocationData?.uniform_coverage_pct || 0}
           loading={loading}
+          showSimulation={showSimulation}
+          setShowSimulation={setShowSimulation}
+          residualRiskPct={residualRiskPct}
         />
       </div>
 
-      {/* Bottom Row: Heatmap Grid */}
-      <div className="flex-1 min-h-[500px]">
+      {/* Middle Row: Live Strategy Map */}
+      <div className="w-full">
+        <ShiftMap 
+          allocations={allocationData?.allocations || []}
+          showSimulation={showSimulation}
+          shiftLabels={matrixData.shift_labels}
+          activeShift={activeShift}
+          setActiveShift={setActiveShift}
+        />
+      </div>
+
+      {/* Bottom Row: Matrix Grid */}
+      <div className="w-full">
         <ShiftHeatmap 
           matrix={matrixData.matrix} 
           allocations={allocationData?.allocations || []}
           shiftLabels={matrixData.shift_labels}
+          showSimulation={showSimulation}
         />
       </div>
     </div>
