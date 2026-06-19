@@ -73,7 +73,7 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels }: Shift
             </tr>
           </thead>
           <tbody>
-            {zones.map(zone => (
+            {zones.map((zone, rowIdx) => (
               <tr key={zone} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                 <td className="py-2.5 px-3 font-medium text-gray-700 truncate max-w-[120px]">{zone}</td>
                 {shiftLabels.map((_, slotIdx) => {
@@ -86,7 +86,7 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels }: Shift
                   
                   return (
                     <td key={slotIdx} className="py-1 px-1">
-                      <div className="relative group w-full h-10 rounded flex items-center justify-center overflow-hidden border border-gray-100"
+                      <div className="relative group w-full h-10 rounded flex items-center justify-center border border-gray-100"
                            style={{ backgroundColor: `rgba(168, 85, 247, ${intensity * 0.8})` }}>
                         
                         {hasOfficers && (
@@ -97,7 +97,7 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels }: Shift
                         )}
                         
                         {/* Tooltip */}
-                        <div className="absolute opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity bg-gray-900 text-white p-2 rounded shadow-xl text-[10px] z-50 w-32 left-1/2 -translate-x-1/2 bottom-full mb-1">
+                        <div className={`absolute opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity bg-gray-900 text-white p-2 rounded shadow-xl text-[10px] z-50 w-32 left-1/2 -translate-x-1/2 ${rowIdx < 3 ? 'top-full mt-1' : 'bottom-full mb-1'}`}>
                           <div className="font-bold border-b border-gray-700 pb-1 mb-1">{zone} (Slot {slotIdx})</div>
                           <div className="flex justify-between"><span>Priority:</span> <span>{cell.total_priority.toFixed(0)}</span></div>
                           <div className="flex justify-between"><span>Violations:</span> <span>{cell.violation_count}</span></div>
