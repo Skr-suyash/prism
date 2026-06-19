@@ -28,11 +28,14 @@ export default function ArchetypeScatter() {
     );
   }
 
-  // Group data by cluster for Recharts
+  // Group data by cluster for Recharts (limit points to prevent browser freezing)
   const clusteredData: Record<number, any[]> = {};
   data.scatter_data.forEach(pt => {
     if (!clusteredData[pt.cluster]) clusteredData[pt.cluster] = [];
-    clusteredData[pt.cluster].push(pt);
+    // Limit to 200 points per cluster (max 800-1000 points total) to keep rendering smooth
+    if (clusteredData[pt.cluster].length < 200) {
+      clusteredData[pt.cluster].push(pt);
+    }
   });
 
   const CustomTooltip = ({ active, payload }: any) => {
@@ -97,10 +100,10 @@ export default function ArchetypeScatter() {
               tick={{ fontSize: 11, fill: '#94a3b8' }}
               axisLine={{ stroke: '#e2e8f0' }}
               tickLine={false}
-              label={{ value: 'Mean Priority Score', angle: -90, position: 'insideLeft', offset: 0, fill: '#64748b', fontSize: 12, fontWeight: 600 }}
+              label={{ value: 'Mean Priority Score', angle: -90, position: 'insideLeft', offset: 10, fill: '#64748b', fontSize: 12, fontWeight: 600 }}
             />
             <ZAxis type="number" range={[40, 100]} />
-            <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '3 3', stroke: '#cbd5e1' }} />
+            <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '3 3', stroke: '#cbd5e1' }} isAnimationActive={false} />
             
             {Object.keys(clusteredData).map((clusterId, index) => (
               <Scatter 
@@ -109,6 +112,7 @@ export default function ArchetypeScatter() {
                 data={clusteredData[clusterId as any]} 
                 fill={COLORS[index % COLORS.length]} 
                 fillOpacity={0.7}
+                isAnimationActive={false}
               />
             ))}
           </ScatterChart>

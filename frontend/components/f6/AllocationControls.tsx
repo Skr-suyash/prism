@@ -1,6 +1,6 @@
 "use client";
 
-import { Users, TrendingUp, AlertCircle } from "lucide-react";
+import { Users, TrendingUp, AlertCircle, Download } from "lucide-react";
 
 interface AllocationControlsProps {
   officers: number;
@@ -10,6 +10,10 @@ interface AllocationControlsProps {
   coveragePct: number;
   uniformPct: number;
   loading: boolean;
+  showSimulation: boolean;
+  setShowSimulation: (val: boolean) => void;
+  residualRiskPct: number;
+  allocations?: any[];
 }
 
 export default function AllocationControls({
@@ -19,11 +23,45 @@ export default function AllocationControls({
   setMaxPerCell,
   coveragePct,
   uniformPct,
-  loading
+  loading,
+  showSimulation,
+  setShowSimulation,
+  residualRiskPct,
+  allocations
 }: AllocationControlsProps) {
   
   const quickPicks = [10, 20, 50, 100];
   const efficiencyGain = coveragePct - uniformPct;
+
+  const handleDownloadCSV = () => {
+    if (!allocations || allocations.length === 0) return;
+
+    // 1. Filter out empty deployments and sort by priority
+    const activeDeployments = allocations
+      .filter(a => a.officers > 0)
+      .sort((a, b) => b.total_priority - a.total_priority);
+
+    // 2. Generate CSV Header
+    let csvContent = "Zone,Shift,Officers,Priority Rank\n";
+
+    // 3. Generate CSV Rows
+    activeDeployments.forEach((deployment, index) => {
+      const zone = `"${deployment.zone}"`;
+      const shift = `"${deployment.slot_label}"`;
+      const rank = `#${index + 1}`;
+      csvContent += `${zone},${shift},${deployment.officers},${rank}\n`;
+    });
+
+    // 4. Trigger browser download via Blob
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `gridlock_deployment_roster.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="flex flex-col md:flex-row gap-4 h-full">
@@ -71,7 +109,7 @@ export default function AllocationControls({
           ))}
         </div>
 
-        <div className="flex items-center justify-between text-sm">
+        <div className="flex items-center justify-between text-sm mb-6">
           <span className="text-gray-600 font-medium">Max per zone-shift</span>
           <select 
             value={maxPerCell}
@@ -84,24 +122,71 @@ export default function AllocationControls({
             <option value={5}>5 officers</option>
           </select>
         </div>
+
+        {/* Download Roster Button */}
+        <button
+          onClick={handleDownloadCSV}
+          disabled={loading || !allocations || allocations.length === 0}
+          className="w-full py-2.5 bg-gray-900 hover:bg-gray-800 disabled:bg-gray-300 disabled:cursor-not-allowed text-white text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-colors shadow-sm"
+        >
+          <Download className="w-4 h-4" />
+          Download CSV Roster
+        </button>
       </div>
 
       {/* Coverage Stats */}
-      <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex-1 flex flex-col justify-center relative overflow-hidden">
+      <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex-1 flex flex-col relative overflow-hidden">
         
-        <h3 className="text-sm font-bold text-gray-800 mb-1">Priority Covered</h3>
-        <div className="flex items-baseline gap-2 mb-2">
-          <span className="text-4xl font-black text-purple-600">{loading ? "..." : coveragePct.toFixed(1)}%</span>
-        </div>
-        
-        <div className="mt-auto space-y-2 text-xs">
-          <div className="flex justify-between items-center text-gray-500 font-medium">
-            <span>Uniform Deployment</span>
-            <span className="font-bold text-gray-700">{loading ? "..." : uniformPct.toFixed(1)}%</span>
+        {/* Toggle Pill */}
+        <div className="flex justify-end mb-4">
+          <div className="flex bg-gray-100 p-1 rounded-lg border border-gray-200">
+            <button 
+              onClick={() => setShowSimulation(false)}
+              className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all ${!showSimulation ? "bg-white text-gray-800 shadow-sm" : "text-gray-500 hover:text-gray-700"}`}
+            >
+              Current State
+            </button>
+            <button 
+              onClick={() => setShowSimulation(true)}
+              className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all flex items-center gap-1.5 ${showSimulation ? "bg-green-100 text-green-700 shadow-sm border border-green-200" : "text-gray-500 hover:text-gray-700"}`}
+            >
+              <span className={`w-2 h-2 rounded-full ${showSimulation ? "bg-green-500 animate-pulse" : "bg-gray-400"}`}></span>
+              Projected Impact
+            </button>
           </div>
-          <div className="flex justify-between items-center text-emerald-600 font-bold bg-emerald-50 p-2 rounded-lg border border-emerald-100">
-            <span className="flex items-center gap-1"><TrendingUp className="w-3 h-3" /> Efficiency Gain</span>
-            <span>+{loading ? "..." : efficiencyGain.toFixed(1)}%</span>
+        </div>
+
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="flex justify-between items-start">
+            <div>
+              <h3 className="text-sm font-bold text-gray-800 mb-1">Priority Covered</h3>
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-black text-purple-600">{loading ? "..." : coveragePct.toFixed(1)}%</span>
+              </div>
+            </div>
+
+            {showSimulation && (
+              <div className="text-right bg-amber-50 p-3 rounded-lg border border-amber-100 animate-in fade-in zoom-in duration-300">
+                <h3 className="text-xs font-bold text-amber-800 mb-1 flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  Residual Risk
+                </h3>
+                <div className="text-2xl font-black text-amber-600">
+                  {loading ? "..." : residualRiskPct.toFixed(1)}%
+                </div>
+              </div>
+            )}
+          </div>
+          
+          <div className="mt-4 space-y-2 text-xs">
+            <div className="flex justify-between items-center text-gray-500 font-medium">
+              <span>Uniform Deployment</span>
+              <span className="font-bold text-gray-700">{loading ? "..." : uniformPct.toFixed(1)}%</span>
+            </div>
+            <div className="flex justify-between items-center text-emerald-600 font-bold bg-emerald-50 p-2 rounded-lg border border-emerald-100">
+              <span className="flex items-center gap-1"><TrendingUp className="w-3 h-3" /> {showSimulation ? "Priority Deterred" : "Efficiency Gain"}</span>
+              <span>+{loading ? "..." : (showSimulation ? (100 - residualRiskPct) : efficiencyGain).toFixed(1)}%</span>
+            </div>
           </div>
         </div>
       </div>
