@@ -25,9 +25,12 @@ export default function ConfusionMatrix() {
     );
   }
 
+  // Ensure data is an array to prevent crashes if the API returns null or an error object
+  const safeData = Array.isArray(data) ? data : [];
+
   // Find top N vehicles involved in swaps
   const vehicleCounts = new Map<string, number>();
-  data.forEach(d => {
+  safeData.forEach(d => {
     vehicleCounts.set(d.from_type, (vehicleCounts.get(d.from_type) || 0) + d.count);
     vehicleCounts.set(d.to_type, (vehicleCounts.get(d.to_type) || 0) + d.count);
   });
@@ -38,7 +41,7 @@ export default function ConfusionMatrix() {
     .map(entry => entry[0]);
 
   // Max count for color scaling
-  const maxCount = Math.max(...data.map(d => d.count), 1);
+  const maxCount = Math.max(...safeData.map(d => d.count), 1);
 
   const getCellColor = (count: number) => {
     if (count === 0) return "bg-gray-50";
@@ -71,7 +74,7 @@ export default function ConfusionMatrix() {
         </div>
         <div className="flex items-center gap-1.5 text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">
           <AlertCircle className="w-3.5 h-3.5" />
-          {data.length} unique swap pairs
+          {safeData.length} unique swap pairs
         </div>
       </div>
 
@@ -104,7 +107,7 @@ export default function ConfusionMatrix() {
                     if (fromV === toV) {
                       return <td key={toV} className="p-2 bg-stripes-gray border border-gray-50"></td>;
                     }
-                    const cellData = data.find(d => d.from_type === fromV && d.to_type === toV);
+                    const cellData = safeData.find(d => d.from_type === fromV && d.to_type === toV);
                     const count = cellData?.count || 0;
                     
                     return (

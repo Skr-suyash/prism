@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutGrid, Camera, Car, AlertTriangle, ParkingSquare, FileText, BarChart3, ChevronLeft, ChevronRight, CheckCircle, TrendingUp } from "lucide-react";
+import { LayoutGrid, Camera, Car, AlertTriangle, ParkingSquare, FileText, BarChart3, ChevronLeft, ChevronRight, CheckCircle, TrendingUp, Radar, ShieldAlert } from "lucide-react";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -11,15 +11,12 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   const navItems = [
-    { name: "Overview", icon: LayoutGrid, path: "#" },
-    { name: "Surveillance", icon: Camera, path: "#" },
     { name: "Traffic", icon: Car, path: "/" },
     { name: "Predictive", icon: TrendingUp, path: "/forecast" },
-    { name: "Accidents", icon: AlertTriangle, path: "#" },
-    { name: "Parking", icon: ParkingSquare, path: "#" },
-    { name: "E-Challan", icon: FileText, path: "#" },
-    { name: "Reports", icon: BarChart3, path: "#" },
+    { name: "Offender Network", icon: FileText, path: "/network" },
     { name: "Data Quality", icon: CheckCircle, path: "/misclassification" },
+    { name: "Pipeline Diagnostics", icon: Radar, path: "/audit" },
+    { name: "Shift Planner", icon: ShieldAlert, path: "/enforcement" },
   ];
 
   return (

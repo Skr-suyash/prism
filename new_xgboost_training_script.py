@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-"""
-╔══════════════════════════════════════════════════════════════════════════════╗
-║  Feature 1 — Severity-Weighted Congestion Index (v2.3 — Pure ML)             ║
-║  Kaggle Script · XGBoost Classifier + Domain Rule Engine                     ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-"""
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -25,7 +18,7 @@ from sklearn.preprocessing import LabelEncoder
 import xgboost as xgb
 
 # ─── Configuration ───────────────────────────────────────────────────────────
-DATA_PATH = "../input/datasets/vinay2047/traffic-violations/jan to may police violation_anonymized791b166.csv"
+DATA_PATH = "datasets/jan to may police violation_anonymized791b166.csv"
 OUTPUT_DIR = "../working/"
 RANDOM_STATE = 42
 N_FOLDS = 5
@@ -39,7 +32,13 @@ print("=" * 80)
 # ══════════════════════════════════════════════════════════════════════════════
 
 print("\n[PHASE 0] Loading data...")
-df = pd.read_csv(DATA_PATH)
+COLUMNS = [
+    'id', 'latitude', 'longitude', 'address', 'device_id', 'vehicle_type', 'brand', 
+    'violation_type', 'offence_code', 'created_datetime', 'col10', 'updated_datetime', 
+    'developer_id', 'user_id', 'center_code', 'police_station', 'is_active', 
+    'junction_name', 'col18', 'col19', 'col20', 'vehicle_class', 'validation_status', 'approved_datetime'
+]
+df = pd.read_csv(DATA_PATH, names=COLUMNS)
 print(f"  ✓ Loaded {len(df):,} records with {df.shape[1]} columns")
 
 print("\n[PHASE 1] Engineering base features (EDA Removed)...")

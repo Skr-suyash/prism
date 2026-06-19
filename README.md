@@ -17,10 +17,16 @@ Neither alone is sufficient. Together they answer: *"Which violations are both h
 
 GridLock v2.0 has been upgraded to a production-grade microservices architecture.
 
-### 1. Start the FastAPI Backend
-The backend processes ~300k records on startup, engineers 24 features dynamically, and serves the scored aggregations via REST API.
+### 1. Build the Analytics Cache
+GridLock uses a lightning-fast caching layer. Before starting the backend for the first time, you must run the precompute script. This processes all ~300k records through the XGBoost, K-Means, and NetworkX pipelines and saves them to JSON.
 ```bash
 # From the repository root
+python precompute.py
+```
+
+### 2. Start the FastAPI Backend
+Once the cache is built, the backend starts in under 2 seconds.
+```bash
 python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 

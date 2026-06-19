@@ -2,32 +2,22 @@
 
 import { useEffect, useState } from "react";
 import { api, type ZoneData } from "@/lib/apiClient";
-import { TrendingUp, TrendingDown, Minus, MapPin, Zap, AlertTriangle } from "lucide-react";
+import { TrendingUp, TrendingDown, Minus, MapPin, AlertTriangle } from "lucide-react";
 
 function DeltaBadge({ delta }: { delta: number }) {
   if (delta > 0) {
     return (
-      <div className="flex items-center gap-1.5">
-        <div className="flex items-center gap-0.5 text-emerald-600 font-bold text-[13px]">
-          <TrendingUp className="w-3.5 h-3.5" />
-          +{delta}
-        </div>
-        <span className="text-[9px] uppercase tracking-wider font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">
-          Underpatrolled
-        </span>
+      <div className="flex items-center gap-0.5 text-emerald-600 font-bold text-[13px]">
+        <TrendingUp className="w-3.5 h-3.5" />
+        +{delta}
       </div>
     );
   }
   if (delta < 0) {
     return (
-      <div className="flex items-center gap-1.5">
-        <div className="flex items-center gap-0.5 text-rose-600 font-bold text-[13px]">
-          <TrendingDown className="w-3.5 h-3.5" />
-          {delta}
-        </div>
-        <span className="text-[9px] uppercase tracking-wider font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded">
-          Overpatrolled
-        </span>
+      <div className="flex items-center gap-0.5 text-rose-600 font-bold text-[13px]">
+        <TrendingDown className="w-3.5 h-3.5" />
+        {delta}
       </div>
     );
   }
@@ -39,18 +29,7 @@ function DeltaBadge({ delta }: { delta: number }) {
   );
 }
 
-function DeltaBar({ delta, max }: { delta: number; max: number }) {
-  const pct = max > 0 ? Math.abs(delta) / max : 0;
-  const width = `${(pct * 50).toFixed(1)}%`;
-  return (
-    <div className="relative h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-      <div
-        className={`absolute h-full rounded-full transition-all ${delta > 0 ? "right-1/2 bg-emerald-400" : delta < 0 ? "left-1/2 bg-rose-400" : "bg-gray-300"}`}
-        style={{ width }}
-      />
-    </div>
-  );
-}
+
 
 export default function RankFlipTable() {
   const [zones, setZones] = useState<ZoneData[]>([]);
@@ -96,7 +75,7 @@ export default function RankFlipTable() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-gray-100 bg-white">
-              {["Zone", "Count Rank", "Priority Rank", "Delta", "", "Violations", "Avg Priority", "Junction %"].map((h) => (
+              {["Zone", "Count Rank", "Priority Rank", "Delta", "Violations", "Avg Priority"].map((h) => (
                 <th
                   key={h}
                   className="px-5 py-3.5 text-left text-[11px] uppercase tracking-wider font-bold text-gray-500 whitespace-nowrap"
@@ -145,10 +124,7 @@ export default function RankFlipTable() {
                     <DeltaBadge delta={z.rank_change} />
                   </td>
 
-                  {/* Delta bar */}
-                  <td className="px-3 py-3 w-32">
-                    <DeltaBar delta={z.rank_change} max={maxDelta} />
-                  </td>
+
 
                   {/* Violations */}
                   <td className="px-5 py-3">
@@ -161,25 +137,11 @@ export default function RankFlipTable() {
                   {/* Avg Priority */}
                   <td className="px-5 py-3">
                     <div className="flex items-center gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-orange-400" />
                       <span className="font-semibold text-gray-800">{z.mean_priority.toFixed(2)}</span>
                     </div>
                   </td>
 
-                  {/* Junction % */}
-                  <td className="px-5 py-3">
-                    <div className="flex items-center gap-2">
-                      <div className="h-1.5 w-16 bg-gray-100 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-cyan-500 rounded-full"
-                          style={{ width: `${(z.junction_pct * 100).toFixed(0)}%` }}
-                        />
-                      </div>
-                      <span className="font-mono text-gray-500 text-xs font-semibold">
-                        {(z.junction_pct * 100).toFixed(0)}%
-                      </span>
-                    </div>
-                  </td>
+
                 </tr>
               );
             })}

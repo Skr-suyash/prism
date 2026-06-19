@@ -118,6 +118,31 @@ export interface StationForecastData {
   }[];
 }
 
+export interface ClusterPoint {
+  device_id: string;
+  violation_count: number;
+  mean_priority: number;
+  cluster: number;
+  archetype: string;
+  most_common_violation: string;
+}
+
+export interface ClusterData {
+  archetypes: Record<string, string>;
+  scatter_data: ClusterPoint[];
+}
+
+export interface OffenderData {
+  [archetype: string]: ClusterPoint[];
+}
+
+export interface HubData {
+  zone: string;
+  centrality_score: number;
+  unique_offenders: number;
+  total_repeat_violations: number;
+}
+
 async function get<T>(path: string): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`);
   if (!res.ok) throw new Error(`GET ${path} failed: ${res.status}`);
@@ -144,4 +169,12 @@ export const api = {
   getConfusionMatrix: () => get<ConfusionCell[]>("/api/f4/confusion-matrix"),
   getHourlyCorrections: () => get<HourlyCorrection[]>("/api/f4/temporal"),
   getStationCorrections: () => get<StationCorrection[]>("/api/f4/stations"),
+  // Feature 5
+  getClusters: () => get<ClusterData>("/api/f5/clusters"),
+  getOffenders: () => get<OffenderData>("/api/f5/offenders"),
+  getHubs: () => get<HubData[]>("/api/f5/hubs"),
+  // Feature 6
+  getEnforcementMatrix: () => get<any>("/api/f6/matrix"),
+  allocateOfficers: (officers: number, maxPerCell: number = 3) => 
+    get<any>(`/api/f6/allocate?officers=${officers}&max_per_cell=${maxPerCell}`),
 };
