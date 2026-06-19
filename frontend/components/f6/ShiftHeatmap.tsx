@@ -15,9 +15,10 @@ interface ShiftHeatmapProps {
   matrix: any[];
   allocations: AllocationCell[];
   shiftLabels: string[];
+  showSimulation?: boolean;
 }
 
-export default function ShiftHeatmap({ matrix, allocations, shiftLabels }: ShiftHeatmapProps) {
+export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSimulation = false }: ShiftHeatmapProps) {
   // Process data for the grid
   const { zones, grid, maxPriority } = useMemo(() => {
     if (!matrix || matrix.length === 0) return { zones: [], grid: {}, maxPriority: 1 };
@@ -81,26 +82,62 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels }: Shift
                   if (!cell) return <td key={slotIdx} className="py-2.5 px-3"></td>;
                   
                   // Calculate opacity based on priority (0.1 to 1.0)
-                  const intensity = Math.max(0.1, cell.total_priority / maxPriority);
                   const hasOfficers = cell.officers > 0;
+                  
+                  // Simulation logic
+                  const getDeterrenceFactor = (n: number) => {
+                    if (n <= 0) return 0;
+                    if (n === 1) return 0.40;
+                    if (n === 2) return 0.60;
+                    if (n === 3) return 0.75;
+                    return 0.85;
+                  };
+                  
+                  const deterrence = hasOfficers ? getDeterrenceFactor(cell.officers) : 0;
+                  const residualPriority = cell.total_priority * (1 - deterrence);
+                  
+                  const activePriority = (showSimulation && hasOfficers) ? residualPriority : cell.total_priority;
+                  const intensity = Math.max(0.1, activePriority / maxPriority);
+                  
+                  const isSimulated = showSimulation && hasOfficers;
+                  const bgColor = isSimulated 
+                    ? `rgba(34, 197, 94, ${intensity * 0.8})` // Green
+                    : `rgba(168, 85, 247, ${intensity * 0.8})`; // Purple
                   
                   return (
                     <td key={slotIdx} className="py-1 px-1">
-                      <div className="relative group w-full h-10 rounded flex items-center justify-center overflow-hidden border border-gray-100"
-                           style={{ backgroundColor: `rgba(168, 85, 247, ${intensity * 0.8})` }}>
+                      <div className="relative group w-full h-10 rounded flex items-center justify-center overflow-hidden border border-gray-100 transition-colors duration-500"
+                           style={{ backgroundColor: bgColor }}>
                         
                         {hasOfficers && (
-                          <div className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-md flex items-center gap-1 shadow-sm font-bold text-purple-700 z-10 border border-purple-200">
-                            <User className="w-3 h-3" />
-                            {cell.officers}
+                          <div className="flex flex-col items-center justify-center">
+                            <div className={`px-2 rounded-md flex items-center gap-1 shadow-sm font-bold z-10 border text-[11px] ${
+                              isSimulated 
+                                ? "bg-white/95 text-green-800 border-green-200 py-0" 
+                                : "bg-white/90 text-purple-700 border-purple-200 py-0.5"
+                            }`}>
+                              <User className="w-3 h-3" />
+                              {cell.officers}
+                            </div>
+                            {isSimulated && (
+                              <div className="text-[9px] font-black text-green-900 leading-none mt-0.5 bg-white/50 px-1 rounded">
+                                ↓{(deterrence * 100).toFixed(0)}%
+                              </div>
+                            )}
                           </div>
                         )}
                         
                         {/* Tooltip */}
-                        <div className="absolute opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity bg-gray-900 text-white p-2 rounded shadow-xl text-[10px] z-50 w-32 left-1/2 -translate-x-1/2 bottom-full mb-1">
-                          <div className="font-bold border-b border-gray-700 pb-1 mb-1">{zone} (Slot {slotIdx})</div>
-                          <div className="flex justify-between"><span>Priority:</span> <span>{cell.total_priority.toFixed(0)}</span></div>
-                          <div className="flex justify-between"><span>Violations:</span> <span>{cell.violation_count}</span></div>
+                        <div className="absolute opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity bg-gray-900 text-white p-3 rounded-lg shadow-xl text-xs z-50 w-48 left-1/2 -translate-x-1/2 bottom-full mb-1">
+                          <div className="font-bold border-b border-gray-700 pb-2 mb-2 text-gray-200">{zone} <span className="text-gray-400 font-normal">({shiftLabels[slotIdx]})</span></div>
+                          <div className="flex justify-between mb-1 text-gray-400"><span>Original Priority:</span> <span className="text-white font-medium">{cell.total_priority.toFixed(0)}</span></div>
+                          {isSimulated && (
+                            <>
+                              <div className="flex justify-between mb-1 text-green-400 font-bold"><span>Deterrence:</span> <span>-{(deterrence * 100).toFixed(0)}%</span></div>
+                              <div className="flex justify-between mb-1 text-gray-300 font-bold"><span>Projected Priority:</span> <span className="text-white">{residualPriority.toFixed(0)}</span></div>
+                            </>
+                          )}
+                          <div className="flex justify-between text-gray-400"><span>Violations:</span> <span className="text-white font-medium">{cell.violation_count}</span></div>
                         </div>
                       </div>
                     </td>
