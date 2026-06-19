@@ -74,7 +74,7 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSim
             </tr>
           </thead>
           <tbody>
-            {zones.map(zone => (
+            {zones.map((zone, rowIdx) => (
               <tr key={zone} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                 <td className="py-2.5 px-3 font-medium text-gray-700 truncate max-w-[120px]">{zone}</td>
                 {shiftLabels.map((_, slotIdx) => {
@@ -128,7 +128,7 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSim
                         )}
                         
                         {/* Tooltip */}
-                        <div className="absolute opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity bg-gray-900 text-white p-3 rounded-lg shadow-xl text-xs z-50 w-48 left-1/2 -translate-x-1/2 bottom-full mb-1">
+                        <div className={`absolute opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity bg-gray-900 text-white p-3 rounded-lg shadow-xl text-xs z-50 w-48 left-1/2 -translate-x-1/2 ${rowIdx < 3 ? 'top-full mt-2' : 'bottom-full mb-2'}`}>
                           <div className="font-bold border-b border-gray-700 pb-2 mb-2 text-gray-200">{zone} <span className="text-gray-400 font-normal">({shiftLabels[slotIdx]})</span></div>
                           <div className="flex justify-between mb-1 text-gray-400"><span>Original Priority:</span> <span className="text-white font-medium">{cell.total_priority.toFixed(0)}</span></div>
                           {isSimulated && (
