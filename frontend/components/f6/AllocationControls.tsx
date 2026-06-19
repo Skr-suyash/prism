@@ -1,6 +1,6 @@
 "use client";
 
-import { Users, TrendingUp, AlertCircle } from "lucide-react";
+import { Users, TrendingUp, AlertCircle, Download } from "lucide-react";
 
 interface AllocationControlsProps {
   officers: number;
@@ -13,6 +13,7 @@ interface AllocationControlsProps {
   showSimulation: boolean;
   setShowSimulation: (val: boolean) => void;
   residualRiskPct: number;
+  allocations?: any[];
 }
 
 export default function AllocationControls({
@@ -25,11 +26,42 @@ export default function AllocationControls({
   loading,
   showSimulation,
   setShowSimulation,
-  residualRiskPct
+  residualRiskPct,
+  allocations
 }: AllocationControlsProps) {
   
   const quickPicks = [10, 20, 50, 100];
   const efficiencyGain = coveragePct - uniformPct;
+
+  const handleDownloadCSV = () => {
+    if (!allocations || allocations.length === 0) return;
+
+    // 1. Filter out empty deployments and sort by priority
+    const activeDeployments = allocations
+      .filter(a => a.officers > 0)
+      .sort((a, b) => b.total_priority - a.total_priority);
+
+    // 2. Generate CSV Header
+    let csvContent = "Zone,Shift,Officers,Priority Rank\n";
+
+    // 3. Generate CSV Rows
+    activeDeployments.forEach((deployment, index) => {
+      const zone = `"${deployment.zone}"`;
+      const shift = `"${deployment.slot_label}"`;
+      const rank = `#${index + 1}`;
+      csvContent += `${zone},${shift},${deployment.officers},${rank}\n`;
+    });
+
+    // 4. Trigger browser download via Blob
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `gridlock_deployment_roster.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="flex flex-col md:flex-row gap-4 h-full">
@@ -77,7 +109,7 @@ export default function AllocationControls({
           ))}
         </div>
 
-        <div className="flex items-center justify-between text-sm">
+        <div className="flex items-center justify-between text-sm mb-6">
           <span className="text-gray-600 font-medium">Max per zone-shift</span>
           <select 
             value={maxPerCell}
@@ -90,6 +122,16 @@ export default function AllocationControls({
             <option value={5}>5 officers</option>
           </select>
         </div>
+
+        {/* Download Roster Button */}
+        <button
+          onClick={handleDownloadCSV}
+          disabled={loading || !allocations || allocations.length === 0}
+          className="w-full py-2.5 bg-gray-900 hover:bg-gray-800 disabled:bg-gray-300 disabled:cursor-not-allowed text-white text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-colors shadow-sm"
+        >
+          <Download className="w-4 h-4" />
+          Download CSV Roster
+        </button>
       </div>
 
       {/* Coverage Stats */}
