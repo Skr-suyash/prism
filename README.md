@@ -1,10 +1,10 @@
-# GridLock v2.0 — Operational Priority Scoring System
+# PRISM v2.0 — Operational Priority Scoring System
 
 ## Problem Statement
 
 > How can AI-driven parking intelligence detect illegal parking hotspots and quantify their impact on traffic flow to enable targeted enforcement?
 
-Enforcement is historically patrol-based and reactive. No heatmap of parking violations vs. actual congestion impact exists, making it difficult to prioritize enforcement zones. GridLock produces a **per-violation operational priority score** by combining two independent components:
+Enforcement is historically patrol-based and reactive. No heatmap of parking violations vs. actual congestion impact exists, making it difficult to prioritize enforcement zones. PRISM produces a **per-violation operational priority score** by combining two independent components:
 
 - **Component A** — A transparent, domain-justified **congestion impact formula** (rule-based)
 - **Component B** — A learned **escalation propensity model** (XGBoost v2.3 classifier with 24 engineered features)
@@ -15,10 +15,10 @@ Neither alone is sufficient. Together they answer: *"Which violations are both h
 
 ## Quick Start
 
-GridLock v2.0 has been upgraded to a production-grade microservices architecture.
+PRISM v2.0 has been upgraded to a production-grade microservices architecture.
 
 ### 1. Build the Analytics Cache
-GridLock uses a lightning-fast caching layer. Before starting the backend for the first time, you must run the precompute script. This processes all ~300k records through the XGBoost, K-Means, and NetworkX pipelines and saves them to JSON.
+PRISM uses a lightning-fast caching layer. Before starting the backend for the first time, you must run the precompute script. This processes all ~300k records through the XGBoost, K-Means, and NetworkX pipelines and saves them to JSON.
 ```bash
 # From the repository root
 python precompute.py
@@ -46,7 +46,7 @@ Visit the live dashboard at **http://localhost:3000**
 ## Architecture Blueprint
 
 ```
-flipkard-gridlock/
+flipkard-prism/
 ├── backend/                  # FastAPI Application
 │   ├── api/                  # REST endpoints (/zones, /rank-flip, /heatmap, /score)
 │   ├── engine/

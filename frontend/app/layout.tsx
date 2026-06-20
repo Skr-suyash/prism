@@ -9,8 +9,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "GridLock — Operational Priority Dashboard",
+  title: "PRISM",
   description: "Severity-weighted traffic congestion index with dual heatmap visualization for Bengaluru parking enforcement.",
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({
