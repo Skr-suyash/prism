@@ -17,12 +17,13 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.api import routes_f1, routes_f2, routes_f3, routes_f4, routes_f5, routes_f6
+from backend.api import routes_f1, routes_f2, routes_f3, routes_f4, routes_f5, routes_f6, routes_forecast
 from backend.services.priority_service import PriorityService
 from backend.services.misclassification_service import MisclassificationService
 from backend.services.network_service import NetworkService
 from backend.services.audit_service import AuditService
 from backend.services.enforcement_service import EnforcementService
+from backend.services.forecast_service import ForecastService
 
 # Global service references for recompute endpoint
 _priority_svc: PriorityService | None = None
@@ -30,6 +31,7 @@ _misclass_svc: MisclassificationService | None = None
 _network_svc: NetworkService | None = None
 _audit_svc: AuditService | None = None
 _enforcement_svc: EnforcementService | None = None
+_forecast_svc: ForecastService | None = None
 
 
 @asynccontextmanager
@@ -62,6 +64,10 @@ async def lifespan(app: FastAPI):
     routes_f6.set_service(enf_svc)
     _enforcement_svc = enf_svc
 
+    forecast_svc = ForecastService()
+    forecast_svc.initialize()
+    routes_forecast.set_service(forecast_svc)
+    _forecast_svc = forecast_svc
     yield
 
 
@@ -81,6 +87,7 @@ app.include_router(routes_f3.router)
 app.include_router(routes_f4.router)
 app.include_router(routes_f5.router)
 app.include_router(routes_f6.router)
+app.include_router(routes_forecast.router)
 
 
 @app.get("/health")

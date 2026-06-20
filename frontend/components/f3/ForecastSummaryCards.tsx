@@ -1,0 +1,129 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { api, type ForecastSummary } from "@/lib/apiClient";
+import { TrendingUp, MapPin, Clock, ShieldAlert } from "lucide-react";
+
+export default function ForecastSummaryCards() {
+  const [summary, setSummary] = useState<ForecastSummary | null>(null);
+
+  useEffect(() => {
+    api.getForecastSummary().then(setSummary).catch(console.error);
+  }, []);
+
+  if (!summary || "error" in summary) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex items-center justify-between">
+            <div className="w-16 h-16 rounded-full bg-gray-100 animate-pulse" />
+            <div className="flex flex-col items-end gap-2">
+              <div className="h-4 w-24 bg-gray-100 rounded animate-pulse" />
+              <div className="h-8 w-20 bg-gray-100 rounded animate-pulse" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // Double check the properties exist since the API might have returned a partial object if it failed in another way
+  const totalPredicted = summary.total_predicted_24h || 0;
+  const topStation = summary.top_station || "Unknown";
+  const topStationCount = summary.top_station_count || 0;
+  const topStationHour = summary.top_station_hour || 0;
+  const mae = summary.mae || 0;
+  const peakHourMae = summary.peak_hour_mae || 0;
+  const forecastStart = summary.forecast_start ? new Date(summary.forecast_start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : "N/A";
+
+  const cards = [
+    {
+      key: "total_predicted",
+      label: "Predicted Violations",
+      value: totalPredicted.toLocaleString(),
+      sub: "Next 24 hours",
+      icon: TrendingUp,
+      color: "text-rose-500",
+      gradientId: "grad-f3-rose",
+      stops: [{ offset: "0%", color: "#f43f5e" }, { offset: "100%", color: "#f97316" }],
+    },
+    {
+      key: "top_station",
+      label: "Highest Risk Zone",
+      value: topStation,
+      sub: `${topStationCount.toFixed(1)} predicted at ${String(topStationHour).padStart(2, '0')}:00`,
+      icon: MapPin,
+      color: "text-purple-600",
+      gradientId: "grad-f3-purple",
+      stops: [{ offset: "0%", color: "#9333ea" }, { offset: "100%", color: "#db2777" }],
+    },
+    {
+      key: "model_mae",
+      label: "Model Accuracy",
+      value: `±${mae.toFixed(2)}/hr`,
+      sub: `Peak Hour MAE: ±${peakHourMae.toFixed(2)}`,
+      icon: ShieldAlert,
+      color: "text-blue-500",
+      gradientId: "grad-f3-blue",
+      stops: [{ offset: "0%", color: "#3b82f6" }, { offset: "100%", color: "#06b6d4" }],
+    },
+    {
+      key: "time_window",
+      label: "Active Forecast",
+      value: "24 Hours",
+      sub: `From ${forecastStart}`,
+      icon: Clock,
+      color: "text-emerald-500",
+      gradientId: "grad-f3-emerald",
+      stops: [{ offset: "0%", color: "#10b981" }, { offset: "100%", color: "#059669" }],
+    },
+  ];
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      {cards.map(({ key, label, value, sub, icon: Icon, color, gradientId, stops }) => {
+        return (
+          <div
+            key={key}
+            className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex items-center justify-between transition-shadow hover:shadow-md"
+          >
+            <div className="relative w-[72px] h-[72px] flex items-center justify-center shrink-0">
+              <svg className="w-full h-full -rotate-90 absolute inset-0">
+                <defs>
+                  <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+                    {stops.map((s, i) => (
+                      <stop key={i} offset={s.offset} stopColor={s.color} />
+                    ))}
+                  </linearGradient>
+                </defs>
+                <circle cx="36" cy="36" r="28" stroke="#f3f4f6" strokeWidth="6" fill="none" />
+                <circle
+                  cx="36" cy="36" r="28"
+                  stroke={`url(#${gradientId})`}
+                  strokeWidth="6" fill="none" strokeLinecap="round"
+                  strokeDasharray="175.93" strokeDashoffset="44"
+                  className="transition-all duration-1000 ease-out"
+                />
+              </svg>
+              <div className="relative z-10 bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm border border-gray-50">
+                <Icon className={`w-4 h-4 ${color}`} />
+              </div>
+            </div>
+
+            <div className="text-right ml-4">
+              <h3 className="text-[12px] font-bold text-gray-700 tracking-wide uppercase mb-1">
+                {label}
+              </h3>
+              <div className="text-xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                {value}
+              </div>
+              <p className="text-xs text-gray-500 font-semibold mt-1">
+                {sub}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}

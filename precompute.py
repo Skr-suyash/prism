@@ -65,7 +65,7 @@ def run_precompute():
     # ── Phase 1: Load & Preprocess ─────────────────────────────────────────
     t = time.time()
     print("\n[Phase 1] Loading dataset...")
-    df = pd.read_csv(DATASET_PATH, names=COLUMNS)
+    df = pd.read_csv(DATASET_PATH, names=COLUMNS, header=0)
     print(f"  Loaded {len(df):,} records in {time.time() - t:.1f}s")
 
     t = time.time()

@@ -38,7 +38,7 @@ COLUMNS = [
     'developer_id', 'user_id', 'center_code', 'police_station', 'is_active', 
     'junction_name', 'col18', 'col19', 'col20', 'vehicle_class', 'validation_status', 'approved_datetime'
 ]
-df = pd.read_csv(DATA_PATH, names=COLUMNS)
+df = pd.read_csv(DATA_PATH, names=COLUMNS, header=0)
 print(f"  ✓ Loaded {len(df):,} records with {df.shape[1]} columns")
 
 print("\n[PHASE 1] Engineering base features (EDA Removed)...")
