@@ -45,7 +45,7 @@ export default function Home() {
       <div>
         <h1 className="text-2xl font-bold text-gray-800 tracking-tight">Today's Traffic Overview</h1>
         <p className="text-sm text-gray-500 font-medium mt-1">
-          GridLock Severity-Weighted Congestion Index
+          PRISM Severity-Weighted Congestion Index
         </p>
       </div>
 
