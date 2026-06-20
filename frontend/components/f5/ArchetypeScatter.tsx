@@ -23,7 +23,7 @@ export default function ArchetypeScatter() {
   if (loading || !data) {
     return (
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 min-h-[400px] flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -71,7 +71,7 @@ export default function ArchetypeScatter() {
       <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-start">
         <div>
           <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-            <Network className="w-4 h-4 text-purple-600" />
+            <Network className="w-4 h-4 text-slate-600" />
             Repeat Offender Archetypes
           </h2>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">

@@ -23,7 +23,7 @@ export default function OffenderTable() {
   if (loading || !data) {
     return (
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 min-h-[400px] flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -36,7 +36,7 @@ export default function OffenderTable() {
         <div className="flex justify-between items-start">
           <div>
             <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-              <ShieldAlert className="w-4 h-4 text-purple-600" />
+              <ShieldAlert className="w-4 h-4 text-slate-600" />
               Most Wanted: Repeat Offenders
             </h2>
             <p className="text-xs text-gray-500 mt-0.5 font-medium">
@@ -53,7 +53,7 @@ export default function OffenderTable() {
               onClick={() => setActiveArchetype(arch)}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${
                 activeArchetype === arch 
-                  ? "bg-purple-100 text-purple-700" 
+                  ? "bg-slate-100 text-slate-700" 
                   : "bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
               }`}
             >
@@ -66,9 +66,9 @@ export default function OffenderTable() {
       <div className="flex-1 overflow-y-auto p-4">
         <div className="grid gap-3">
           {offenders.map((offender, i) => (
-            <div key={i} className="flex items-center justify-between p-3 rounded-lg border border-gray-100 bg-gray-50/50 hover:bg-white hover:border-purple-200 transition-colors group">
+            <div key={i} className="flex items-center justify-between p-3 rounded-lg border border-gray-100 bg-gray-50/50 hover:bg-white hover:border-slate-200 transition-colors group">
               <div className="flex items-center gap-4">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200/50 text-gray-500 font-bold text-xs group-hover:bg-purple-100 group-hover:text-purple-600 transition-colors">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200/50 text-gray-500 font-bold text-xs group-hover:bg-slate-100 group-hover:text-slate-600 transition-colors">
                   #{i + 1}
                 </div>
                 <div>

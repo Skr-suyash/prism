@@ -31,7 +31,7 @@ export default function NetworkPage() {
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12 w-full px-6 py-8">
       {/* Page Title */}
       <div className="flex items-center gap-3 mb-2">
-        <div className="w-10 h-10 bg-purple-100 text-purple-600 flex items-center justify-center rounded-xl shadow-sm border border-purple-200">
+        <div className="w-10 h-10 bg-slate-100 text-slate-600 flex items-center justify-center rounded-xl shadow-sm border border-slate-200">
           <FileText className="w-5 h-5" />
         </div>
         <div>

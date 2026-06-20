@@ -68,7 +68,7 @@ export default function AllocationControls({
       {/* Officer Input */}
       <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex-1">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+          <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-800">
             <Users className="w-5 h-5" />
           </div>
           <div>
@@ -89,7 +89,7 @@ export default function AllocationControls({
             step="5"
             value={officers}
             onChange={(e) => setOfficers(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-slate-800"
           />
         </div>
 
@@ -100,7 +100,7 @@ export default function AllocationControls({
               onClick={() => setOfficers(n)}
               className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-colors ${
                 officers === n 
-                  ? "bg-purple-600 text-white" 
+                  ? "bg-slate-800 text-white" 
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -161,7 +161,7 @@ export default function AllocationControls({
             <div>
               <h3 className="text-sm font-bold text-gray-800 mb-1">Priority Covered</h3>
               <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-black text-purple-600">{loading ? "..." : coveragePct.toFixed(1)}%</span>
+                <span className="text-4xl font-black text-slate-800">{loading ? "..." : coveragePct.toFixed(1)}%</span>
               </div>
             </div>
 

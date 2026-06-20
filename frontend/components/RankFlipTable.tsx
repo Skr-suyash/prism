@@ -51,7 +51,7 @@ export default function RankFlipTable() {
       <div className="px-6 py-4 border-b border-gray-100 flex items-start justify-between bg-gray-50/50">
         <div>
           <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block" />
+            <span className="w-1.5 h-1.5 rounded-full bg-slate-500 inline-block" />
             Rank Flip Table
           </h2>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
@@ -93,7 +93,7 @@ export default function RankFlipTable() {
                   key={z.police_station}
                   className={`border-b border-gray-50 transition-colors hover:bg-gray-50 ${
                     isHighlight
-                      ? "bg-purple-50/30"
+                      ? "bg-slate-50/30"
                       : i % 2 === 0
                       ? "bg-white"
                       : "bg-gray-50/30"
@@ -116,7 +116,7 @@ export default function RankFlipTable() {
 
                   {/* Priority Rank */}
                   <td className="px-5 py-3">
-                    <span className="font-mono text-purple-700 font-semibold bg-purple-100 px-1.5 py-0.5 rounded text-xs">#{z.priority_rank}</span>
+                    <span className="font-mono text-slate-700 font-semibold bg-slate-100 px-1.5 py-0.5 rounded text-xs">#{z.priority_rank}</span>
                   </td>
 
                   {/* Delta badge */}

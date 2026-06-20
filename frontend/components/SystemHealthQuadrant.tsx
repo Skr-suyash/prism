@@ -74,7 +74,7 @@ function QuadrantTooltip({ active, payload }: any) {
           Rejection Rate: <span className="text-amber-400 font-bold">{(d.rejection_rate * 100).toFixed(1)}%</span>
         </div>
         <div>
-          Duplicate Rate: <span className="text-purple-400 font-bold">{(d.duplicate_rate * 100).toFixed(1)}%</span>
+          Duplicate Rate: <span className="text-slate-400 font-bold">{(d.duplicate_rate * 100).toFixed(1)}%</span>
         </div>
       </div>
 
@@ -130,7 +130,7 @@ export default function SystemHealthQuadrant({ onDataLoaded }: { onDataLoaded?: 
   if (loading) {
     return (
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-8 flex flex-col items-center justify-center min-h-[520px]">
-        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-3" />
+        <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin mb-3" />
         <p className="text-gray-500 text-xs tracking-wide uppercase font-medium">
           Loading Anomaly Data…
         </p>
