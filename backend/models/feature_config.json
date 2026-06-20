@@ -2,6 +2,7 @@
   "feature_columns": [
     "primary_violation_encoded",
     "vehicle_type_clean_encoded",
+    "nearest_poi_type_encoded",
     "police_station_te",
     "center_code_te",
     "hour_sin",
@@ -23,6 +24,7 @@
     "latitude",
     "longitude",
     "dist_from_center",
+    "distance_to_poi",
     "n_violations"
   ]
 }
