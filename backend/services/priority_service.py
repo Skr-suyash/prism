@@ -98,7 +98,7 @@ class PriorityService:
     def _full_compute(self) -> None:
         """Full compute path (original logic). Only used if cache is missing."""
         print("[PriorityService] Loading dataset ...")
-        df = pd.read_csv(DATASET_PATH, names=COLUMNS)
+        df = pd.read_csv(DATASET_PATH, names=COLUMNS, header=0)
         print(f"  Loaded {len(df):,} records")
 
         df = self._preprocess(df)
