@@ -2,8 +2,36 @@
 
 import { Activity, ShieldAlert, Cpu, Radar } from "lucide-react";
 import SystemHealthQuadrant from "@/components/SystemHealthQuadrant";
+import InsightCard from "@/components/InsightCard";
+import { useState } from "react";
 
 export default function AuditPage() {
+  const [insight, setInsight] = useState("");
+  const [loadingInsight, setLoadingInsight] = useState(true);
+
+  const handleDataLoaded = (data: any[]) => {
+    const kodigehalli = data.find(d => d.station && d.station.toLowerCase().includes("kodigehalli") && d.is_blindspot);
+    const peenya = data.find(d => d.station && d.station.toLowerCase().includes("peenya") && d.is_blindspot);
+    
+    const lines: string[] = [];
+    const shiftName = (bin: number) => bin === 0 ? "Night" : bin === 1 ? "Morning" : bin === 2 ? "Afternoon" : "Evening";
+
+    if (kodigehalli) {
+      lines.push(
+        `Kodigehalli has a ${(kodigehalli.sync_rate * 100).toFixed(0)}% sync rate and ${(kodigehalli.rejection_rate * 100).toFixed(0)}% rejection rate during ${shiftName(kodigehalli.hour_bin)} shifts — data is failing to reach the system, indicating a connectivity or hardware issue.`
+      );
+    }
+
+    if (peenya) {
+      lines.push(
+        `Peenya delivers data successfully (${(peenya.sync_rate * 100).toFixed(0)}% sync rate) but ${(peenya.rejection_rate * 100).toFixed(0)}% of submissions are rejected during ${shiftName(peenya.hour_bin)} shifts — the pipeline is active but the data quality is failing validation checks.`
+      );
+    }
+
+    setInsight(lines);
+    setLoadingInsight(false);
+  };
+
   return (
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12">
       {/* Page Title */}
@@ -15,6 +43,8 @@ export default function AuditPage() {
           Unsupervised anomaly detection of SCITA pipeline failures
         </p>
       </div>
+
+      <InsightCard insight={insight} loading={loadingInsight} />
 
       {/* Info Banner */}
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm px-5 py-4 flex items-start gap-4">
@@ -48,7 +78,7 @@ export default function AuditPage() {
       </div>
 
       {/* Main Visualization */}
-      <SystemHealthQuadrant />
+      <SystemHealthQuadrant onDataLoaded={handleDataLoaded} />
     </div>
   );
 }

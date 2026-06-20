@@ -5,6 +5,7 @@ import { api } from "@/lib/apiClient";
 import ShiftHeatmap from "@/components/f6/ShiftHeatmap";
 import ShiftMap from "@/components/f6/ShiftMap";
 import AllocationControls from "@/components/f6/AllocationControls";
+import InsightCard from "@/components/InsightCard";
 import { ShieldAlert } from "lucide-react";
 
 export default function EnforcementPage() {
@@ -17,6 +18,8 @@ export default function EnforcementPage() {
   const [loading, setLoading] = useState(true);
   const [showSimulation, setShowSimulation] = useState(false);
   const [activeShift, setActiveShift] = useState(0); // 0: Night, 1: Day, 2: Evening
+
+  const [projectedData, setProjectedData] = useState<any>(null);
 
   // Deterrence factor function
   function getDeterrenceFactor(n: number): number {
@@ -40,6 +43,55 @@ export default function EnforcementPage() {
     return ((totalPriority - deterredPriority) / totalPriority) * 100;
   }, [allocationData, matrixData]);
 
+  // Compute deterred priority percentage
+  const deterredPct = useMemo(() => {
+    if (!allocationData || !matrixData) return 0;
+    const totalPriority = allocationData.total_citywide_priority;
+    if (!totalPriority) return 0;
+    let deterredPriority = 0;
+    for (const a of allocationData.allocations) {
+      deterredPriority += a.total_priority * getDeterrenceFactor(a.officers);
+    }
+    return (deterredPriority / totalPriority) * 100;
+  }, [allocationData, matrixData]);
+
+  // Adaptive increment: no longer changing officers, but maxPerCell
+  const nextMax = useMemo(() => (maxPerCell < 5 ? maxPerCell + 1 : maxPerCell - 1), [maxPerCell]);
+
+  // Build multi-line insight — toggles based on showSimulation
+  const insightLines = useMemo(() => {
+    if (!allocationData) return [];
+
+    if (!showSimulation) {
+      // Current State view
+      return [
+        `${officers} officers cover ${allocationData.coverage_pct}% of citywide priority. Uniform deployment would only achieve ${allocationData.uniform_coverage_pct}% — the greedy algorithm is ${(allocationData.coverage_pct - allocationData.uniform_coverage_pct).toFixed(1)}pp more efficient.`
+      ];
+    }
+
+    // Projected Impact view (simulation on)
+    if (!projectedData) return [];
+    
+    // Calculate projected deterred and residual
+    const totalPriority = projectedData.total_citywide_priority;
+    let projDeterred = 0;
+    if (totalPriority) {
+      for (const a of projectedData.allocations) {
+        projDeterred += a.total_priority * getDeterrenceFactor(a.officers);
+      }
+    }
+    const projDeterredPct = totalPriority ? (projDeterred / totalPriority) * 100 : 0;
+    const projResidualPct = totalPriority ? ((totalPriority - projDeterred) / totalPriority) * 100 : 100;
+
+    const gain = (projectedData.coverage_pct - allocationData.coverage_pct).toFixed(1);
+    const direction = maxPerCell < 5 ? "increases" : "changes";
+    
+    return [
+      `Scaling the maximum limit from ${maxPerCell} to ${nextMax} patrols per zone/shift ${direction} priority coverage to ${projectedData.coverage_pct}% (a ${gain > 0 ? "+" : ""}${gain}pp difference).`,
+      `With up to ${nextMax} officers per shift in critical zones, residual risk (the remaining unaddressed congestion) hits ${projResidualPct.toFixed(1)}%. Deterred priority (the portion of congestion actively suppressed by police presence) reaches ${projDeterredPct.toFixed(1)}%.`
+    ];
+  }, [allocationData, projectedData, officers, maxPerCell, nextMax, showSimulation]);
+
   // Load the base matrix once
   useEffect(() => {
     api.getEnforcementMatrix()
@@ -59,7 +111,11 @@ export default function EnforcementPage() {
         console.error("Allocation failed:", err);
         setLoading(false);
       });
-  }, [officers, maxPerCell]);
+
+    api.allocateOfficers(officers, nextMax)
+      .then(res => setProjectedData(res))
+      .catch(console.error);
+  }, [officers, maxPerCell, nextMax]);
 
   if (!matrixData || !matrixData.matrix) {
     return (
@@ -81,6 +137,11 @@ export default function EnforcementPage() {
           </p>
         </div>
       </div>
+
+      <InsightCard 
+        insight={insightLines}
+        loading={loading}
+      />
 
       {/* Top Row: Controls */}
       <div className="w-full">

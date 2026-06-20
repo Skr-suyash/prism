@@ -1,9 +1,32 @@
+"use client";
+
 import ArchetypeScatter from "@/components/f5/ArchetypeScatter";
 import OffenderTable from "@/components/f5/OffenderTable";
 import HubsList from "@/components/f5/HubsList";
+import InsightCard from "@/components/InsightCard";
 import { FileText } from "lucide-react";
+import { useEffect, useState } from "react";
+import { api } from "@/lib/apiClient";
 
 export default function NetworkPage() {
+  const [insight, setInsight] = useState("");
+  const [loadingInsight, setLoadingInsight] = useState(true);
+
+  useEffect(() => {
+    api.getHubs()
+      .then(res => {
+        if (res && res.length > 0) {
+          const top = res[0];
+          setInsight(`Most repeat violations happen around ${top.zone}. It is the main hotspot, with ${top.unique_offenders} unique repeat offenders causing ${top.total_repeat_violations} repeat violations. Focusing patrols here will have the biggest impact on reducing repeat offenses.`);
+        }
+        setLoadingInsight(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoadingInsight(false);
+      });
+  }, []);
+
   return (
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12 w-full px-6 py-8">
       {/* Page Title */}
@@ -18,6 +41,8 @@ export default function NetworkPage() {
           </p>
         </div>
       </div>
+
+      <InsightCard insight={insight} loading={loadingInsight} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top Row: Scatter Chart & Hubs List */}

@@ -93,7 +93,7 @@ function QuadrantTooltip({ active, payload }: any) {
 /* ────────────────────────────────────────────────────────── */
 /*  Main Component                                            */
 /* ────────────────────────────────────────────────────────── */
-export default function SystemHealthQuadrant() {
+export default function SystemHealthQuadrant({ onDataLoaded }: { onDataLoaded?: (data: BucketData[]) => void }) {
   const [data, setData] = useState<BucketData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -106,6 +106,7 @@ export default function SystemHealthQuadrant() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json: BucketData[] = await res.json();
       setData(json);
+      if (onDataLoaded) onDataLoaded(json);
     } catch (err: any) {
       setError(err.message ?? "Failed to load audit data");
     } finally {

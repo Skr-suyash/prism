@@ -4,8 +4,29 @@ import MisclassificationSummary from "@/components/f4/MisclassificationSummary";
 import ConfusionMatrix from "@/components/f4/ConfusionMatrix";
 import HourlyCorrections from "@/components/f4/HourlyCorrections";
 import StationBreakdown from "@/components/f4/StationBreakdown";
+import InsightCard from "@/components/InsightCard";
+import { useEffect, useState } from "react";
+import { api } from "@/lib/apiClient";
 
 export default function MisclassificationPage() {
+  const [insight, setInsight] = useState("");
+  const [loadingInsight, setLoadingInsight] = useState(true);
+
+  useEffect(() => {
+    api.getMisclassificationSummary()
+      .then(res => {
+        if (res && res.top_swaps && res.top_swaps.length > 0) {
+          const top = res.top_swaps[0];
+          setInsight(`The most common misclassification is ${top.swap} (${top.count} instances). This systematic down-classification allows heavy vehicles to bypass stricter penalties.`);
+        }
+        setLoadingInsight(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoadingInsight(false);
+      });
+  }, []);
+
   return (
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12">
       {/* Page Title */}
@@ -15,6 +36,8 @@ export default function MisclassificationPage() {
           Vehicle Type Misclassification Pattern Analysis
         </p>
       </div>
+
+      <InsightCard insight={insight} loading={loadingInsight} />
 
       <MisclassificationSummary />
       
