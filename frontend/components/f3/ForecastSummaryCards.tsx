@@ -45,9 +45,8 @@ export default function ForecastSummaryCards() {
       value: totalPredicted.toLocaleString(),
       sub: t.forecastSummary.next24Hours,
       icon: TrendingUp,
-      color: "text-rose-500",
-      gradientId: "grad-f3-rose",
-      stops: [{ offset: "0%", color: "#f43f5e" }, { offset: "100%", color: "#f97316" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b",
     },
     {
       key: "top_station",
@@ -55,9 +54,8 @@ export default function ForecastSummaryCards() {
       value: topStation,
       sub: `${topStationCount.toFixed(1)} ${t.forecastSummary.predictedAt} ${String(topStationHour).padStart(2, '0')}:00`,
       icon: MapPin,
-      color: "text-purple-600",
-      gradientId: "grad-f3-purple",
-      stops: [{ offset: "0%", color: "#9333ea" }, { offset: "100%", color: "#db2777" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b",
     },
     {
       key: "model_mae",
@@ -65,9 +63,8 @@ export default function ForecastSummaryCards() {
       value: `±${mae.toFixed(2)}/hr`,
       sub: `${t.forecastSummary.peakHourMae} ±${peakHourMae.toFixed(2)}`,
       icon: ShieldAlert,
-      color: "text-blue-500",
-      gradientId: "grad-f3-blue",
-      stops: [{ offset: "0%", color: "#3b82f6" }, { offset: "100%", color: "#06b6d4" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b",
     },
     {
       key: "time_window",
@@ -75,15 +72,14 @@ export default function ForecastSummaryCards() {
       value: "24 Hours",
       sub: `${t.forecastSummary.from} ${forecastStart}`,
       icon: Clock,
-      color: "text-emerald-500",
-      gradientId: "grad-f3-emerald",
-      stops: [{ offset: "0%", color: "#10b981" }, { offset: "100%", color: "#059669" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b",
     },
   ];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-      {cards.map(({ key, label, value, sub, icon: Icon, color, gradientId, stops }) => {
+      {cards.map(({ key, label, value, sub, icon: Icon, color, strokeColor }) => {
         return (
           <div
             key={key}
@@ -91,17 +87,10 @@ export default function ForecastSummaryCards() {
           >
             <div className="relative w-[72px] h-[72px] flex items-center justify-center shrink-0">
               <svg className="w-full h-full -rotate-90 absolute inset-0">
-                <defs>
-                  <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-                    {stops.map((s, i) => (
-                      <stop key={i} offset={s.offset} stopColor={s.color} />
-                    ))}
-                  </linearGradient>
-                </defs>
                 <circle cx="36" cy="36" r="28" stroke="#f3f4f6" strokeWidth="6" fill="none" />
                 <circle
                   cx="36" cy="36" r="28"
-                  stroke={`url(#${gradientId})`}
+                  stroke={strokeColor}
                   strokeWidth="6" fill="none" strokeLinecap="round"
                   strokeDasharray="175.93" strokeDashoffset="44"
                   className="transition-all duration-1000 ease-out"

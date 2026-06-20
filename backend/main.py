@@ -125,3 +125,5 @@ def recompute(background_tasks: BackgroundTasks):
         "status": "recompute_started",
         "message": "The precompute pipeline is running in the background. All caches will be refreshed automatically."
     }
+
+# Trigger reload

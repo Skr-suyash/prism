@@ -43,7 +43,7 @@ export default function DispatchPriority() {
   if (loading) {
     return (
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 min-h-[400px] flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-slate-800 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -85,7 +85,7 @@ export default function DispatchPriority() {
           <select
             value={startHour}
             onChange={e => { setStartHour(Number(e.target.value)); setPage(0); }}
-            className="px-2 py-1 rounded-md border border-gray-200 bg-white text-[11px] font-bold text-gray-700 cursor-pointer hover:border-purple-300 focus:outline-none focus:ring-1 focus:ring-purple-400"
+            className="px-2 py-1 rounded-md border border-gray-200 bg-white text-[11px] font-bold text-gray-700 cursor-pointer hover:border-slate-300 focus:outline-none focus:ring-1 focus:ring-slate-400"
           >
             {HOURS.map(h => (
               <option key={h} value={h}>{formatHour(h)}</option>
@@ -95,7 +95,7 @@ export default function DispatchPriority() {
           <select
             value={endHour}
             onChange={e => { setEndHour(Number(e.target.value)); setPage(0); }}
-            className="px-2 py-1 rounded-md border border-gray-200 bg-white text-[11px] font-bold text-gray-700 cursor-pointer hover:border-purple-300 focus:outline-none focus:ring-1 focus:ring-purple-400"
+            className="px-2 py-1 rounded-md border border-gray-200 bg-white text-[11px] font-bold text-gray-700 cursor-pointer hover:border-slate-300 focus:outline-none focus:ring-1 focus:ring-slate-400"
           >
             {HOURS.map(h => (
               <option key={h} value={h}>{formatHour(h)}</option>

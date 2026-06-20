@@ -23,15 +23,14 @@ const DualHeatmap = dynamic(() => import("@/components/DualHeatmap"), {
 
 export default function Home() {
   const { t } = useLanguage();
-  const [insight, setInsight] = useState("");
+  const [rankData, setRankData] = useState<any>(null);
   const [loadingInsight, setLoadingInsight] = useState(true);
 
   useEffect(() => {
     api.getRankFlip(1)
       .then((res) => {
         if (res && res.length > 0) {
-          const z = res[0];
-          setInsight(t.insights.dashboard(z.police_station, z.count_rank, z.priority_rank));
+          setRankData(res[0]);
         }
         setLoadingInsight(false);
       })
@@ -40,6 +39,8 @@ export default function Home() {
         setLoadingInsight(false);
       });
   }, []);
+
+  const insight = rankData ? t.insights.dashboard(rankData.police_station, rankData.count_rank, rankData.priority_rank) : "";
 
   return (
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12">

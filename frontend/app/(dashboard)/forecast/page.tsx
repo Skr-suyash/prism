@@ -33,8 +33,8 @@ export default function ForecastPage() {
     <div className="flex flex-col gap-4 max-w-[1600px] mx-auto pb-6">
       {/* Page Title */}
       <div>
-        <h1 className="text-xl font-bold text-gray-800 tracking-tight">{t.titles.peakHourSurge}</h1>
-        <p className="text-xs text-gray-500 font-medium mt-0.5">
+        <h1 className="text-2xl font-bold text-gray-800 tracking-tight">{t.titles.peakHourSurge}</h1>
+        <p className="text-sm text-gray-500 font-medium mt-1">
           {t.subtitles.peakHourSurge}
         </p>
       </div>

@@ -50,7 +50,7 @@ export default function HourlyForecastChart() {
   if (loading && data.length === 0) {
     return (
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 min-h-[300px] flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-slate-800 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -68,7 +68,7 @@ export default function HourlyForecastChart() {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-              <BarChart3 className="w-4 h-4 text-purple-500" />
+              <BarChart3 className="w-4 h-4 text-slate-800" />
               {t.titles.surgePredictor}
             </h2>
             <div className="relative group">
@@ -86,7 +86,7 @@ export default function HourlyForecastChart() {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700 w-full max-w-[220px]"
             >
-              <MapPin className="w-3.5 h-3.5 text-purple-500 shrink-0" />
+              <MapPin className="w-3.5 h-3.5 text-slate-800 shrink-0" />
               <span className="truncate">
                 {selectedStation === "all" ? "All Zones (City-Wide)" : selectedStation}
               </span>
@@ -98,7 +98,7 @@ export default function HourlyForecastChart() {
                 <button
                   onClick={() => { setSelectedStation("all"); setDropdownOpen(false); }}
                   className={`w-full text-left px-3 py-2 text-sm font-medium transition-colors ${selectedStation === "all"
-                      ? "bg-purple-50 text-purple-700"
+                      ? "bg-slate-50 text-slate-800"
                       : "text-gray-700 hover:bg-gray-50"
                     }`}
                 >
@@ -110,7 +110,7 @@ export default function HourlyForecastChart() {
                     key={s}
                     onClick={() => { setSelectedStation(s); setDropdownOpen(false); }}
                     className={`w-full text-left px-3 py-2 text-sm transition-colors ${selectedStation === s
-                        ? "bg-purple-50 text-purple-700 font-medium"
+                        ? "bg-slate-50 text-slate-800 font-medium"
                         : "text-gray-600 hover:bg-gray-50"
                       }`}
                   >
@@ -142,7 +142,7 @@ export default function HourlyForecastChart() {
         {/* Loading overlay */}
         {loading && (
           <div className="absolute inset-0 bg-white/60 flex items-center justify-center z-10 rounded-b-xl">
-            <div className="w-6 h-6 border-3 border-purple-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-6 h-6 border-3 border-slate-800 border-t-transparent rounded-full animate-spin" />
           </div>
         )}
 
@@ -195,7 +195,7 @@ export default function HourlyForecastChart() {
                     <div className="font-bold text-gray-300 mb-1">
                       {String(d.hour).padStart(2, '0')}:00
                     </div>
-                    <div>Predicted: <span className="text-purple-400 font-bold">{d.predicted_total.toFixed(0)}</span></div>
+                    <div>Predicted: <span className="text-slate-400 font-bold">{d.predicted_total.toFixed(0)}</span></div>
                     <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900" />
                   </div>
 

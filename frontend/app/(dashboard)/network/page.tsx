@@ -11,15 +11,14 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function NetworkPage() {
   const { t } = useLanguage();
-  const [insight, setInsight] = useState("");
+  const [topHub, setTopHub] = useState<any>(null);
   const [loadingInsight, setLoadingInsight] = useState(true);
 
   useEffect(() => {
     api.getHubs()
       .then(res => {
         if (res && res.length > 0) {
-          const top = res[0];
-          setInsight(t.insights.network(top.zone, top.unique_offenders, top.total_repeat_violations));
+          setTopHub(res[0]);
         }
         setLoadingInsight(false);
       })
@@ -29,19 +28,16 @@ export default function NetworkPage() {
       });
   }, []);
 
+  const insight = topHub ? t.insights.network(topHub.zone, topHub.unique_offenders, topHub.total_repeat_violations) : "";
+
   return (
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12 w-full px-6 py-8">
       {/* Page Title */}
-      <div className="flex items-center gap-3 mb-2">
-        <div className="w-10 h-10 bg-slate-100 text-slate-600 flex items-center justify-center rounded-xl shadow-sm border border-slate-200">
-          <FileText className="w-5 h-5" />
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold text-gray-800 tracking-tight">{t.titles.repeatOffenderNetwork}</h1>
-          <p className="text-sm font-medium text-gray-500">
-            {t.subtitles.repeatOffenderNetwork}
-          </p>
-        </div>
+      <div>
+        <h1 className="text-2xl font-bold text-gray-800 tracking-tight">{t.titles.repeatOffenderNetwork}</h1>
+        <p className="text-sm text-gray-500 font-medium mt-1">
+          {t.subtitles.repeatOffenderNetwork}
+        </p>
       </div>
 
       <InsightCard insight={insight} loading={loadingInsight} />

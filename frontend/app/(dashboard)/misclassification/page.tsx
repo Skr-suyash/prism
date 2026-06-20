@@ -11,15 +11,14 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function MisclassificationPage() {
   const { t } = useLanguage();
-  const [insight, setInsight] = useState("");
+  const [topSwap, setTopSwap] = useState<any>(null);
   const [loadingInsight, setLoadingInsight] = useState(true);
 
   useEffect(() => {
     api.getMisclassificationSummary()
       .then(res => {
         if (res && res.top_swaps && res.top_swaps.length > 0) {
-          const top = res.top_swaps[0];
-          setInsight(t.insights.misclassification(top.swap, top.count));
+          setTopSwap(res.top_swaps[0]);
         }
         setLoadingInsight(false);
       })
@@ -28,6 +27,8 @@ export default function MisclassificationPage() {
         setLoadingInsight(false);
       });
   }, []);
+
+  const insight = topSwap ? t.insights.misclassification(topSwap.swap, topSwap.count) : "";
 
   return (
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12">

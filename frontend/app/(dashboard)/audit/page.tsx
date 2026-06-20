@@ -8,31 +8,26 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function AuditPage() {
   const { t } = useLanguage();
-  const [insight, setInsight] = useState("");
+  const [kodigehalliData, setKodigehalliData] = useState<any>(null);
+  const [peenyaData, setPeenyaData] = useState<any>(null);
   const [loadingInsight, setLoadingInsight] = useState(true);
 
   const handleDataLoaded = (data: any[]) => {
     const kodigehalli = data.find(d => d.station && d.station.toLowerCase().includes("kodigehalli") && d.is_blindspot);
     const peenya = data.find(d => d.station && d.station.toLowerCase().includes("peenya") && d.is_blindspot);
     
-    const lines: string[] = [];
-    const shiftName = (bin: number) => bin === 0 ? "Night" : bin === 1 ? "Morning" : bin === 2 ? "Afternoon" : "Evening";
-
-    if (kodigehalli) {
-      lines.push(
-        t.insights.auditConnectivity("Kodigehalli", (kodigehalli.sync_rate * 100).toFixed(0), (kodigehalli.rejection_rate * 100).toFixed(0), shiftName(kodigehalli.hour_bin))
-      );
-    }
-
-    if (peenya) {
-      lines.push(
-        t.insights.auditDataQuality("Peenya", (peenya.sync_rate * 100).toFixed(0), (peenya.rejection_rate * 100).toFixed(0), shiftName(peenya.hour_bin))
-      );
-    }
-
-    setInsight(lines.join(" "));
+    if (kodigehalli) setKodigehalliData(kodigehalli);
+    if (peenya) setPeenyaData(peenya);
+    
     setLoadingInsight(false);
   };
+
+  const shiftName = (bin: number) => bin === 0 ? "Night" : bin === 1 ? "Morning" : bin === 2 ? "Afternoon" : "Evening";
+  
+  const insight = [
+    kodigehalliData && t.insights.auditConnectivity("Kodigehalli", (kodigehalliData.sync_rate * 100).toFixed(0), (kodigehalliData.rejection_rate * 100).toFixed(0), shiftName(kodigehalliData.hour_bin)),
+    peenyaData && t.insights.auditDataQuality("Peenya", (peenyaData.sync_rate * 100).toFixed(0), (peenyaData.rejection_rate * 100).toFixed(0), shiftName(peenyaData.hour_bin))
+  ].filter(Boolean).join(" ");
 
   return (
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12">

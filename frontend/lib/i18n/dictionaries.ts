@@ -3,7 +3,7 @@ export type Dictionary = typeof en;
 export const en = {
   nav: {
     priorityIntelligence: "Priority Intelligence",
-    predictive: "Predictive",
+    predictive: "Predictive Analysis",
     shiftPlanner: "Shift Planner",
     offenderNetwork: "Offender Network",
     dataQuality: "Data Quality",
@@ -169,7 +169,7 @@ export const en = {
 export const kn: Dictionary = {
   nav: {
     priorityIntelligence: "ಆದ್ಯತೆಯ ಬುದ್ಧಿಮತ್ತೆ",
-    predictive: "ಮುನ್ಸೂಚಕ",
+    predictive: "ಮುನ್ಸೂಚಕ ವಿಶ್ಲೇಷಣೆ",
     shiftPlanner: "ಪಾಳಿ ಯೋಜಕ",
     offenderNetwork: "ಉಲ್ಲಂಘಿಸುವವರ ಜಾಲ",
     dataQuality: "ದತ್ತಾಂಶ ಗುಣಮಟ್ಟ",
