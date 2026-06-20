@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { api, type ForecastHourlyTotal } from "@/lib/apiClient";
 import { BarChart3, MapPin, ChevronDown, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function HourlyForecastChart() {
   const [data, setData] = useState<ForecastHourlyTotal[]>([]);
@@ -11,6 +12,7 @@ export default function HourlyForecastChart() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [globalMax, setGlobalMax] = useState<number>(1);
+  const { t } = useLanguage();
 
   // Load station list on mount
   useEffect(() => {
@@ -67,12 +69,12 @@ export default function HourlyForecastChart() {
           <div className="flex items-center gap-2">
             <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
               <BarChart3 className="w-4 h-4 text-purple-500" />
-              Surge Predictor
+              {t.titles.surgePredictor}
             </h2>
             <div className="relative group">
               <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
               <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                Displays the total predicted traffic violations for each hour across the city or selected zone. The highlighted peak window shows when traffic police should be on highest alert.
+                {t.tooltips.surgePredictor}
                 <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
               </div>
             </div>

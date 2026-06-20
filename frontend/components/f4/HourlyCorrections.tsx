@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { api, type HourlyCorrection } from "@/lib/apiClient";
 import { Clock } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function HourlyCorrections() {
+  const { t } = useLanguage();
   const [data, setData] = useState<HourlyCorrection[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +38,7 @@ export default function HourlyCorrections() {
           When do misclassifications happen?
         </h2>
         <p className="text-xs text-gray-500 mt-0.5 font-medium">
-          Hourly correction rate (%) — peaks indicate fatigue or visibility issues
+          {t.componentSubtitles.hourlyCorrections}
         </p>
       </div>
 

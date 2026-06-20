@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Shield, Activity, BarChart } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 
 export default function LandingPage() {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-white flex flex-col selection:bg-slate-100 selection:text-slate-900">
       {/* Navigation */}
@@ -18,7 +22,7 @@ export default function LandingPage() {
           href="/dashboard" 
           className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors flex items-center gap-2 px-4 py-2 rounded-md hover:bg-slate-50"
         >
-          Access Dashboard
+          {t.nav.accessDashboard}
           <ArrowRight className="w-4 h-4" />
         </Link>
       </nav>
@@ -31,18 +35,18 @@ export default function LandingPage() {
             Intelligent Traffic Management
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-            Predictive Traffic Intelligence <br/>
-            <span className="text-slate-400">for Modern Cities</span>
+            {t.landing.tagline} <br/>
+            <span className="text-slate-400">{t.landing.subTagline}</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            Severity-weighted congestion analysis, intelligent offender tracking, and optimized shift allocation for proactive urban mobility management.
+            {t.landing.description}
           </p>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link 
               href="/dashboard"
               className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-slate-800 transition-colors shadow-sm w-full sm:w-auto"
             >
-              Launch Platform
+              {t.landing.launchPlatform}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link 
@@ -50,7 +54,7 @@ export default function LandingPage() {
               target="_blank"
               className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 px-8 py-4 rounded-lg font-medium border border-slate-200 hover:bg-slate-50 transition-colors w-full sm:w-auto"
             >
-              View Documentation
+              {t.landing.viewDocs}
             </Link>
           </div>
         </div>
@@ -59,18 +63,18 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mt-32 text-left px-4 md:px-0">
           <FeatureCard 
             icon={<Activity className="w-5 h-5" />}
-            title="Congestion Index"
-            description="Real-time heatmap visualization of severity-weighted traffic congestion across key city zones."
+            title={t.landing.feature1Title}
+            description={t.landing.feature1Desc}
           />
           <FeatureCard 
             icon={<Shield className="w-5 h-5" />}
-            title="Offender Network"
-            description="Graph-based analysis identifying high-risk repeat parking offenders and correlated vehicle groups."
+            title={t.landing.feature2Title}
+            description={t.landing.feature2Desc}
           />
           <FeatureCard 
             icon={<BarChart className="w-5 h-5" />}
-            title="Shift Optimization"
-            description="Algorithmic allocation of enforcement officers to high-priority zones based on predictive analytics."
+            title={t.landing.feature3Title}
+            description={t.landing.feature3Desc}
           />
         </div>
       </main>

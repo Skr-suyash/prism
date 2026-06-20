@@ -7,8 +7,10 @@ import StationBreakdown from "@/components/f4/StationBreakdown";
 import InsightCard from "@/components/InsightCard";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/apiClient";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function MisclassificationPage() {
+  const { t } = useLanguage();
   const [insight, setInsight] = useState("");
   const [loadingInsight, setLoadingInsight] = useState(true);
 
@@ -17,7 +19,7 @@ export default function MisclassificationPage() {
       .then(res => {
         if (res && res.top_swaps && res.top_swaps.length > 0) {
           const top = res.top_swaps[0];
-          setInsight(`The most common misclassification is ${top.swap} (${top.count} instances). This systematic down-classification allows heavy vehicles to bypass stricter penalties.`);
+          setInsight(t.insights.misclassification(top.swap, top.count));
         }
         setLoadingInsight(false);
       })
@@ -31,9 +33,9 @@ export default function MisclassificationPage() {
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12">
       {/* Page Title */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-800 tracking-tight">Data Quality Audit</h1>
+        <h1 className="text-2xl font-bold text-gray-800 tracking-tight">{t.titles.dataQualityAudit}</h1>
         <p className="text-sm text-gray-500 font-medium mt-1">
-          Vehicle Type Misclassification Pattern Analysis
+          {t.subtitles.dataQualityAudit}
         </p>
       </div>
 

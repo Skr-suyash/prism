@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { api, type MisclassificationSummary as SummaryType } from "@/lib/apiClient";
 import { Database, FileEdit, AlertTriangle, Percent } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function MisclassificationSummary() {
+  const { t } = useLanguage();
   const [summary, setSummary] = useState<SummaryType | null>(null);
 
   useEffect(() => {
@@ -30,27 +32,27 @@ export default function MisclassificationSummary() {
   const cards = [
     {
       key: "records_updated",
-      label: "Records Updated",
+      label: t.misclassSummary.recordsUpdated,
       value: summary.records_updated.toLocaleString(),
-      sub: `${((summary.records_updated / summary.total_records) * 100).toFixed(1)}% of total`,
+      sub: `${((summary.records_updated / summary.total_records) * 100).toFixed(1)}% ${t.misclassSummary.ofTotal}`,
       icon: FileEdit,
       color: "text-slate-800",
       strokeColor: "#1e293b", // slate-800
     },
     {
       key: "mismatches",
-      label: "Misclassifications",
+      label: t.misclassSummary.misclassifications,
       value: summary.mismatches.toLocaleString(),
-      sub: "Original ≠ Corrected",
+      sub: t.misclassSummary.originalNotCorrected,
       icon: AlertTriangle,
       color: "text-slate-800",
       strokeColor: "#1e293b", // slate-800
     },
     {
       key: "mismatch_rate",
-      label: "Mismatch Rate",
+      label: t.misclassSummary.mismatchRate,
       value: `${summary.mismatch_rate}%`,
-      sub: "Of updated records",
+      sub: t.misclassSummary.ofUpdatedRecords,
       icon: Percent,
       color: "text-slate-800",
       strokeColor: "#1e293b", // slate-800

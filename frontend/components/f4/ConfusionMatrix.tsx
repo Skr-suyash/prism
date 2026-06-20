@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { api, type ConfusionCell } from "@/lib/apiClient";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { ArrowRight, AlertCircle } from "lucide-react";
 
 export default function ConfusionMatrix() {
+  const { t } = useLanguage();
   const [data, setData] = useState<ConfusionCell[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -69,7 +71,7 @@ export default function ConfusionMatrix() {
             Confusion Matrix: What gets swapped?
           </h2>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
-            Original classification vs. Corrected classification (Top 6 Vehicle Types)
+            {t.componentSubtitles.confusionMatrix}
           </p>
         </div>
         <div className="flex items-center gap-1.5 text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">

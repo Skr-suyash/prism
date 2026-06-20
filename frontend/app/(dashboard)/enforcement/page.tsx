@@ -7,8 +7,10 @@ import ShiftMap from "@/components/f6/ShiftMap";
 import AllocationControls from "@/components/f6/AllocationControls";
 import InsightCard from "@/components/InsightCard";
 import { ShieldAlert } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function EnforcementPage() {
+  const { t } = useLanguage();
   const [matrixData, setMatrixData] = useState<any>(null);
   const [allocationData, setAllocationData] = useState<any>(null);
   
@@ -65,7 +67,12 @@ export default function EnforcementPage() {
     if (!showSimulation) {
       // Current State view
       return [
-        `${officers} officers cover ${allocationData.coverage_pct}% of citywide priority. Uniform deployment would only achieve ${allocationData.uniform_coverage_pct}% — the greedy algorithm is ${(allocationData.coverage_pct - allocationData.uniform_coverage_pct).toFixed(1)}pp more efficient.`
+        t.insights.enforcementCurrentState(
+          officers,
+          allocationData.coverage_pct.toString(),
+          allocationData.uniform_coverage_pct.toString(),
+          (allocationData.coverage_pct - allocationData.uniform_coverage_pct).toFixed(1)
+        )
       ];
     }
 
@@ -84,11 +91,11 @@ export default function EnforcementPage() {
     const projResidualPct = totalPriority ? ((totalPriority - projDeterred) / totalPriority) * 100 : 100;
 
     const gain = (projectedData.coverage_pct - allocationData.coverage_pct).toFixed(1);
-    const direction = maxPerCell < 5 ? "increases" : "changes";
+    const direction = maxPerCell < 5 ? t.insights.enforcementDirectionIncreases : t.insights.enforcementDirectionChanges;
     
     return [
-      `Scaling the maximum limit from ${maxPerCell} to ${nextMax} patrols per zone/shift ${direction} priority coverage to ${projectedData.coverage_pct}% (a ${gain > 0 ? "+" : ""}${gain}pp difference).`,
-      `With up to ${nextMax} officers per shift in critical zones, residual risk (the remaining unaddressed congestion) hits ${projResidualPct.toFixed(1)}%. Deterred priority (the portion of congestion actively suppressed by police presence) reaches ${projDeterredPct.toFixed(1)}%.`
+      t.insights.enforcementScaling(maxPerCell, nextMax, direction, projectedData.coverage_pct.toString(), parseFloat(gain) > 0 ? "+" : "", gain),
+      t.insights.enforcementImpact(nextMax, projResidualPct.toFixed(1), projDeterredPct.toFixed(1))
     ];
   }, [allocationData, projectedData, officers, maxPerCell, nextMax, showSimulation]);
 
@@ -131,9 +138,9 @@ export default function EnforcementPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
           
-          <h1 className="text-3xl font-black tracking-tight text-gray-900">Enforcement Shift Recommender</h1>
+          <h1 className="text-3xl font-black tracking-tight text-gray-900">{t.titles.enforcementShift}</h1>
           <p className="text-gray-500 mt-1 max-w-2xl">
-            A greedy allocation algorithm that assigns available officers to the most critical (zone × shift) slots to maximize the impact on citywide traffic congestion.
+            {t.subtitles.enforcementShift}
           </p>
         </div>
       </div>

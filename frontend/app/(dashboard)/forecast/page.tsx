@@ -6,8 +6,10 @@ import ForecastSummaryCards from "@/components/f3/ForecastSummaryCards";
 import DispatchPriority from "@/components/f3/DispatchPriority";
 import HourlyForecastChart from "@/components/f3/HourlyForecastChart";
 import InsightCard from "@/components/InsightCard";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ForecastPage() {
+  const { t } = useLanguage();
   const [summary, setSummary] = useState<ForecastSummary | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,16 +26,16 @@ export default function ForecastPage() {
   }, []);
 
   const insightText = summary && !("error" in summary)
-    ? `The XGBoost model predicts ${summary.total_predicted_24h?.toLocaleString() || 0} total violations over the next 24 hours. The highest risk zone is ${summary.top_station} with ${summary.top_station_count?.toFixed(1)} expected incidents peaking at ${String(summary.top_station_hour).padStart(2, '0')}:00.`
-    : "Analyzing the 24-hour predictive model for high-risk zones...";
+    ? t.insights.forecastTotal(summary.total_predicted_24h?.toLocaleString() || 0, summary.top_station || "", summary.top_station_count?.toFixed(1) || "0", String(summary.top_station_hour).padStart(2, '0'))
+    : t.insights.forecastLoading;
 
   return (
     <div className="flex flex-col gap-4 max-w-[1600px] mx-auto pb-6">
       {/* Page Title */}
       <div>
-        <h1 className="text-xl font-bold text-gray-800 tracking-tight">Peak Hour Surge Predictor</h1>
+        <h1 className="text-xl font-bold text-gray-800 tracking-tight">{t.titles.peakHourSurge}</h1>
         <p className="text-xs text-gray-500 font-medium mt-0.5">
-          24-Hour Predictive Resource Allocation Model (XGBoost)
+          {t.subtitles.peakHourSurge}
         </p>
       </div>
 

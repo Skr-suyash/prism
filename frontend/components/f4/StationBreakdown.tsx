@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { api, type StationCorrection } from "@/lib/apiClient";
 import { MapPin, AlertTriangle } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function StationBreakdown() {
+  const { t } = useLanguage();
   const [data, setData] = useState<StationCorrection[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +38,7 @@ export default function StationBreakdown() {
             Who is making the mistakes?
           </h2>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
-            Misclassification rate by Police Station (Top 15 worst offenders)
+            {t.componentSubtitles.stationBreakdown}
           </p>
         </div>
       </div>

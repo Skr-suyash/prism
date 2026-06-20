@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { api, type ForecastHeatmapRow } from "@/lib/apiClient";
 import { Grid } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ForecastHeatmap() {
+  const { t } = useLanguage();
   const [data, setData] = useState<ForecastHeatmapRow[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -58,7 +60,7 @@ export default function ForecastHeatmap() {
             Zone x Hour Forecast Heatmap
           </h2>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
-            24-hour prediction matrix for all 54 zones
+            {t.componentSubtitles.forecastHeatmap}
           </p>
         </div>
         

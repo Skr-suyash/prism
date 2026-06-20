@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { api, type ForecastDispatch } from "@/lib/apiClient";
 import { ShieldAlert, AlertTriangle, ChevronLeft, ChevronRight, Clock, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const PAGE_SIZE = 8;
 
@@ -22,6 +23,7 @@ export default function DispatchPriority() {
   const [data, setData] = useState<ForecastDispatch[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
+  const { t } = useLanguage();
   const [startHour, setStartHour] = useState<number>(new Date().getHours());
   const [endHour, setEndHour] = useState<number>(23);
 
@@ -67,12 +69,12 @@ export default function DispatchPriority() {
         <div className="flex items-center gap-2">
           <h2 className="text-[13px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
             <ShieldAlert className="w-4 h-4 text-rose-500" />
-            Priority High Risk Time Slots
+            {t.titles.priorityTimeSlots}
           </h2>
           <div className="relative group">
             <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
             <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-              Shows the specific hours and locations where traffic violations are predicted to cause the most severe congestion, ranked by criticality.
+              {t.tooltips.dispatchPriority}
               <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
             </div>
           </div>

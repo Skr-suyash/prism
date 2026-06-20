@@ -1,4 +1,4 @@
-
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface InsightCardProps {
   insight: string | string[];
@@ -6,13 +6,14 @@ interface InsightCardProps {
 }
 
 export default function InsightCard({ insight, loading = false }: InsightCardProps) {
+  const { t } = useLanguage();
   const lines = Array.isArray(insight) ? insight : [insight];
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 border-l-[6px] border-l-slate-800 p-5 shadow-md flex items-start gap-4 mb-4 transition-all hover:shadow-lg">
       <div className="flex-1 min-w-0">
         <p className="text-[11px] font-black text-slate-500 mb-1.5 uppercase tracking-widest">
-          Insight
+          {t.insightCard.insightLabel}
         </p>
         {loading ? (
           <div className="flex flex-col gap-2 mt-2">
@@ -27,7 +28,7 @@ export default function InsightCard({ insight, loading = false }: InsightCardPro
               </p>
             ))}
             {lines.filter(Boolean).length === 0 && (
-              <p className="text-[15px] text-gray-500 leading-relaxed font-medium italic">No insight currently available.</p>
+              <p className="text-[15px] text-gray-500 leading-relaxed font-medium italic">{t.insightCard.noInsight}</p>
             )}
           </div>
         )}
