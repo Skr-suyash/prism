@@ -122,3 +122,30 @@ class ForecastService:
             {"hour": h, "predicted_total": round(hourly.get(h, 0), 1)}
             for h in range(24)
         ]
+
+    def get_all_forecasts(self):
+        """Return ALL station-hour forecasts (including zeros) for filtering."""
+        if not self.data:
+            return []
+
+        forecasts = self.data.get("forecasts", [])
+        # Build lookup: (station, hour) -> predicted_violation_count
+        lookup = {}
+        for f in forecasts:
+            key = (f["station"], f["hour"])
+            lookup[key] = lookup.get(key, 0) + f["predicted_violation_count"]
+
+        stations = self.get_station_list()
+        result = []
+        for station in stations:
+            for hour in range(24):
+                count = round(lookup.get((station, hour), 0), 2)
+                result.append({
+                    "station": station,
+                    "hour": hour,
+                    "predicted_violation_count": count,
+                })
+
+        # Sort by predicted_violation_count descending
+        result.sort(key=lambda x: x["predicted_violation_count"], reverse=True)
+        return result

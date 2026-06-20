@@ -166,6 +166,7 @@ export const api = {
   getStationForecast: (station: string) => get<StationForecastData>(`/api/f7/station/${encodeURIComponent(station)}`),
   getStationList: () => get<string[]>("/api/f7/stations"),
   getStationHourlyTotals: (station: string) => get<ForecastHourlyTotal[]>(`/api/f7/station-hourly/${encodeURIComponent(station)}`),
+  getAllForecasts: () => get<ForecastDispatch[]>("/api/f7/all-forecasts"),
   
   getMisclassificationSummary: () => get<MisclassificationSummary>("/api/f4/summary"),
   getConfusionMatrix: () => get<ConfusionCell[]>("/api/f4/confusion-matrix"),
