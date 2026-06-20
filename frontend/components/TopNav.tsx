@@ -10,7 +10,7 @@ export default function TopNav() {
           <input
             type="text"
             placeholder="Search"
-            className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-full text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-100 transition-all"
+            className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-full text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all"
           />
         </div>
       </div>

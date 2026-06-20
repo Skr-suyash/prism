@@ -162,7 +162,7 @@ export default function DualHeatmap() {
           <input
             type="range" min={-1} max={23} value={hour}
             onChange={(e) => setHour(parseInt(e.target.value))}
-            className="w-32 accent-purple-500 cursor-pointer"
+            className="w-32 accent-slate-500 cursor-pointer"
           />
           <span className="text-sm font-bold text-gray-700 w-16 text-right tabular-nums">
             {hour === -1 ? "All" : `${String(hour).padStart(2, "0")}:00`}
@@ -176,7 +176,7 @@ export default function DualHeatmap() {
         <div className="relative h-full bg-gray-50">
           {loading && (
             <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/70 backdrop-blur">
-              <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin" />
             </div>
           )}
           <MapOverlay
@@ -199,13 +199,13 @@ export default function DualHeatmap() {
         <div className="relative h-full bg-gray-50">
           {loading && (
             <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/70 backdrop-blur">
-              <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin" />
             </div>
           )}
           <MapOverlay
             title="Severity-Weighted Priority"
             subtitle="AI Priority Index"
-            accent="text-purple-600"
+            accent="text-slate-600"
           />
           <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 bg-white border border-rose-200 shadow-sm rounded-lg px-3 py-2 pointer-events-none">
             <AlertTriangle className="w-4 h-4 text-rose-500" />

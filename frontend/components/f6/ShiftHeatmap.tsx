@@ -102,7 +102,7 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSim
                   const isSimulated = showSimulation && hasOfficers;
                   const bgColor = isSimulated 
                     ? `rgba(34, 197, 94, ${intensity * 0.8})` // Green
-                    : `rgba(168, 85, 247, ${intensity * 0.8})`; // Purple
+                    : `rgba(31, 41, 55, ${intensity * 0.8})`; // Slate
                   
                   return (
                     <td key={slotIdx} className="py-1 px-1">
@@ -114,7 +114,7 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSim
                             <div className={`px-2 rounded-md flex items-center gap-1 shadow-sm font-bold z-10 border text-[11px] ${
                               isSimulated 
                                 ? "bg-white/95 text-green-800 border-green-200 py-0" 
-                                : "bg-white/90 text-purple-700 border-purple-200 py-0.5"
+                                : "bg-slate-800 text-white border-slate-900 py-0.5 shadow-md"
                             }`}>
                               <User className="w-3 h-3" />
                               {cell.officers}

@@ -34,9 +34,8 @@ export default function MisclassificationSummary() {
       value: summary.records_updated.toLocaleString(),
       sub: `${((summary.records_updated / summary.total_records) * 100).toFixed(1)}% of total`,
       icon: FileEdit,
-      color: "text-blue-500",
-      gradientId: "grad-f4-blue",
-      stops: [{ offset: "0%", color: "#3b82f6" }, { offset: "100%", color: "#06b6d4" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
     },
     {
       key: "mismatches",
@@ -44,9 +43,8 @@ export default function MisclassificationSummary() {
       value: summary.mismatches.toLocaleString(),
       sub: "Original ≠ Corrected",
       icon: AlertTriangle,
-      color: "text-rose-500",
-      gradientId: "grad-f4-rose",
-      stops: [{ offset: "0%", color: "#f43f5e" }, { offset: "100%", color: "#f97316" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
     },
     {
       key: "mismatch_rate",
@@ -54,15 +52,14 @@ export default function MisclassificationSummary() {
       value: `${summary.mismatch_rate}%`,
       sub: "Of updated records",
       icon: Percent,
-      color: "text-orange-500",
-      gradientId: "grad-f4-orange",
-      stops: [{ offset: "0%", color: "#f97316" }, { offset: "100%", color: "#eab308" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
     },
   ];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {cards.map(({ key, label, value, sub, icon: Icon, color, gradientId, stops }) => {
+      {cards.map(({ key, label, value, sub, icon: Icon, color, strokeColor }) => {
         return (
           <div
             key={key}
@@ -70,17 +67,10 @@ export default function MisclassificationSummary() {
           >
             <div className="relative w-[72px] h-[72px] flex items-center justify-center shrink-0">
               <svg className="w-full h-full -rotate-90 absolute inset-0">
-                <defs>
-                  <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-                    {stops.map((s, i) => (
-                      <stop key={i} offset={s.offset} stopColor={s.color} />
-                    ))}
-                  </linearGradient>
-                </defs>
                 <circle cx="36" cy="36" r="28" stroke="#f3f4f6" strokeWidth="6" fill="none" />
                 <circle
                   cx="36" cy="36" r="28"
-                  stroke={`url(#${gradientId})`}
+                  stroke={strokeColor}
                   strokeWidth="6" fill="none" strokeLinecap="round"
                   strokeDasharray="175.93" strokeDashoffset="44" // Just visual ring (75%)
                   className="transition-all duration-1000 ease-out"

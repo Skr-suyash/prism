@@ -10,12 +10,8 @@ const CARDS = [
     label: "Total Records",
     sub: "Scored violations",
     icon: Database,
-    color: "text-purple-600",
-    gradientId: "grad-purple",
-    stops: [
-      { offset: "0%", color: "#9333ea" }, // purple-600
-      { offset: "100%", color: "#db2777" }, // pink-600
-    ],
+    color: "text-slate-800",
+    strokeColor: "#1e293b", // slate-800
     format: (v: number) => v.toLocaleString(),
     pct: 100, // Just visual
   },
@@ -24,12 +20,8 @@ const CARDS = [
     label: "Zones Tracked",
     sub: "Police stations",
     icon: MapPin,
-    color: "text-blue-500",
-    gradientId: "grad-blue",
-    stops: [
-      { offset: "0%", color: "#3b82f6" }, // blue-500
-      { offset: "100%", color: "#06b6d4" }, // cyan-500
-    ],
+    color: "text-slate-800",
+    strokeColor: "#1e293b", // slate-800
     format: (v: number) => v.toString(),
     pct: 75,
   },
@@ -38,12 +30,8 @@ const CARDS = [
     label: "Ignored High-Impact",
     sub: "High severity targets",
     icon: AlertTriangle,
-    color: "text-rose-500",
-    gradientId: "grad-rose",
-    stops: [
-      { offset: "0%", color: "#f43f5e" }, // rose-500
-      { offset: "100%", color: "#f97316" }, // orange-500
-    ],
+    color: "text-slate-800",
+    strokeColor: "#1e293b", // slate-800
     format: (v: number) => v.toLocaleString(),
     pct: 45,
   },
@@ -78,7 +66,7 @@ export default function MetricsCards() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {CARDS.map(({ key, label, sub, icon: Icon, color, gradientId, stops, format, pct }) => {
+      {CARDS.map(({ key, label, sub, icon: Icon, color, strokeColor, format, pct }) => {
         const radius = 28;
         const circumference = 2 * Math.PI * radius;
         const offset = circumference - (pct / 100) * circumference;
@@ -91,20 +79,13 @@ export default function MetricsCards() {
             {/* Left: Circular Visual */}
             <div className="relative w-[72px] h-[72px] flex items-center justify-center shrink-0">
               <svg className="w-full h-full -rotate-90 absolute inset-0">
-                <defs>
-                  <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-                    {stops.map((s, i) => (
-                      <stop key={i} offset={s.offset} stopColor={s.color} />
-                    ))}
-                  </linearGradient>
-                </defs>
                 <circle
                   cx="36" cy="36" r={radius}
                   stroke="#f3f4f6" strokeWidth="6" fill="none"
                 />
                 <circle
                   cx="36" cy="36" r={radius}
-                  stroke={`url(#${gradientId})`}
+                  stroke={strokeColor}
                   strokeWidth="6"
                   fill="none"
                   strokeLinecap="round"

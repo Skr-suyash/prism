@@ -49,8 +49,8 @@ export default function ShiftMap({ allocations, showSimulation, shiftLabels, act
         id: "deployment-layer",
         data: activeDeployments,
         getPosition: (d) => [d.lng || 0, d.lat || 0],
-        getFillColor: showSimulation ? [34, 197, 94, 200] : [168, 85, 247, 200], // Green vs Purple
-        getLineColor: showSimulation ? [134, 239, 172, 255] : [216, 180, 254, 255],
+        getFillColor: showSimulation ? [34, 197, 94, 200] : [31, 41, 55, 200], // Green vs Dark Gray
+        getLineColor: showSimulation ? [134, 239, 172, 255] : [75, 85, 99, 255],
         getRadius: (d) => 250 + d.officers * 200, // Scale radius by officers
         lineWidthMinPixels: 2,
         stroked: true,
@@ -73,7 +73,7 @@ export default function ShiftMap({ allocations, showSimulation, shiftLabels, act
       {/* Top Overlay: Shift Selector */}
       <div className="absolute top-4 left-4 right-4 z-10 flex justify-between items-start pointer-events-none">
         <div className="bg-white/90 border border-gray-200/50 backdrop-blur-md rounded-xl px-4 py-2.5 max-w-[240px] shadow-sm">
-          <p className={`text-[10px] font-bold uppercase tracking-widest ${showSimulation ? "text-green-600" : "text-purple-600"}`}>
+          <p className={`text-[10px] font-bold uppercase tracking-widest ${showSimulation ? "text-green-600" : "text-slate-600"}`}>
             {showSimulation ? "Projected Impact" : "Current Deployments"}
           </p>
           <p className="text-sm font-bold text-gray-800 mt-0.5 leading-snug flex items-center gap-1.5">

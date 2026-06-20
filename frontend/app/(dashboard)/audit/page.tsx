@@ -48,8 +48,8 @@ export default function AuditPage() {
 
       {/* Info Banner */}
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm px-5 py-4 flex items-start gap-4">
-        <div className="p-2 rounded-lg bg-purple-50 border border-purple-100 shrink-0 mt-0.5">
-          <Radar className="w-4 h-4 text-purple-600" />
+        <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 shrink-0 mt-0.5">
+          <Radar className="w-4 h-4 text-slate-600" />
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-bold text-gray-800 mb-1">
@@ -71,7 +71,7 @@ export default function AuditPage() {
             <span>Real-time scoring</span>
           </div>
           <div className="flex items-center gap-2 text-xs text-gray-500">
-            <Cpu className="w-3.5 h-3.5 text-purple-500" />
+            <Cpu className="w-3.5 h-3.5 text-slate-500" />
             <span>200 estimators</span>
           </div>
         </div>

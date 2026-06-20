@@ -20,7 +20,7 @@ export default function HubsList() {
   if (loading) {
     return (
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 min-h-[400px] flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-slate-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -33,7 +33,7 @@ export default function HubsList() {
       <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-start">
         <div>
           <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-            <Share2 className="w-4 h-4 text-purple-600" />
+            <Share2 className="w-4 h-4 text-slate-600" />
             Repeat Offender Hubs
           </h2>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
@@ -54,7 +54,7 @@ export default function HubsList() {
                     <span className="text-sm font-bold text-gray-800">{hub.zone}</span>
                   </div>
                   <div className="text-right">
-                    <div className="text-xs font-bold text-purple-600">{hub.centrality_score.toFixed(4)}</div>
+                    <div className="text-xs font-bold text-slate-600">{hub.centrality_score.toFixed(4)}</div>
                   </div>
                 </div>
                 
@@ -62,7 +62,7 @@ export default function HubsList() {
                   {/* Visual Bar */}
                   <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-purple-500 rounded-full" 
+                      className="h-full bg-slate-500 rounded-full" 
                       style={{ width: `${pct}%` }} 
                     />
                   </div>
