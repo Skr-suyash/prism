@@ -8,6 +8,7 @@ import { ScatterplotLayer } from "@deck.gl/layers";
 import { Map } from "react-map-gl/maplibre";
 import { api, type HeatmapPoint } from "@/lib/apiClient";
 import { Clock, AlertTriangle, LocateFixed, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 const BASEMAP = "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json";
@@ -59,6 +60,7 @@ export default function DualHeatmap() {
   const [loading, setLoading] = useState(true);
   const [viewState, setViewState] = useState(INITIAL_VIEW);
   const [clickedAlert, setClickedAlert] = useState<HeatmapPoint | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     api.getHeatmap().then((d) => { setAllPoints(d); setLoading(false); }).catch(console.error);
@@ -166,7 +168,7 @@ export default function DualHeatmap() {
         <div className="flex-1 min-w-0">
           
           <h2 className="text-lg font-bold text-gray-800 mt-0.5">Congested Roads vs Enforcement</h2>
-          <p className="text-xs text-gray-500 mt-0.5 font-medium">Synchronized pan & zoom · Pan either map to compare</p>
+          <p className="text-xs text-gray-500 mt-0.5 font-medium">{t.componentSubtitles.dualHeatmap}</p>
         </div>
         <div className="flex items-center gap-3 shrink-0 bg-white px-4 py-2 border border-gray-200 rounded-lg shadow-sm">
           <button 
@@ -201,14 +203,14 @@ export default function DualHeatmap() {
             title="Raw Ticket Density"
             subtitle="Status Quo"
             accent="text-rose-500"
-            tooltip="Shows where traffic wardens currently write the most parking tickets. A high density here often just means an easy quota spot, rather than an actual traffic bottleneck."
+            tooltip={t.tooltips.rawDensity}
           />
           <DeckGL
             viewState={viewState}
             onViewStateChange={onViewStateChange as any}
             controller
             layers={leftLayers}
-            style={{ position: "absolute", inset: 0 }}
+            style={{ position: "absolute", inset: "0" }}
           >
             <Map mapStyle={BASEMAP} />
           </DeckGL>
@@ -225,7 +227,7 @@ export default function DualHeatmap() {
             title="Severity-Weighted Priority"
             subtitle="AI Priority Index"
             accent="text-slate-600"
-            tooltip="Our smart recommendation. This map highlights illegal parking that is actively causing major traffic jams, accidents, or blocking emergency routes."
+            tooltip={t.tooltips.priorityHotspots}
           />
           <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 bg-white border border-rose-200 shadow-sm rounded-lg px-3 py-2 pointer-events-none">
             <AlertTriangle className="w-4 h-4 text-rose-500" />
@@ -238,7 +240,7 @@ export default function DualHeatmap() {
             onViewStateChange={onViewStateChange as any}
             controller
             layers={rightLayers}
-            style={{ position: "absolute", inset: 0 }}
+            style={{ position: "absolute", inset: "0" }}
           >
             <Map mapStyle={BASEMAP} />
           </DeckGL>

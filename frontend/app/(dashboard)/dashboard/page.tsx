@@ -7,6 +7,7 @@ import RankFlipTable from "@/components/RankFlipTable";
 import InsightCard from "@/components/InsightCard";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/apiClient";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const DualHeatmap = dynamic(() => import("@/components/DualHeatmap"), {
   ssr: false,
@@ -21,6 +22,7 @@ const DualHeatmap = dynamic(() => import("@/components/DualHeatmap"), {
 });
 
 export default function Home() {
+  const { t } = useLanguage();
   const [insight, setInsight] = useState("");
   const [loadingInsight, setLoadingInsight] = useState(true);
 
@@ -29,7 +31,7 @@ export default function Home() {
       .then((res) => {
         if (res && res.length > 0) {
           const z = res[0];
-          setInsight(`${z.police_station} is ranked #${z.count_rank} by ticket volume but #${z.priority_rank} by operational priority — it is the most under-patrolled zone in the city.`);
+          setInsight(t.insights.dashboard(z.police_station, z.count_rank, z.priority_rank));
         }
         setLoadingInsight(false);
       })
@@ -43,9 +45,9 @@ export default function Home() {
     <div className="flex flex-col gap-6 max-w-[1600px] mx-auto pb-12">
       {/* Page Title */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-800 tracking-tight">Strategic Priority Overview</h1>
+        <h1 className="text-2xl font-bold text-gray-800 tracking-tight">{t.titles.strategicPriority}</h1>
         <p className="text-sm text-gray-500 font-medium mt-1">
-          PRISM Severity-Weighted Congestion Index
+          {t.subtitles.strategicPriority}
         </p>
       </div>
 

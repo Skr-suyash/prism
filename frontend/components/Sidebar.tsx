@@ -5,19 +5,21 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { LayoutGrid, Camera, Car, AlertTriangle, ParkingSquare, FileText, BarChart3, ChevronLeft, ChevronRight, CheckCircle, TrendingUp, Radar, ShieldAlert } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
 
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
 
   const navItems = [
-    { name: "Priority Intelligence", icon: Car, path: "/dashboard" },
-    { name: "Predictive", icon: TrendingUp, path: "/forecast" },
-    { name: "Offender Network", icon: FileText, path: "/network" },
-    { name: "Data Quality", icon: CheckCircle, path: "/misclassification" },
-    { name: "Pipeline Diagnostics", icon: Radar, path: "/audit" },
-    { name: "Shift Planner", icon: ShieldAlert, path: "/enforcement" },
+    { name: t.nav.priorityIntelligence, icon: Car, path: "/dashboard" },
+    { name: t.nav.predictive, icon: TrendingUp, path: "/forecast" },
+    { name: t.nav.offenderNetwork, icon: FileText, path: "/network" },
+    { name: t.nav.dataQuality, icon: CheckCircle, path: "/misclassification" },
+    { name: t.nav.pipelineDiagnostics, icon: Radar, path: "/audit" },
+    { name: t.nav.shiftPlanner, icon: ShieldAlert, path: "/enforcement" },
   ];
 
   return (
@@ -71,7 +73,15 @@ export default function Sidebar() {
       </nav>
 
       {/* Toggle Button */}
-      <div className="p-3 border-t border-gray-100">
+      <div className="p-3 border-t border-gray-100 flex flex-col gap-2">
+        <button
+          onClick={() => setLanguage(language === "en" ? "kn" : "en")}
+          className="flex items-center justify-center w-full py-2.5 rounded-lg text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-colors gap-2"
+          title="Switch Language"
+        >
+          <span className="font-bold text-lg leading-none">{language === "en" ? "ಅ" : "A"}</span>
+          {isOpen && <span className="text-xs font-bold">{language === "en" ? "ಕನ್ನಡ" : "English"}</span>}
+        </button>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center justify-center w-full py-2.5 rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-700 transition-colors"

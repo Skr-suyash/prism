@@ -3,42 +3,8 @@
 import { useEffect, useState } from "react";
 import { api, type Metrics } from "@/lib/apiClient";
 import { Database, MapPin, AlertTriangle, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const CARDS = [
-  {
-    key: "total_records" as keyof Metrics,
-    label: "Total Records",
-    sub: "Scored violations",
-    icon: Database,
-    color: "text-slate-800",
-    strokeColor: "#1e293b", // slate-800
-    format: (v: number) => v.toLocaleString(),
-    pct: 100, // Just visual
-    tooltip: "The total number of traffic violations ingested and processed by the PRISM AI engine.",
-  },
-  {
-    key: "zones_tracked" as keyof Metrics,
-    label: "Zones Tracked",
-    sub: "Police stations",
-    icon: MapPin,
-    color: "text-slate-800",
-    strokeColor: "#1e293b", // slate-800
-    format: (v: number) => v.toString(),
-    pct: 75,
-    tooltip: "The number of distinct traffic police zones or jurisdictions currently being monitored.",
-  },
-  {
-    key: "ignored_high_impact" as keyof Metrics,
-    label: "Ignored High-Impact",
-    sub: "High severity targets",
-    icon: AlertTriangle,
-    color: "text-slate-800",
-    strokeColor: "#1e293b", // slate-800
-    format: (v: number) => v.toLocaleString(),
-    pct: 45,
-    tooltip: "Critical traffic incidents that were flagged by AI as causing severe congestion, but were under-patrolled by officers.",
-  },
-];
 
 function CardSkeleton() {
   return (
@@ -54,6 +20,7 @@ function CardSkeleton() {
 
 export default function MetricsCards() {
   const [m, setM] = useState<Metrics | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     api.getMetrics().then(setM).catch(console.error);
@@ -66,6 +33,42 @@ export default function MetricsCards() {
       </div>
     );
   }
+
+  const CARDS = [
+    {
+      key: "total_records" as keyof Metrics,
+      label: t.metrics.totalRecords,
+      sub: t.metrics.totalRecordsSub,
+      icon: Database,
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
+      format: (v: number) => v.toLocaleString(),
+      pct: 100, // Just visual
+      tooltip: t.metricsTooltips.totalRecords,
+    },
+    {
+      key: "zones_tracked" as keyof Metrics,
+      label: t.metrics.zonesTracked,
+      sub: t.metrics.zonesTrackedSub,
+      icon: MapPin,
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
+      format: (v: number) => v.toString(),
+      pct: 75,
+      tooltip: t.metricsTooltips.zonesTracked,
+    },
+    {
+      key: "ignored_high_impact" as keyof Metrics,
+      label: t.metrics.ignoredImpact,
+      sub: t.metrics.ignoredImpactSub,
+      icon: AlertTriangle,
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
+      format: (v: number) => v.toLocaleString(),
+      pct: 45,
+      tooltip: t.metricsTooltips.ignoredImpact,
+    },
+  ];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

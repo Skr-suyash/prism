@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { api, type ForecastSummary } from "@/lib/apiClient";
 import { TrendingUp, MapPin, Clock, ShieldAlert } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ForecastSummaryCards() {
+  const { t } = useLanguage();
   const [summary, setSummary] = useState<ForecastSummary | null>(null);
 
   useEffect(() => {
@@ -39,9 +41,9 @@ export default function ForecastSummaryCards() {
   const cards = [
     {
       key: "total_predicted",
-      label: "Predicted Violations",
+      label: t.forecastSummary.predictedViolations,
       value: totalPredicted.toLocaleString(),
-      sub: "Next 24 hours",
+      sub: t.forecastSummary.next24Hours,
       icon: TrendingUp,
       color: "text-rose-500",
       gradientId: "grad-f3-rose",
@@ -49,9 +51,9 @@ export default function ForecastSummaryCards() {
     },
     {
       key: "top_station",
-      label: "Highest Risk Zone",
+      label: t.forecastSummary.highestRiskZone,
       value: topStation,
-      sub: `${topStationCount.toFixed(1)} predicted at ${String(topStationHour).padStart(2, '0')}:00`,
+      sub: `${topStationCount.toFixed(1)} ${t.forecastSummary.predictedAt} ${String(topStationHour).padStart(2, '0')}:00`,
       icon: MapPin,
       color: "text-purple-600",
       gradientId: "grad-f3-purple",
@@ -59,9 +61,9 @@ export default function ForecastSummaryCards() {
     },
     {
       key: "model_mae",
-      label: "Model Accuracy",
+      label: t.forecastSummary.modelAccuracy,
       value: `±${mae.toFixed(2)}/hr`,
-      sub: `Peak Hour MAE: ±${peakHourMae.toFixed(2)}`,
+      sub: `${t.forecastSummary.peakHourMae} ±${peakHourMae.toFixed(2)}`,
       icon: ShieldAlert,
       color: "text-blue-500",
       gradientId: "grad-f3-blue",
@@ -69,9 +71,9 @@ export default function ForecastSummaryCards() {
     },
     {
       key: "time_window",
-      label: "Active Forecast",
+      label: t.forecastSummary.activeForecast,
       value: "24 Hours",
-      sub: `From ${forecastStart}`,
+      sub: `${t.forecastSummary.from} ${forecastStart}`,
       icon: Clock,
       color: "text-emerald-500",
       gradientId: "grad-f3-emerald",

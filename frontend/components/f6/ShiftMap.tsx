@@ -129,7 +129,7 @@ export default function ShiftMap({ allocations, showSimulation, shiftLabels, act
           onViewStateChange={({ viewState: vs }) => setViewState(vs as any)}
           controller
           layers={layers}
-          style={{ position: "absolute", inset: 0 }}
+          style={{ position: "absolute", inset: "0" }}
         >
           <Map mapStyle={BASEMAP} />
         </DeckGL>

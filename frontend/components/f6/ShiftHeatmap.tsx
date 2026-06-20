@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { User, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface AllocationCell {
   zone: string;
@@ -19,6 +20,7 @@ interface ShiftHeatmapProps {
 }
 
 export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSimulation = false }: ShiftHeatmapProps) {
+  const { t } = useLanguage();
   // Process data for the grid
   const { zones, grid, maxPriority } = useMemo(() => {
     if (!matrix || matrix.length === 0) return { zones: [], grid: {}, maxPriority: 1 };
@@ -58,16 +60,16 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSim
     <div className="bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col h-[500px] relative">
       <div className="px-6 py-4 border-b border-gray-100 rounded-t-xl">
         <div className="flex items-center gap-2">
-          <h3 className="text-sm font-bold text-gray-800">Zone × Shift Allocation Matrix</h3>
+          <h3 className="text-sm font-bold text-gray-800">{t.titles.allocationMatrix}</h3>
           <div className="relative group">
             <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
             <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-              A breakdown of officer deployment schedules across all major zones. The darker the cell, the higher the predicted traffic severity for that shift.
+              {t.tooltips.shiftHeatmap}
               <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
             </div>
           </div>
         </div>
-        <p className="text-xs text-gray-500 mt-1">Top 30 zones ranked by cumulative priority</p>
+        <p className="text-xs text-gray-500 mt-1">{t.componentSubtitles.shiftHeatmap}</p>
       </div>
       
       <div className="flex-1 overflow-auto px-4 pb-4">

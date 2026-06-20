@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import { api, type ClusterData } from "@/lib/apiClient";
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ZAxis } from "recharts";
 import { Network, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const COLORS = ["#8b5cf6", "#ec4899", "#f97316", "#0ea5e9", "#10b981"];
 
 export default function ArchetypeScatter() {
   const [data, setData] = useState<ClusterData | null>(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
 
   useEffect(() => {
     api.getClusters()
@@ -43,7 +45,7 @@ export default function ArchetypeScatter() {
       const d = payload[0].payload;
       return (
         <div className="bg-gray-900 text-white p-3 rounded-lg shadow-xl text-xs min-w-[200px]">
-          <div className="font-bold text-gray-300 border-b border-gray-700 pb-2 mb-2">{d.archetype}</div>
+          <div className="font-bold text-gray-300 border-b border-gray-700 pb-2 mb-2">{t.archetypes[d.archetype as keyof typeof t.archetypes] || d.archetype}</div>
           <div className="flex justify-between py-1">
             <span className="text-gray-400">Device ID</span>
             <span className="font-mono">{d.device_id}</span>
@@ -73,18 +75,18 @@ export default function ArchetypeScatter() {
           <div className="flex items-center gap-2">
             <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
               <Network className="w-4 h-4 text-slate-600" />
-              Repeat Offender Archetypes
+              {t.titles.offenderArchetypes}
             </h2>
             <div className="relative group">
               <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
               <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                Groups repeat offenders with similar behavior. For example, some offenders might get few tickets but cause massive traffic jams, while others get many tickets for minor infractions.
+                {t.tooltips.archetypes}
                 <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
               </div>
             </div>
           </div>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
-            K-Means clustering identifying behavioral patterns of repeat violators
+            {t.componentSubtitles.archetypeScatter}
           </p>
         </div>
       </div>
@@ -117,7 +119,7 @@ export default function ArchetypeScatter() {
             {Object.keys(clusteredData).map((clusterId, index) => (
               <Scatter 
                 key={clusterId} 
-                name={data.archetypes[clusterId as any]} 
+                name={t.archetypes[data.archetypes[clusterId as any] as keyof typeof t.archetypes] || data.archetypes[clusterId as any]} 
                 data={clusteredData[clusterId as any]} 
                 fill={COLORS[index % COLORS.length]} 
                 fillOpacity={0.7}
@@ -132,7 +134,7 @@ export default function ArchetypeScatter() {
         {Object.keys(data.archetypes).map((clusterId, index) => (
           <div key={clusterId} className="flex items-center gap-2 text-[11px] font-bold text-gray-600 whitespace-nowrap">
             <span className="w-2.5 h-2.5 rounded-full inline-block shadow-sm" style={{ backgroundColor: COLORS[index % COLORS.length] }} />
-            {data.archetypes[clusterId as any]}
+            {t.archetypes[data.archetypes[clusterId as any] as keyof typeof t.archetypes] || data.archetypes[clusterId as any]}
           </div>
         ))}
       </div>

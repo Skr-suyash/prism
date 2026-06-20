@@ -7,8 +7,10 @@ import InsightCard from "@/components/InsightCard";
 import { FileText } from "lucide-react";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/apiClient";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function NetworkPage() {
+  const { t } = useLanguage();
   const [insight, setInsight] = useState("");
   const [loadingInsight, setLoadingInsight] = useState(true);
 
@@ -17,7 +19,7 @@ export default function NetworkPage() {
       .then(res => {
         if (res && res.length > 0) {
           const top = res[0];
-          setInsight(`Most repeat violations happen around ${top.zone}. It is the main hotspot, with ${top.unique_offenders} unique repeat offenders causing ${top.total_repeat_violations} repeat violations. Focusing patrols here will have the biggest impact on reducing repeat offenses.`);
+          setInsight(t.insights.network(top.zone, top.unique_offenders, top.total_repeat_violations));
         }
         setLoadingInsight(false);
       })
@@ -35,9 +37,9 @@ export default function NetworkPage() {
           <FileText className="w-5 h-5" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-gray-800 tracking-tight">Repeat Offender Network</h1>
+          <h1 className="text-2xl font-bold text-gray-800 tracking-tight">{t.titles.repeatOffenderNetwork}</h1>
           <p className="text-sm font-medium text-gray-500">
-            K-Means behavioral clustering & Bipartite Graph Centrality
+            {t.subtitles.repeatOffenderNetwork}
           </p>
         </div>
       </div>
