@@ -57,7 +57,7 @@ export default function AllocationControls({
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `gridlock_deployment_roster.csv`);
+    link.setAttribute("download", `prism_deployment_roster.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -1,5 +1,5 @@
 """
-GridLock — FastAPI Backend Entrypoint.
+PRISM — FastAPI Backend Entrypoint.
 
 Startup sequence:
   1. Load XGBoost model (for real-time scoring)
@@ -65,7 +65,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="GridLock API", version="2.0", lifespan=lifespan)
+app = FastAPI(title="PRISM API", version="2.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
