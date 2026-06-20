@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Shield, Activity, BarChart } from "lucide-react";
 
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col selection:bg-slate-100 selection:text-slate-900">
@@ -21,6 +22,7 @@ export default function LandingPage() {
           <ArrowRight className="w-4 h-4" />
         </Link>
       </nav>
+
 
       {/* Hero Section */}
       <main className="flex-1 flex flex-col items-center justify-center text-center px-4 pt-24 pb-16">

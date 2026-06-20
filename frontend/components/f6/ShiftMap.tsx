@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import DeckGL from "@deck.gl/react";
 import { ScatterplotLayer } from "@deck.gl/layers";
 import { Map } from "react-map-gl/maplibre";
-import { Shield, Clock } from "lucide-react";
+import { Shield, Clock, LocateFixed, Info } from "lucide-react";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 const BASEMAP = "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json";
@@ -37,6 +37,7 @@ interface ShiftMapProps {
 
 export default function ShiftMap({ allocations, showSimulation, shiftLabels, activeShift, setActiveShift }: ShiftMapProps) {
   const [hoverInfo, setHoverInfo] = useState<any>(null);
+  const [viewState, setViewState] = useState(INITIAL_VIEW);
 
   // Filter allocations to only those in the active shift that actually have officers assigned
   const activeDeployments = useMemo(() => {
@@ -72,18 +73,37 @@ export default function ShiftMap({ allocations, showSimulation, shiftLabels, act
       
       {/* Top Overlay: Shift Selector */}
       <div className="absolute top-4 left-4 right-4 z-10 flex justify-between items-start pointer-events-none">
-        <div className="bg-white/90 border border-gray-200/50 backdrop-blur-md rounded-xl px-4 py-2.5 max-w-[240px] shadow-sm">
-          <p className={`text-[10px] font-bold uppercase tracking-widest ${showSimulation ? "text-green-600" : "text-slate-600"}`}>
-            {showSimulation ? "Projected Impact" : "Current Deployments"}
-          </p>
-          <p className="text-sm font-bold text-gray-800 mt-0.5 leading-snug flex items-center gap-1.5">
-            <Shield className="w-4 h-4" />
-            Live Strategy Map
-          </p>
+        <div className="relative pointer-events-auto group">
+          <div className="bg-white/90 border border-gray-200/50 backdrop-blur-md rounded-xl px-4 py-2.5 max-w-[240px] shadow-sm">
+            <div className="flex items-center justify-between gap-3">
+              <p className={`text-[10px] font-bold uppercase tracking-widest ${showSimulation ? "text-green-600" : "text-slate-600"}`}>
+                {showSimulation ? "Projected Impact" : "Current Deployments"}
+              </p>
+              <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+            </div>
+            <p className="text-sm font-bold text-gray-800 mt-0.5 leading-snug flex items-center gap-1.5">
+              <Shield className="w-4 h-4" />
+              Live Strategy Map
+            </p>
+          </div>
+          <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+            {showSimulation 
+              ? "Shows the estimated reduction in traffic congestion if you reassign officers to the recommended AI hotspots."
+              : "Shows where officers are currently assigned for the selected shift. Bigger circles mean more officers in that zone."}
+            <div className="absolute -top-1.5 left-4 w-3 h-3 bg-slate-800 transform rotate-45" />
+          </div>
         </div>
 
         {/* Shift Toggle Buttons */}
-        <div className="flex bg-white/90 border border-gray-200/50 backdrop-blur-md p-1 rounded-lg shadow-sm pointer-events-auto">
+        <div className="flex gap-2 items-center pointer-events-auto">
+          <button
+            onClick={() => setViewState(INITIAL_VIEW)}
+            className="bg-white/90 border border-gray-200/50 backdrop-blur-md p-2 rounded-lg shadow-sm text-gray-500 hover:text-purple-600 transition-colors flex items-center justify-center h-[32px] w-[32px]"
+            title="Recenter Map"
+          >
+            <LocateFixed className="w-4 h-4 shrink-0" />
+          </button>
+          <div className="flex bg-white/90 border border-gray-200/50 backdrop-blur-md p-1 rounded-lg shadow-sm">
           {shiftLabels.map((label, idx) => (
             <button
               key={idx}
@@ -99,12 +119,14 @@ export default function ShiftMap({ allocations, showSimulation, shiftLabels, act
             </button>
           ))}
         </div>
+        </div>
       </div>
 
       {/* Map */}
       <div className="flex-1 relative">
         <DeckGL
-          initialViewState={INITIAL_VIEW}
+          viewState={viewState}
+          onViewStateChange={({ viewState: vs }) => setViewState(vs as any)}
           controller
           layers={layers}
           style={{ position: "absolute", inset: 0 }}

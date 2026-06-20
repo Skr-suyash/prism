@@ -13,7 +13,6 @@ export default function Sidebar() {
 
   const navItems = [
     { name: "Priority Intelligence", icon: Car, path: "/dashboard" },
-    { name: "Traffic", icon: Car, path: "/" },
     { name: "Predictive", icon: TrendingUp, path: "/forecast" },
     { name: "Offender Network", icon: FileText, path: "/network" },
     { name: "Data Quality", icon: CheckCircle, path: "/misclassification" },

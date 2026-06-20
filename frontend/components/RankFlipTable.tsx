@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api, type ZoneData } from "@/lib/apiClient";
-import { TrendingUp, TrendingDown, Minus, MapPin, AlertTriangle } from "lucide-react";
+import { TrendingUp, TrendingDown, Minus, MapPin, AlertTriangle, Info } from "lucide-react";
 
 function DeltaBadge({ delta }: { delta: number }) {
   if (delta > 0) {
@@ -46,14 +46,23 @@ export default function RankFlipTable() {
   }
 
   return (
-    <section className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+    <section className="rounded-xl border border-gray-200 bg-white shadow-sm relative">
       {/* Header */}
-      <div className="px-6 py-4 border-b border-gray-100 flex items-start justify-between bg-gray-50/50">
+      <div className="px-6 py-4 border-b border-gray-100 flex items-start justify-between bg-gray-50/50 rounded-t-xl">
         <div>
-          <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-500 inline-block" />
-            Rank Flip Table
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-500 inline-block" />
+              Rank Flip Table
+            </h2>
+            <div className="relative group">
+              <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+              <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                Compares how a zone ranks by total violations vs how it ranks by actual traffic impact. Zones that jump up in rank (Underpatrolled) are causing severe traffic despite having fewer tickets.
+                <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
+              </div>
+            </div>
+          </div>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
             Priority rank vs. naive count rank — reveals misallocated patrol resources
           </p>
