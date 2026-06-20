@@ -1,4 +1,4 @@
-import { Crosshair } from "lucide-react";
+
 
 interface InsightCardProps {
   insight: string | string[];
@@ -10,12 +10,9 @@ export default function InsightCard({ insight, loading = false }: InsightCardPro
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 border-l-[6px] border-l-slate-800 p-5 shadow-md flex items-start gap-4 mb-4 transition-all hover:shadow-lg">
-      <div className="p-2 bg-slate-800 rounded-lg shadow-inner shrink-0 mt-0.5">
-        <Crosshair className="w-5 h-5 text-white" />
-      </div>
       <div className="flex-1 min-w-0">
         <p className="text-[11px] font-black text-slate-500 mb-1.5 uppercase tracking-widest">
-          Feature Insight
+          Insight
         </p>
         {loading ? (
           <div className="flex flex-col gap-2 mt-2">

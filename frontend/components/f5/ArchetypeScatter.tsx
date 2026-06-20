@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { api, type ClusterData } from "@/lib/apiClient";
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ZAxis } from "recharts";
-import { Network } from "lucide-react";
+import { Network, Info } from "lucide-react";
 
 const COLORS = ["#8b5cf6", "#ec4899", "#f97316", "#0ea5e9", "#10b981"];
 
@@ -67,13 +67,22 @@ export default function ArchetypeScatter() {
   };
 
   return (
-    <section className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col h-[500px]">
-      <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-start">
+    <section className="bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col h-[500px] relative">
+      <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-start rounded-t-xl">
         <div>
-          <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-            <Network className="w-4 h-4 text-slate-600" />
-            Repeat Offender Archetypes
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
+              <Network className="w-4 h-4 text-slate-600" />
+              Repeat Offender Archetypes
+            </h2>
+            <div className="relative group">
+              <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+              <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                Groups repeat offenders with similar behavior. For example, some offenders might get few tickets but cause massive traffic jams, while others get many tickets for minor infractions.
+                <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
+              </div>
+            </div>
+          </div>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
             K-Means clustering identifying behavioral patterns of repeat violators
           </p>

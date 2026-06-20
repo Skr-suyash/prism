@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { User } from "lucide-react";
+import { User, Info } from "lucide-react";
 
 interface AllocationCell {
   zone: string;
@@ -55,9 +55,18 @@ export default function ShiftHeatmap({ matrix, allocations, shiftLabels, showSim
   if (zones.length === 0) return null;
 
   return (
-    <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col h-[500px]">
-      <div className="px-6 py-4 border-b border-gray-100">
-        <h3 className="text-sm font-bold text-gray-800">Zone × Shift Allocation Matrix</h3>
+    <div className="bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col h-[500px] relative">
+      <div className="px-6 py-4 border-b border-gray-100 rounded-t-xl">
+        <div className="flex items-center gap-2">
+          <h3 className="text-sm font-bold text-gray-800">Zone × Shift Allocation Matrix</h3>
+          <div className="relative group">
+            <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+            <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+              A breakdown of officer deployment schedules across all major zones. The darker the cell, the higher the predicted traffic severity for that shift.
+              <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
+            </div>
+          </div>
+        </div>
         <p className="text-xs text-gray-500 mt-1">Top 30 zones ranked by cumulative priority</p>
       </div>
       

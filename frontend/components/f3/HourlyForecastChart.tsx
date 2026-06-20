@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api, type ForecastHourlyTotal } from "@/lib/apiClient";
-import { BarChart3, MapPin, ChevronDown } from "lucide-react";
+import { BarChart3, MapPin, ChevronDown, Info } from "lucide-react";
 
 export default function HourlyForecastChart() {
   const [data, setData] = useState<ForecastHourlyTotal[]>([]);
@@ -61,13 +61,22 @@ export default function HourlyForecastChart() {
   const yTicks = [0, 0.25, 0.5, 0.75, 1].map(pct => Math.round(scaleMax * pct));
 
   return (
-    <section className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col h-full">
-      <div className="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex justify-between items-start gap-4">
+    <section className="bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col h-full relative">
+      <div className="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex justify-between items-start gap-4 rounded-t-xl">
         <div className="flex-1 min-w-0">
-          <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-            <BarChart3 className="w-4 h-4 text-purple-500" />
-            Surge Predictor
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
+              <BarChart3 className="w-4 h-4 text-purple-500" />
+              Surge Predictor
+            </h2>
+            <div className="relative group">
+              <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+              <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                Displays the total predicted traffic violations for each hour across the city or selected zone. The highlighted peak window shows when traffic police should be on highest alert.
+                <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
+              </div>
+            </div>
+          </div>
 
           {/* Region Selector */}
           <div className="relative mt-2">

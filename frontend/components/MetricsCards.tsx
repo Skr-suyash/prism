@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api, type Metrics } from "@/lib/apiClient";
-import { Database, MapPin, AlertTriangle } from "lucide-react";
+import { Database, MapPin, AlertTriangle, Info } from "lucide-react";
 
 const CARDS = [
   {
@@ -14,6 +14,7 @@ const CARDS = [
     strokeColor: "#1e293b", // slate-800
     format: (v: number) => v.toLocaleString(),
     pct: 100, // Just visual
+    tooltip: "The total number of traffic violations ingested and processed by the PRISM AI engine.",
   },
   {
     key: "zones_tracked" as keyof Metrics,
@@ -24,6 +25,7 @@ const CARDS = [
     strokeColor: "#1e293b", // slate-800
     format: (v: number) => v.toString(),
     pct: 75,
+    tooltip: "The number of distinct traffic police zones or jurisdictions currently being monitored.",
   },
   {
     key: "ignored_high_impact" as keyof Metrics,
@@ -34,6 +36,7 @@ const CARDS = [
     strokeColor: "#1e293b", // slate-800
     format: (v: number) => v.toLocaleString(),
     pct: 45,
+    tooltip: "Critical traffic incidents that were flagged by AI as causing severe congestion, but were under-patrolled by officers.",
   },
 ];
 
@@ -66,7 +69,7 @@ export default function MetricsCards() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {CARDS.map(({ key, label, sub, icon: Icon, color, strokeColor, format, pct }) => {
+      {CARDS.map(({ key, label, sub, icon: Icon, color, strokeColor, format, pct, tooltip }) => {
         const radius = 28;
         const circumference = 2 * Math.PI * radius;
         const offset = circumference - (pct / 100) * circumference;
@@ -101,9 +104,16 @@ export default function MetricsCards() {
 
             {/* Right: Stats */}
             <div className="text-right ml-4">
-              <h3 className="text-[13px] font-bold text-gray-700 tracking-wide uppercase mb-1">
-                {label}
-              </h3>
+              <div className="flex items-center justify-end gap-1.5 mb-1 group relative">
+                <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+                <h3 className="text-[13px] font-bold text-gray-700 tracking-wide uppercase">
+                  {label}
+                </h3>
+                <div className="absolute top-full right-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-left">
+                  {tooltip}
+                  <div className="absolute -top-1.5 right-4 w-3 h-3 bg-slate-800 transform rotate-45" />
+                </div>
+              </div>
               <div className="text-3xl font-extrabold text-gray-900 tracking-tight">
                 {format(m[key] as number)}
               </div>

@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import { AlertTriangle, Shield, RefreshCw } from "lucide-react";
+import { AlertTriangle, Shield, RefreshCw, Info } from "lucide-react";
 
 interface BucketData {
   station: string;
@@ -156,14 +156,23 @@ export default function SystemHealthQuadrant({ onDataLoaded }: { onDataLoaded?: 
   }
 
   return (
-    <section className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+    <section className="bg-white rounded-xl border border-gray-100 shadow-sm relative">
       {/* Header */}
-      <div className="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex items-start justify-between">
+      <div className="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex items-start justify-between rounded-t-xl">
         <div>
-          <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block" />
-            System Health Quadrant
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block" />
+              System Health Quadrant
+            </h2>
+            <div className="relative group">
+              <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+              <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-[100]">
+                Identifies systemic data collection failures. Red bubbles indicate an AI-detected anomaly where a station's data sync rate or rejection rate suddenly degraded compared to its historical baseline.
+                <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
+              </div>
+            </div>
+          </div>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
             Operational buckets scored by Isolation Forest · Bubble size = volume
           </p>

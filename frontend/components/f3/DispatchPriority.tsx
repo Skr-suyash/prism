@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api, type ForecastDispatch } from "@/lib/apiClient";
-import { ShieldAlert, AlertTriangle, ChevronLeft, ChevronRight, Clock } from "lucide-react";
+import { ShieldAlert, AlertTriangle, ChevronLeft, ChevronRight, Clock, Info } from "lucide-react";
 
 const PAGE_SIZE = 8;
 
@@ -62,12 +62,21 @@ export default function DispatchPriority() {
   const formatHour = (h: number) => `${String(h).padStart(2, '0')}:00`;
 
   return (
-    <section className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col h-full">
-      <div className="px-4 py-3 border-b border-gray-100 bg-gray-50/50">
-        <h2 className="text-[13px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-          <ShieldAlert className="w-4 h-4 text-rose-500" />
-          Priority High Risk Time Slots
-        </h2>
+    <section className="bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col h-full relative">
+      <div className="px-4 py-3 border-b border-gray-100 bg-gray-50/50 rounded-t-xl">
+        <div className="flex items-center gap-2">
+          <h2 className="text-[13px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
+            <ShieldAlert className="w-4 h-4 text-rose-500" />
+            Priority High Risk Time Slots
+          </h2>
+          <div className="relative group">
+            <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+            <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+              Shows the specific hours and locations where traffic violations are predicted to cause the most severe congestion, ranked by criticality.
+              <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
+            </div>
+          </div>
+        </div>
         {/* Time Slot Picker */}
         <div className="flex items-center gap-2 mt-2">
           <Clock className="w-3.5 h-3.5 text-gray-400 shrink-0" />
@@ -139,7 +148,7 @@ export default function DispatchPriority() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="px-4 py-3 border-t border-gray-100 flex items-center justify-between bg-gray-50/50">
+        <div className="px-4 py-3 border-t border-gray-100 flex items-center justify-between bg-gray-50/50 rounded-b-xl">
           <button
             onClick={() => setPage(p => Math.max(0, p - 1))}
             disabled={page === 0}
