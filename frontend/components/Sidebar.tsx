@@ -16,10 +16,10 @@ export default function Sidebar() {
   const navItems = [
     { name: t.nav.priorityIntelligence, icon: Car, path: "/dashboard" },
     { name: t.nav.predictive, icon: TrendingUp, path: "/forecast" },
-    { name: t.nav.offenderNetwork, icon: FileText, path: "/network" },
-    { name: t.nav.dataQuality, icon: CheckCircle, path: "/misclassification" },
-    { name: t.nav.pipelineDiagnostics, icon: Radar, path: "/audit" },
     { name: t.nav.shiftPlanner, icon: ShieldAlert, path: "/enforcement" },
+    { name: t.nav.offenderNetwork, icon: FileText, path: "/network" },
+    { name: t.nav.pipelineDiagnostics, icon: Radar, path: "/audit" },
+    { name: t.nav.dataQuality, icon: CheckCircle, path: "/misclassification" },
   ];
 
   return (
