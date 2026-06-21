@@ -2,52 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { api, type Metrics } from "@/lib/apiClient";
-import { Database, MapPin, AlertTriangle } from "lucide-react";
+import { Database, MapPin, AlertTriangle, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const CARDS = [
-  {
-    key: "total_records" as keyof Metrics,
-    label: "Total Records",
-    sub: "Scored violations",
-    icon: Database,
-    color: "text-purple-600",
-    gradientId: "grad-purple",
-    stops: [
-      { offset: "0%", color: "#9333ea" }, // purple-600
-      { offset: "100%", color: "#db2777" }, // pink-600
-    ],
-    format: (v: number) => v.toLocaleString(),
-    pct: 100, // Just visual
-  },
-  {
-    key: "zones_tracked" as keyof Metrics,
-    label: "Zones Tracked",
-    sub: "Police stations",
-    icon: MapPin,
-    color: "text-blue-500",
-    gradientId: "grad-blue",
-    stops: [
-      { offset: "0%", color: "#3b82f6" }, // blue-500
-      { offset: "100%", color: "#06b6d4" }, // cyan-500
-    ],
-    format: (v: number) => v.toString(),
-    pct: 75,
-  },
-  {
-    key: "ignored_high_impact" as keyof Metrics,
-    label: "Ignored High-Impact",
-    sub: "High severity targets",
-    icon: AlertTriangle,
-    color: "text-rose-500",
-    gradientId: "grad-rose",
-    stops: [
-      { offset: "0%", color: "#f43f5e" }, // rose-500
-      { offset: "100%", color: "#f97316" }, // orange-500
-    ],
-    format: (v: number) => v.toLocaleString(),
-    pct: 45,
-  },
-];
 
 function CardSkeleton() {
   return (
@@ -63,6 +20,7 @@ function CardSkeleton() {
 
 export default function MetricsCards() {
   const [m, setM] = useState<Metrics | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     api.getMetrics().then(setM).catch(console.error);
@@ -76,9 +34,45 @@ export default function MetricsCards() {
     );
   }
 
+  const CARDS = [
+    {
+      key: "total_records" as keyof Metrics,
+      label: t.metrics.totalRecords,
+      sub: t.metrics.totalRecordsSub,
+      icon: Database,
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
+      format: (v: number) => v.toLocaleString(),
+      pct: 100, // Just visual
+      tooltip: t.metricsTooltips.totalRecords,
+    },
+    {
+      key: "zones_tracked" as keyof Metrics,
+      label: t.metrics.zonesTracked,
+      sub: t.metrics.zonesTrackedSub,
+      icon: MapPin,
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
+      format: (v: number) => v.toString(),
+      pct: 75,
+      tooltip: t.metricsTooltips.zonesTracked,
+    },
+    {
+      key: "ignored_high_impact" as keyof Metrics,
+      label: t.metrics.ignoredImpact,
+      sub: t.metrics.ignoredImpactSub,
+      icon: AlertTriangle,
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
+      format: (v: number) => v.toLocaleString(),
+      pct: 45,
+      tooltip: t.metricsTooltips.ignoredImpact,
+    },
+  ];
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {CARDS.map(({ key, label, sub, icon: Icon, color, gradientId, stops, format, pct }) => {
+      {CARDS.map(({ key, label, sub, icon: Icon, color, strokeColor, format, pct, tooltip }) => {
         const radius = 28;
         const circumference = 2 * Math.PI * radius;
         const offset = circumference - (pct / 100) * circumference;
@@ -91,20 +85,13 @@ export default function MetricsCards() {
             {/* Left: Circular Visual */}
             <div className="relative w-[72px] h-[72px] flex items-center justify-center shrink-0">
               <svg className="w-full h-full -rotate-90 absolute inset-0">
-                <defs>
-                  <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-                    {stops.map((s, i) => (
-                      <stop key={i} offset={s.offset} stopColor={s.color} />
-                    ))}
-                  </linearGradient>
-                </defs>
                 <circle
                   cx="36" cy="36" r={radius}
                   stroke="#f3f4f6" strokeWidth="6" fill="none"
                 />
                 <circle
                   cx="36" cy="36" r={radius}
-                  stroke={`url(#${gradientId})`}
+                  stroke={strokeColor}
                   strokeWidth="6"
                   fill="none"
                   strokeLinecap="round"
@@ -120,9 +107,16 @@ export default function MetricsCards() {
 
             {/* Right: Stats */}
             <div className="text-right ml-4">
-              <h3 className="text-[13px] font-bold text-gray-700 tracking-wide uppercase mb-1">
-                {label}
-              </h3>
+              <div className="flex items-center justify-end gap-1.5 mb-1 group relative">
+                <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+                <h3 className="text-[13px] font-bold text-gray-700 tracking-wide uppercase">
+                  {label}
+                </h3>
+                <div className="absolute top-full right-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-left">
+                  {tooltip}
+                  <div className="absolute -top-1.5 right-4 w-3 h-3 bg-slate-800 transform rotate-45" />
+                </div>
+              </div>
               <div className="text-3xl font-extrabold text-gray-900 tracking-tight">
                 {format(m[key] as number)}
               </div>

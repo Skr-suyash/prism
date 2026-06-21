@@ -18,6 +18,9 @@ import pickle
 import os
 from datetime import datetime
 
+# Geospatial
+import geopandas as gpd
+
 # ML
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_auc_score, f1_score, log_loss
@@ -25,7 +28,8 @@ from sklearn.preprocessing import LabelEncoder
 import xgboost as xgb
 
 # ─── Configuration ───────────────────────────────────────────────────────────
-DATA_PATH = "datasets/jan to may police violation_anonymized791b166.csv"
+DATA_PATH = "../input/datasets/vinay2047/traffic-violations/jan to may police violation_anonymized791b166.csv"
+POI_DATA_PATH = "../working/bangalore_pois.geojson" # <-- Update this path
 OUTPUT_DIR = "../working/"
 RANDOM_STATE = 42
 N_FOLDS = 5
@@ -39,13 +43,7 @@ print("=" * 80)
 # ══════════════════════════════════════════════════════════════════════════════
 
 print("\n[PHASE 0] Loading data...")
-COLUMNS = [
-    'id', 'latitude', 'longitude', 'address', 'device_id', 'vehicle_type', 'brand', 
-    'violation_type', 'offence_code', 'created_datetime', 'col10', 'updated_datetime', 
-    'developer_id', 'user_id', 'center_code', 'police_station', 'is_active', 
-    'junction_name', 'col18', 'col19', 'col20', 'vehicle_class', 'validation_status', 'approved_datetime'
-]
-df = pd.read_csv(DATA_PATH, names=COLUMNS)
+df = pd.read_csv(DATA_PATH)
 print(f"  ✓ Loaded {len(df):,} records with {df.shape[1]} columns")
 
 print("\n[PHASE 1] Engineering base features (EDA Removed)...")
@@ -78,6 +76,47 @@ df["primary_offence_code"] = df["offence_code_list"].apply(
 
 df["vehicle_type_clean"] = df["vehicle_type"].fillna("UNKNOWN").str.strip().str.upper()
 df["is_junction"] = (df["junction_name"].fillna("UNKNOWN") != "No Junction").astype(int)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# PHASE 1.5: GEOSPATIAL ENRICHMENT (POI MAPPING)
+# ══════════════════════════════════════════════════════════════════════════════
+print("\n[PHASE 1.5] Geospatial Enrichment (POI Mapping)...")
+try:
+    print("  Loading POI GeoJSON...")
+    gdf_pois = gpd.read_file(POI_DATA_PATH)
+    
+    # Ensure a poi_type column exists
+    if 'poi_type' not in gdf_pois.columns:
+        gdf_pois['poi_type'] = 'UNKNOWN'
+        
+    print("  Converting violations to GeoDataFrame...")
+    # Safe lat/lng filling for geometry creation to prevent crashes
+    gdf_violations = gpd.GeoDataFrame(
+        df, 
+        geometry=gpd.points_from_xy(df['longitude'].fillna(77.5946), df['latitude'].fillna(12.9716)),
+        crs="EPSG:4326"
+    )
+
+    print("  Projecting to EPSG:3857 for accurate distance in meters...")
+    gdf_violations = gdf_violations.to_crs("EPSG:3857")
+    gdf_pois = gdf_pois.to_crs("EPSG:3857")
+
+    print("  Running vectorized spatial join (sjoin_nearest)...")
+    gdf_pois_clean = gdf_pois[['geometry', 'poi_type']]
+    gdf_joined = gpd.sjoin_nearest(gdf_violations, gdf_pois_clean, how="left", distance_col="distance_to_poi")
+
+    # CRITICAL: Drop duplicates if a point is exactly equidistant to two POIs
+    gdf_joined = gdf_joined[~gdf_joined.index.duplicated(keep='first')]
+
+    df['nearest_poi_type'] = gdf_joined['poi_type'].fillna('UNKNOWN').astype(str)
+    df['distance_to_poi'] = gdf_joined['distance_to_poi'].fillna(-1.0).astype(float)
+    
+    print(f"  ✓ Spatial enrichment complete. (e.g. Mean distance: {df[df['distance_to_poi']>0]['distance_to_poi'].mean():.1f}m)")
+
+except Exception as e:
+    print(f"  [!] WARNING: POI mapping failed ({e}). Falling back to defaults to prevent pipeline crash.")
+    df['nearest_poi_type'] = 'UNKNOWN'
+    df['distance_to_poi'] = -1.0
 
 # ══════════════════════════════════════════════════════════════════════════════
 # PHASE 2: COMPONENT A — CONGESTION IMPACT FORMULA
@@ -149,10 +188,6 @@ df["congestion_impact"] = (
     df["base_offence_weight"] * df["junction_multiplier"] * df["vehicle_weight"] * df["hour_multiplier"]
 )
 
-print(f"  ✓ Congestion impact — min: {df['congestion_impact'].min():.2f}, "
-      f"max: {df['congestion_impact'].max():.2f}, "
-      f"mean: {df['congestion_impact'].mean():.2f}")
-
 # ══════════════════════════════════════════════════════════════════════════════
 # PHASE 3: COMPONENT B — ESCALATION PROPENSITY MODEL
 # ══════════════════════════════════════════════════════════════════════════════
@@ -204,7 +239,8 @@ for col in ["police_station", "vehicle_type_clean", "primary_violation"]:
 BENGALURU_LAT, BENGALURU_LON = 12.9766, 77.5713
 df["dist_from_center"] = np.sqrt((df["latitude"] - BENGALURU_LAT)**2 + (df["longitude"] - BENGALURU_LON)**2)
 
-LOW_CARD_CATS = ["primary_violation", "vehicle_type_clean"]
+# ADDED nearest_poi_type to low cardinality categoricals to be Label Encoded
+LOW_CARD_CATS = ["primary_violation", "vehicle_type_clean", "nearest_poi_type"]
 label_encoders = {}
 for col in LOW_CARD_CATS:
     le = LabelEncoder()
@@ -217,13 +253,14 @@ for col in HIGH_CARD_CATS:
 
 df["center_code"] = df["center_code"].fillna(-1).astype(int)
 
-# REMOVED Component A metrics from the feature list to prevent narrative contamination
+# ADDED nearest_poi_type_encoded AND distance_to_poi
 FEATURE_COLS = [
-    "primary_violation_encoded", "vehicle_type_clean_encoded", "police_station_te", "center_code_te",
+    "primary_violation_encoded", "vehicle_type_clean_encoded", "nearest_poi_type_encoded", 
+    "police_station_te", "center_code_te",
     "hour_sin", "hour_cos", "dow_sin", "dow_cos", "hour", "day_of_week",
     "is_peak_hour", "is_night", "is_weekend", "hour_bin", "is_junction",
     "peak_x_junction", "weekend_x_night", "police_station_freq", "vehicle_type_freq", "violation_freq",
-    "latitude", "longitude", "dist_from_center", "n_violations"
+    "latitude", "longitude", "dist_from_center", "distance_to_poi", "n_violations"
 ]
 
 def target_encode_column(train_df, val_df, col, target_col="target", smoothing=20.0, global_mean=None):
@@ -232,7 +269,6 @@ def target_encode_column(train_df, val_df, col, target_col="target", smoothing=2
     smoothed = (stats["count"] * stats["mean"] + smoothing * global_mean) / (stats["count"] + smoothing)
     return train_df[col].map(smoothed).fillna(global_mean), val_df[col].map(smoothed).fillna(global_mean)
 
-# Adjusted Hyperparameters for better generalization
 xgb_params = {
     "objective": "binary:logistic", "eval_metric": "auc", "tree_method": "hist",
     "device": "cuda", "max_depth": 6, "learning_rate": 0.05, "n_estimators": 2500,
@@ -324,7 +360,7 @@ df["escalation_propensity"] = final_model.predict_proba(X_all)[:, 1]
 fold_preds_all = np.column_stack([m.predict_proba(X_all)[:, 1] for m in fold_models])
 df["escalation_propensity_ensemble"] = fold_preds_all.mean(axis=1)
 
-# Corrected logic: Priority = Impact * (1 - P_approved)
+# Priority = Impact * (1 - P_approved)
 df["operational_priority"] = df["congestion_impact"] * (1 - df["escalation_propensity"])
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -355,9 +391,11 @@ with open(os.path.join(OUTPUT_DIR, "feature_config.json"), "w") as f:
     json.dump({"feature_columns": FEATURE_COLS}, f, indent=2, default=str)
 print("  ✓ Feature config exported")
 
+# ADDED nearest_poi_type and distance_to_poi to final CSV output
 export_cols = [
     "id", "police_station", "junction_name", "vehicle_type_clean",
     "primary_violation", "hour", "day_of_week", "latitude", "longitude",
+    "nearest_poi_type", "distance_to_poi",
     "base_offence_weight", "junction_multiplier", "vehicle_weight", "hour_multiplier",
     "congestion_impact", "escalation_propensity", "escalation_propensity_ensemble",
     "operational_priority", "validation_status",

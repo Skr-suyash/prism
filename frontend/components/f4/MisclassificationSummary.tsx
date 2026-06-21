@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { api, type MisclassificationSummary as SummaryType } from "@/lib/apiClient";
 import { Database, FileEdit, AlertTriangle, Percent } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function MisclassificationSummary() {
+  const { t } = useLanguage();
   const [summary, setSummary] = useState<SummaryType | null>(null);
 
   useEffect(() => {
@@ -13,8 +15,8 @@ export default function MisclassificationSummary() {
 
   if (!summary) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {[0, 1, 2, 3].map((i) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[0, 1, 2].map((i) => (
           <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex items-center justify-between">
             <div className="w-16 h-16 rounded-full bg-gray-100 animate-pulse" />
             <div className="flex flex-col items-end gap-2">
@@ -29,50 +31,37 @@ export default function MisclassificationSummary() {
 
   const cards = [
     {
-      key: "total_records",
-      label: "Total Records",
-      value: summary.total_records.toLocaleString(),
-      sub: "All violations",
-      icon: Database,
-      color: "text-purple-600",
-      gradientId: "grad-f4-purple",
-      stops: [{ offset: "0%", color: "#9333ea" }, { offset: "100%", color: "#db2777" }],
-    },
-    {
       key: "records_updated",
-      label: "Records Updated",
+      label: t.misclassSummary.recordsUpdated,
       value: summary.records_updated.toLocaleString(),
-      sub: `${((summary.records_updated / summary.total_records) * 100).toFixed(1)}% of total`,
+      sub: `${((summary.records_updated / summary.total_records) * 100).toFixed(1)}% ${t.misclassSummary.ofTotal}`,
       icon: FileEdit,
-      color: "text-blue-500",
-      gradientId: "grad-f4-blue",
-      stops: [{ offset: "0%", color: "#3b82f6" }, { offset: "100%", color: "#06b6d4" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
     },
     {
       key: "mismatches",
-      label: "Misclassifications",
+      label: t.misclassSummary.misclassifications,
       value: summary.mismatches.toLocaleString(),
-      sub: "Original ≠ Corrected",
+      sub: t.misclassSummary.originalNotCorrected,
       icon: AlertTriangle,
-      color: "text-rose-500",
-      gradientId: "grad-f4-rose",
-      stops: [{ offset: "0%", color: "#f43f5e" }, { offset: "100%", color: "#f97316" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
     },
     {
       key: "mismatch_rate",
-      label: "Mismatch Rate",
+      label: t.misclassSummary.mismatchRate,
       value: `${summary.mismatch_rate}%`,
-      sub: "Of updated records",
+      sub: t.misclassSummary.ofUpdatedRecords,
       icon: Percent,
-      color: "text-orange-500",
-      gradientId: "grad-f4-orange",
-      stops: [{ offset: "0%", color: "#f97316" }, { offset: "100%", color: "#eab308" }],
+      color: "text-slate-800",
+      strokeColor: "#1e293b", // slate-800
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-      {cards.map(({ key, label, value, sub, icon: Icon, color, gradientId, stops }) => {
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {cards.map(({ key, label, value, sub, icon: Icon, color, strokeColor }) => {
         return (
           <div
             key={key}
@@ -80,17 +69,10 @@ export default function MisclassificationSummary() {
           >
             <div className="relative w-[72px] h-[72px] flex items-center justify-center shrink-0">
               <svg className="w-full h-full -rotate-90 absolute inset-0">
-                <defs>
-                  <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-                    {stops.map((s, i) => (
-                      <stop key={i} offset={s.offset} stopColor={s.color} />
-                    ))}
-                  </linearGradient>
-                </defs>
                 <circle cx="36" cy="36" r="28" stroke="#f3f4f6" strokeWidth="6" fill="none" />
                 <circle
                   cx="36" cy="36" r="28"
-                  stroke={`url(#${gradientId})`}
+                  stroke={strokeColor}
                   strokeWidth="6" fill="none" strokeLinecap="round"
                   strokeDasharray="175.93" strokeDashoffset="44" // Just visual ring (75%)
                   className="transition-all duration-1000 ease-out"
@@ -101,14 +83,20 @@ export default function MisclassificationSummary() {
               </div>
             </div>
 
-            <div className="text-right ml-4">
-              <h3 className="text-[12px] font-bold text-gray-700 tracking-wide uppercase mb-1">
+            <div className="text-right ml-4 flex-1 min-w-0">
+              <h3 
+                className="text-[11px] xl:text-[12px] font-bold text-gray-700 tracking-wider uppercase mb-1" 
+                title={label}
+              >
                 {label}
               </h3>
               <div className="text-2xl font-extrabold text-gray-900 tracking-tight">
                 {value}
               </div>
-              <p className="text-xs text-rose-500 font-semibold mt-1">
+              <p 
+                className={`text-[11px] xl:text-xs ${color} font-semibold mt-1`}
+                title={sub}
+              >
                 {sub}
               </p>
             </div>

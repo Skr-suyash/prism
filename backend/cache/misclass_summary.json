@@ -1,0 +1,1 @@
+{"total_records": 298449, "records_updated": 173195, "mismatches": 6168, "mismatch_rate": 3.56, "top_swaps": [{"swap": "CAR \u2192 MAXI-CAB", "count": 898}, {"swap": "CAR \u2192 SCOOTER", "count": 679}, {"swap": "SCOOTER \u2192 MOTOR CYCLE", "count": 646}, {"swap": "MOTOR CYCLE \u2192 SCOOTER", "count": 466}, {"swap": "MAXI-CAB \u2192 CAR", "count": 299}]}

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { api, type ZoneData } from "@/lib/apiClient";
-import { TrendingUp, TrendingDown, Minus, MapPin, Zap, AlertTriangle } from "lucide-react";
+import { TrendingUp, TrendingDown, Minus, MapPin, AlertTriangle, Info } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 function DeltaBadge({ delta }: { delta: number }) {
   if (delta > 0) {
@@ -29,21 +30,11 @@ function DeltaBadge({ delta }: { delta: number }) {
   );
 }
 
-function DeltaBar({ delta, max }: { delta: number; max: number }) {
-  const pct = max > 0 ? Math.abs(delta) / max : 0;
-  const width = `${(pct * 50).toFixed(1)}%`;
-  return (
-    <div className="relative h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-      <div
-        className={`absolute h-full rounded-full transition-all ${delta > 0 ? "right-1/2 bg-emerald-400" : delta < 0 ? "left-1/2 bg-rose-400" : "bg-gray-300"}`}
-        style={{ width }}
-      />
-    </div>
-  );
-}
+
 
 export default function RankFlipTable() {
   const [zones, setZones] = useState<ZoneData[]>([]);
+  const { t } = useLanguage();
   const maxDelta = zones.length ? Math.max(...zones.map((z) => Math.abs(z.rank_change))) : 1;
 
   useEffect(() => {
@@ -57,16 +48,25 @@ export default function RankFlipTable() {
   }
 
   return (
-    <section className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+    <section className="rounded-xl border border-gray-200 bg-white shadow-sm relative">
       {/* Header */}
-      <div className="px-6 py-4 border-b border-gray-100 flex items-start justify-between bg-gray-50/50">
+      <div className="px-6 py-4 border-b border-gray-100 flex items-start justify-between bg-gray-50/50 rounded-t-xl">
         <div>
-          <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block" />
-            Rank Flip Table
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-[15px] font-bold text-gray-800 tracking-tight flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-500 inline-block" />
+              {t.titles.rankFlipTable}
+            </h2>
+            <div className="relative group">
+              <Info className="w-3.5 h-3.5 text-gray-400 cursor-help transition-colors group-hover:text-gray-600" />
+              <div className="absolute top-full left-0 mt-2 w-64 p-3 bg-slate-800 text-white text-xs font-medium leading-relaxed rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                {t.tooltips.rankFlipTable}
+                <div className="absolute -top-1.5 left-2 w-3 h-3 bg-slate-800 transform rotate-45" />
+              </div>
+            </div>
+          </div>
           <p className="text-xs text-gray-500 mt-0.5 font-medium">
-            Priority rank vs. naive count rank — reveals misallocated patrol resources
+            {t.componentSubtitles.rankFlipTable}
           </p>
         </div>
         <div className="flex items-center gap-4 text-[10px] uppercase tracking-widest font-bold text-gray-500">
@@ -86,7 +86,7 @@ export default function RankFlipTable() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-gray-100 bg-white">
-              {["Zone", "Count Rank", "Priority Rank", "Delta", "", "Violations", "Avg Priority", "Junction %"].map((h) => (
+              {["Zone", "Count Rank", "Priority Rank", "Delta", "Violations", "Avg Priority"].map((h) => (
                 <th
                   key={h}
                   className="px-5 py-3.5 text-left text-[11px] uppercase tracking-wider font-bold text-gray-500 whitespace-nowrap"
@@ -104,7 +104,7 @@ export default function RankFlipTable() {
                   key={z.police_station}
                   className={`border-b border-gray-50 transition-colors hover:bg-gray-50 ${
                     isHighlight
-                      ? "bg-purple-50/30"
+                      ? "bg-slate-50/30"
                       : i % 2 === 0
                       ? "bg-white"
                       : "bg-gray-50/30"
@@ -127,7 +127,7 @@ export default function RankFlipTable() {
 
                   {/* Priority Rank */}
                   <td className="px-5 py-3">
-                    <span className="font-mono text-purple-700 font-semibold bg-purple-100 px-1.5 py-0.5 rounded text-xs">#{z.priority_rank}</span>
+                    <span className="font-mono text-slate-700 font-semibold bg-slate-100 px-1.5 py-0.5 rounded text-xs">#{z.priority_rank}</span>
                   </td>
 
                   {/* Delta badge */}
@@ -135,10 +135,7 @@ export default function RankFlipTable() {
                     <DeltaBadge delta={z.rank_change} />
                   </td>
 
-                  {/* Delta bar */}
-                  <td className="px-3 py-3 w-32">
-                    <DeltaBar delta={z.rank_change} max={maxDelta} />
-                  </td>
+
 
                   {/* Violations */}
                   <td className="px-5 py-3">
@@ -151,25 +148,11 @@ export default function RankFlipTable() {
                   {/* Avg Priority */}
                   <td className="px-5 py-3">
                     <div className="flex items-center gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-orange-400" />
                       <span className="font-semibold text-gray-800">{z.mean_priority.toFixed(2)}</span>
                     </div>
                   </td>
 
-                  {/* Junction % */}
-                  <td className="px-5 py-3">
-                    <div className="flex items-center gap-2">
-                      <div className="h-1.5 w-16 bg-gray-100 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-cyan-500 rounded-full"
-                          style={{ width: `${(z.junction_pct * 100).toFixed(0)}%` }}
-                        />
-                      </div>
-                      <span className="font-mono text-gray-500 text-xs font-semibold">
-                        {(z.junction_pct * 100).toFixed(0)}%
-                      </span>
-                    </div>
-                  </td>
+
                 </tr>
               );
             })}
