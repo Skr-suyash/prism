@@ -51,18 +51,21 @@ PRISM v2.0 is built on a high-performance microservices architecture.
 
 ### 1. Install Backend Dependencies
 Install the required Python packages for the FastAPI and Machine Learning services.
+In the backend directory
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 2. Build the Analytics Cache
 PRISM uses a lightning-fast caching layer. Before starting the backend for the first time, you must run the precompute script. This processes all records through the ML pipelines and saves them to JSON.
+In the root directory
 ```bash
 python precompute.py
 ```
 
 ### 3. Start the FastAPI Backend
 Once the cache is built, start the backend server (starts in under 2 seconds).
+In the root directory
 ```bash
 python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
