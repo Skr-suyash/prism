@@ -49,19 +49,25 @@ An unsupervised learning module designed to instantly flag irregular spatial-tem
 
 PRISM v2.0 is built on a high-performance microservices architecture.
 
-### 1. Build the Analytics Cache
+### 1. Install Backend Dependencies
+Install the required Python packages for the FastAPI and Machine Learning services.
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Build the Analytics Cache
 PRISM uses a lightning-fast caching layer. Before starting the backend for the first time, you must run the precompute script. This processes all records through the ML pipelines and saves them to JSON.
 ```bash
 python precompute.py
 ```
 
-### 2. Start the FastAPI Backend
+### 3. Start the FastAPI Backend
 Once the cache is built, start the backend server (starts in under 2 seconds).
 ```bash
 python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-### 3. Start the Next.js Frontend
+### 4. Start the Next.js Frontend
 Launch the interactive dashboard.
 ```bash
 cd frontend
