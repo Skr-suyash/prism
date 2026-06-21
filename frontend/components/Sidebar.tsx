@@ -76,11 +76,11 @@ export default function Sidebar() {
       <div className="p-3 border-t border-gray-100 flex flex-col gap-2">
         <button
           onClick={() => setLanguage(language === "en" ? "kn" : "en")}
-          className="flex items-center justify-center w-full py-2.5 rounded-lg text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-colors gap-2"
+          className="flex items-center justify-center w-full py-2.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-100 shadow-sm transition-colors gap-2"
           title="Switch Language"
         >
           <span className="font-bold text-lg leading-none">{language === "en" ? "ಅ" : "A"}</span>
-          {isOpen && <span className="text-xs font-bold">{language === "en" ? "ಕನ್ನಡ" : "English"}</span>}
+          {isOpen && <span className="text-sm font-bold">{language === "en" ? "Translate to ಕನ್ನಡ" : "Translate to English"}</span>}
         </button>
         <button
           onClick={() => setIsOpen(!isOpen)}
