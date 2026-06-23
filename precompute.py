@@ -27,6 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent
 DATASET_PATH = BASE_DIR / "datasets" / "jan to may police violation_anonymized791b166.csv"
 CACHE_DIR = BASE_DIR / "backend" / "cache"
 MAX_HEATMAP_POINTS = 15_000
+LOCAL_TZ = "Asia/Kolkata"
 
 COLUMNS = [
     'id', 'latitude', 'longitude', 'address', 'device_id', 'vehicle_type', 'brand',
@@ -47,13 +48,35 @@ def _safe_parse_json(val):
         return items if items else [str(val)]
 
 
+def _load_dataset() -> pd.DataFrame:
+    """Load the raw CSV by header and add aliases expected by older code."""
+    df = pd.read_csv(DATASET_PATH)
+    if "vehicle_number" in df.columns:
+        df["device_id"] = df["vehicle_number"]
+    if "updated_vehicle_type" in df.columns:
+        df["vehicle_class"] = df["updated_vehicle_type"]
+    return df
+
+
+def _to_local_datetime(series: pd.Series) -> pd.Series:
+    return pd.to_datetime(series, errors="coerce", format="mixed", utc=True).dt.tz_convert(LOCAL_TZ)
+
+
 def save_json(data, filename):
-    """Atomically write JSON to cache dir."""
+    """Write JSON to cache dir, with an atomic write when Windows permits it."""
     path = CACHE_DIR / filename
     tmp = path.with_suffix(".tmp")
     with open(tmp, "w") as f:
         json.dump(data, f)
-    tmp.replace(path)
+    try:
+        tmp.replace(path)
+    except PermissionError:
+        with open(path, "w") as f:
+            json.dump(data, f)
+        try:
+            tmp.unlink()
+        except OSError:
+            pass
     print(f"    [OK] Wrote {path.name} ({os.path.getsize(path) / 1024:.0f} KB)")
 
 
@@ -65,12 +88,12 @@ def run_precompute():
     # ── Phase 1: Load & Preprocess ─────────────────────────────────────────
     t = time.time()
     print("\n[Phase 1] Loading dataset...")
-    df = pd.read_csv(DATASET_PATH, names=COLUMNS, header=0)
+    df = _load_dataset()
     print(f"  Loaded {len(df):,} records in {time.time() - t:.1f}s")
 
     t = time.time()
     print("[Phase 1] Preprocessing...")
-    df["created_datetime"] = pd.to_datetime(df["created_datetime"], errors="coerce", utc=True)
+    df["created_datetime"] = _to_local_datetime(df["created_datetime"])
     df["hour"] = df["created_datetime"].dt.hour
     df["day_of_week"] = df["created_datetime"].dt.dayofweek
     df["month"] = df["created_datetime"].dt.month
@@ -377,9 +400,7 @@ def run_precompute():
 
         # Prepare audit-specific columns from the raw df
         audit_df = df.copy()
-        audit_df["created_datetime_parsed"] = pd.to_datetime(
-            audit_df["created_datetime"], errors="coerce"
-        )
+        audit_df["created_datetime_parsed"] = _to_local_datetime(audit_df["created_datetime"])
         audit_df = audit_df.dropna(subset=["police_station", "created_datetime_parsed"])
 
         # violation_type: clean from list format to primary string

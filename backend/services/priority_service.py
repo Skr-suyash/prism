@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 DATASET_PATH = os.path.join(BASE_DIR, "datasets", "jan to may police violation_anonymized791b166.csv")
 CACHE_DIR = Path(BASE_DIR) / "backend" / "cache"
 MAX_HEATMAP_POINTS = 15_000
+LOCAL_TZ = "Asia/Kolkata"
 
 COLUMNS = [
     'id', 'latitude', 'longitude', 'address', 'device_id', 'vehicle_type', 'brand',
@@ -43,6 +44,20 @@ def _safe_parse_json(val):
     except (ValueError, SyntaxError):
         items = re.findall(r'"([^"]*)"', str(val))
         return items if items else [str(val)]
+
+
+def _load_dataset() -> pd.DataFrame:
+    """Load the raw CSV by header and add aliases expected by older code."""
+    df = pd.read_csv(DATASET_PATH)
+    if "vehicle_number" in df.columns:
+        df["device_id"] = df["vehicle_number"]
+    if "updated_vehicle_type" in df.columns:
+        df["vehicle_class"] = df["updated_vehicle_type"]
+    return df
+
+
+def _to_local_datetime(series: pd.Series) -> pd.Series:
+    return pd.to_datetime(series, errors="coerce", format="mixed", utc=True).dt.tz_convert(LOCAL_TZ)
 
 
 class PriorityService:
@@ -98,7 +113,7 @@ class PriorityService:
     def _full_compute(self) -> None:
         """Full compute path (original logic). Only used if cache is missing."""
         print("[PriorityService] Loading dataset ...")
-        df = pd.read_csv(DATASET_PATH, names=COLUMNS, header=0)
+        df = _load_dataset()
         print(f"  Loaded {len(df):,} records")
 
         df = self._preprocess(df)
@@ -126,7 +141,7 @@ class PriorityService:
 
     def _preprocess(self, df: pd.DataFrame) -> pd.DataFrame:
         print("[PriorityService] Preprocessing ...")
-        df["created_datetime"] = pd.to_datetime(df["created_datetime"], errors="coerce", utc=True)
+        df["created_datetime"] = _to_local_datetime(df["created_datetime"])
         df["hour"] = df["created_datetime"].dt.hour
         df["day_of_week"] = df["created_datetime"].dt.dayofweek
         df["month"] = df["created_datetime"].dt.month

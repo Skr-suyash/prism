@@ -15,13 +15,13 @@ file_path = 'datasets/jan to may police violation_anonymized791b166.csv'
 df = pd.read_csv(file_path)
 
 # Ensure datetime parsing is explicit and vectorized
-df['created_datetime'] = pd.to_datetime(df['created_datetime'], errors='coerce')
+df['created_datetime'] = pd.to_datetime(df['created_datetime'], errors='coerce', format='mixed', utc=True).dt.tz_convert('Asia/Kolkata')
 
 # Drop records with entirely missing critical spatial/temporal data
 df = df.dropna(subset=['police_station', 'created_datetime', 'violation_type'])
 
 # Extract Hour Bin (0: Night, 1: Morning, 2: Afternoon, 3: Evening)
-df['hour_bin'] = df['created_datetime'].dt.hour // 6
+df['hour_bin'] = df['created_datetime'].dt.hour // 6  # IST hour bin
 
 # Standardize text to prevent accidental category splitting
 df['validation_status'] = df['validation_status'].str.lower().fillna('unknown')

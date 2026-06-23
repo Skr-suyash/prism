@@ -40,9 +40,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # --- Configuration ---
-DATA_PATH = "C:/programming/Hackathons/FK Gridlock round2/jan to may police violation_anonymized791b166.csv"
-OUTPUT_DIR = Path("c:/programming/Hackathons/FK Gridlock round2/flipkard-gridlock/backend/models")
-CHART_DIR = Path("c:/programming/Hackathons/FK Gridlock round2/flipkard-gridlock/forecast_charts")
+BASE_DIR = Path(__file__).resolve().parent
+DATA_PATH = BASE_DIR / "datasets" / "jan to may police violation_anonymized791b166.csv"
+OUTPUT_DIR = BASE_DIR / "backend" / "models"
+CHART_DIR = BASE_DIR / "forecast_charts"
+LOCAL_TZ = "Asia/Kolkata"
+PEAK_HOURS = [8, 9, 10, 11, 17, 18, 19]
 HOLDOUT_DAYS = 7
 RANDOM_STATE = 42
 
@@ -61,7 +64,7 @@ print("\n[STEP 1] Loading data and building hourly time series...")
 df = pd.read_csv(DATA_PATH)
 print(f"  Loaded {len(df):,} records")
 
-df["created_datetime"] = pd.to_datetime(df["created_datetime"], format="mixed", utc=True)
+df["created_datetime"] = pd.to_datetime(df["created_datetime"], format="mixed", utc=True).dt.tz_convert(LOCAL_TZ)
 df["date_hour"] = df["created_datetime"].dt.floor("h")
 
 print(f"  Date range: {df['date_hour'].min()} -> {df['date_hour'].max()}")
@@ -80,7 +83,7 @@ all_hours = pd.date_range(
     start=df["date_hour"].min(),
     end=df["date_hour"].max(),
     freq="h",
-    tz="UTC",
+    tz=LOCAL_TZ,
 )
 all_stations = df["police_station"].unique()
 full_index = pd.DataFrame(
@@ -111,7 +114,7 @@ hourly["hour_cos"] = np.cos(2 * np.pi * hourly["hour"] / 24)
 hourly["dow_sin"] = np.sin(2 * np.pi * hourly["day_of_week"] / 7)
 hourly["dow_cos"] = np.cos(2 * np.pi * hourly["day_of_week"] / 7)
 hourly["is_weekend"] = (hourly["day_of_week"] >= 5).astype(int)
-hourly["is_peak_hour"] = hourly["hour"].isin([2, 3, 4, 5, 6]).astype(int)
+hourly["is_peak_hour"] = hourly["hour"].isin(PEAK_HOURS).astype(int)
 hourly["day_of_month"] = hourly["date_hour"].dt.day
 print("  [OK] Cyclical time features (hour_sin/cos, dow_sin/cos)")
 
@@ -301,7 +304,7 @@ weighted_mae = float(np.average(np.abs(y_test_raw - y_pred), weights=weights))
 test_df = test_df.copy()
 test_df["predicted"] = y_pred
 
-peak_mask = test_df["hour"].isin([2, 3, 4, 5, 6])
+peak_mask = test_df["hour"].isin(PEAK_HOURS)
 peak_mae = mean_absolute_error(test_df.loc[peak_mask, "violation_count"],
                                 test_df.loc[peak_mask, "predicted"]) if peak_mask.sum() > 0 else 0
 peak_rmse = np.sqrt(mean_squared_error(test_df.loc[peak_mask, "violation_count"],
@@ -312,8 +315,8 @@ print(f"  |  OVERALL HOLD-OUT METRICS (v2 - ENHANCED)           |")
 print(f"  |  MAE:          {overall_mae:.4f} violations/hour         |")
 print(f"  |  RMSE:         {overall_rmse:.4f} violations/hour         |")
 print(f"  |  Weighted MAE: {weighted_mae:.4f}                         |")
-print(f"  |  Peak-Hr MAE:  {peak_mae:.4f}  (2-6 AM only)            |")
-print(f"  |  Peak-Hr RMSE: {peak_rmse:.4f}  (2-6 AM only)            |")
+print(f"  |  Peak-Hr MAE:  {peak_mae:.4f}  (IST peak hours only)            |")
+print(f"  |  Peak-Hr RMSE: {peak_rmse:.4f}  (IST peak hours only)            |")
 print(f"  +---------------------------------------------------+")
 
 # Per-station metrics
@@ -360,7 +363,7 @@ for fname, imp in importances[:15]:
 print("\n[STEP 4] Forecasting next 24 hours...")
 
 last_time = hourly["date_hour"].max()
-future_hours = pd.date_range(start=last_time + pd.Timedelta(hours=1), periods=24, freq="h", tz="UTC")
+future_hours = pd.date_range(start=last_time + pd.Timedelta(hours=1), periods=24, freq="h", tz=LOCAL_TZ)
 
 # Precompute lookups
 station_stats_dict = {}
@@ -405,7 +408,7 @@ for station in all_stations:
         dow = fh.dayofweek
         dom = fh.day
         is_wknd = 1 if dow >= 5 else 0
-        is_peak = 1 if hour in [2, 3, 4, 5, 6] else 0
+        is_peak = 1 if hour in PEAK_HOURS else 0
 
         hour_sin = np.sin(2 * np.pi * hour / 24)
         hour_cos = np.cos(2 * np.pi * hour / 24)
@@ -498,8 +501,8 @@ pivot = pivot.loc[pivot.sum(axis=1).sort_values(ascending=False).index]
 fig, ax = plt.subplots(figsize=(16, 20))
 sns.heatmap(pivot, cmap="YlOrRd", linewidths=0.3, linecolor="white", ax=ax,
             cbar_kws={"label": "Predicted Violations", "shrink": 0.6}, annot=False)
-ax.set_title("Predicted Violations - Next 24h by Station x Hour", fontsize=16, fontweight="bold", pad=15)
-ax.set_xlabel("Hour of Day", fontsize=12); ax.set_ylabel("Police Station", fontsize=12)
+ax.set_title("Predicted Violations - Next 24h by Station x Hour (IST)", fontsize=16, fontweight="bold", pad=15)
+ax.set_xlabel("Hour of Day (IST)", fontsize=12); ax.set_ylabel("Police Station", fontsize=12)
 ax.tick_params(axis="y", labelsize=8); ax.tick_params(axis="x", labelsize=10)
 plt.tight_layout()
 plt.savefig(CHART_DIR / "chart1_hourly_heatmap.png", dpi=150, bbox_inches="tight"); plt.close()
@@ -534,7 +537,7 @@ bars = ax.barh(peak_hours_df["station"], peak_hours_df["predicted_violation_coun
 for bar, (_, row) in zip(bars, peak_hours_df.iterrows()):
     ax.text(bar.get_width() + 0.3, bar.get_y() + bar.get_height() / 2,
             f'{int(row["hour"]):02d}:00', va="center", fontsize=8, color="#64748b", fontweight="bold")
-ax.set_title("Peak Predicted Hour per Station (Next 24h)", fontsize=14, fontweight="bold", pad=15)
+ax.set_title("Peak Predicted Hour per Station (Next 24h, IST)", fontsize=14, fontweight="bold", pad=15)
 ax.set_xlabel("Predicted Violations", fontsize=11); ax.tick_params(axis="y", labelsize=8); ax.grid(True, axis="x", alpha=0.3)
 plt.tight_layout()
 plt.savefig(CHART_DIR / "chart3_peak_hour_bar.png", dpi=150, bbox_inches="tight"); plt.close()
@@ -558,7 +561,7 @@ res_by_hour = hourly_res.groupby("hour")["residual"].agg(["mean", "std"]).reset_
 axes[2].bar(res_by_hour["hour"], res_by_hour["mean"], yerr=res_by_hour["std"], color="#6366f1", alpha=0.7, capsize=3)
 axes[2].axhline(0, color="#f43f5e", linestyle="--", linewidth=2)
 axes[2].set_title("Mean Residual by Hour", fontsize=13, fontweight="bold")
-axes[2].set_xlabel("Hour"); axes[2].set_ylabel("Mean Residual"); axes[2].set_xticks(range(24))
+axes[2].set_xlabel("Hour (IST)"); axes[2].set_ylabel("Mean Residual"); axes[2].set_xticks(range(24))
 plt.suptitle("Residual Analysis", fontsize=15, fontweight="bold", y=1.03)
 plt.tight_layout()
 plt.savefig(CHART_DIR / "chart4_residual_analysis.png", dpi=150, bbox_inches="tight"); plt.close()
@@ -575,7 +578,7 @@ print(f"\n  Total predicted violations (next 24h): {total_predicted:,.0f}")
 top3_forecast = forecast_df.head(3)
 print(f"\n  Top 3 highest-risk station-hours:")
 for _, row in top3_forecast.iterrows():
-    print(f"    {row['station']:<25} {int(row['hour']):02d}:00  ->  {row['predicted_violation_count']:.1f} violations")
+    print(f"    {row['station']:<25} {int(row['hour']):02d}:00 IST  ->  {row['predicted_violation_count']:.1f} violations")
 print(f"\n  Metrics:")
 print(f"    MAE (overall):      {overall_mae:.4f}")
 print(f"    RMSE (overall):     {overall_rmse:.4f}")
@@ -601,7 +604,7 @@ with open(OUTPUT_DIR / "forecast_preprocessing.pkl", "wb") as f:
         "station_dow_profile": station_dow_prof_dict,
         "ema_last": {f"{k[0]}_{k[1]}": v for k, v in ema_last.items()},
         "use_log1p": True,
-        "model_version": "v2_enhanced",
+        "model_version": "v2_enhanced_ist",
     }, f)
 print(f"  Saved: {OUTPUT_DIR / 'forecast_preprocessing.pkl'}")
 
@@ -620,9 +623,10 @@ print(f"  Saved: {OUTPUT_DIR / 'forecast_last_data.json'}")
 # Also save the forecast data as JSON for the backend API to serve
 forecast_api_data = {
     "generated_at": str(pd.Timestamp.now(tz="UTC")),
+    "timezone": LOCAL_TZ,
     "forecast_start": str(future_hours[0]),
     "forecast_end": str(future_hours[-1]),
-    "model_version": "v2_enhanced",
+    "model_version": "v2_enhanced_ist",
     "metrics": {
         "overall_mae": round(float(overall_mae), 4),
         "overall_rmse": round(float(overall_rmse), 4),
@@ -655,7 +659,7 @@ with open(OUTPUT_DIR / "forecast_api_data.json", "w") as f:
 print(f"  Saved: {OUTPUT_DIR / 'forecast_api_data.json'}")
 
 eval_metrics = {
-    "model_version": "v2_enhanced",
+    "model_version": "v2_enhanced_ist",
     "overall_mae": round(float(overall_mae), 4),
     "overall_rmse": round(float(overall_rmse), 4),
     "weighted_mae": round(float(weighted_mae), 4),

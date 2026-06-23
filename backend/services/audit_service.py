@@ -20,6 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 DATASET_PATH = os.path.join(BASE_DIR, "datasets", "jan to may police violation_anonymized791b166.csv")
 CACHE_DIR = Path(BASE_DIR) / "backend" / "cache"
 MODELS_DIR = Path(BASE_DIR) / "backend" / "models"
+LOCAL_TZ = "Asia/Kolkata"
 
 # Feature order MUST match training pipeline exactly
 FEATURE_COLS = ["volume_log", "sync_rate", "rejection_rate", "duplicate_rate"]
@@ -89,10 +90,10 @@ class AuditService:
         print(f"  Loaded {len(df):,} records")
 
         # --- Preprocessing (mirrors training script exactly) ---
-        df["created_datetime"] = pd.to_datetime(df["created_datetime"], errors="coerce")
+        df["created_datetime"] = pd.to_datetime(df["created_datetime"], errors="coerce", format="mixed", utc=True).dt.tz_convert(LOCAL_TZ)
         df = df.dropna(subset=["police_station", "created_datetime", "violation_type"])
 
-        # Hour bin: 0=Night(0-5), 1=Morning(6-11), 2=Afternoon(12-17), 3=Evening(18-23)
+        # Hour bin in IST: 0=Night(0-5), 1=Morning(6-11), 2=Afternoon(12-17), 3=Evening(18-23)
         df["hour_bin"] = df["created_datetime"].dt.hour // 6
 
         # Standardize text

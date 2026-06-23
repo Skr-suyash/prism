@@ -32,8 +32,8 @@ An XGBoost classifier modeling human/institutional dispatch behaviour. It calcul
 
 ### Feature 2: Traffic Demand Forecasting
 A robust time-series forecasting pipeline to predict peak parking violations across specific zones, enabling pre-emptive patrol deployment.
-- **Model Architecture**: Optimized forecasting model utilizing hourly temporal dynamics.
-- **Impact**: Accurately maps expected violation volume against actuals, reducing response latency.
+- **Model Architecture**: Optimized forecasting model utilizing hourly temporal dynamics after converting timestamps to **Asia/Kolkata (IST)**.
+- **Impact**: Maps expected violation volume against historical actuals for patrol planning; forecast charts and hour labels are in **IST**.
 
 ![Forecast vs Actual](forecast_charts/chart2_forecast_vs_actual.png)
 ![Hourly Heatmap](forecast_charts/chart1_hourly_heatmap.png)

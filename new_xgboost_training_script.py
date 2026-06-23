@@ -16,6 +16,7 @@ import re
 import json
 import pickle
 import os
+from pathlib import Path
 from datetime import datetime
 
 # Geospatial
@@ -28,9 +29,11 @@ from sklearn.preprocessing import LabelEncoder
 import xgboost as xgb
 
 # ─── Configuration ───────────────────────────────────────────────────────────
-DATA_PATH = "../input/datasets/vinay2047/traffic-violations/jan to may police violation_anonymized791b166.csv"
-POI_DATA_PATH = "../working/bangalore_pois.geojson" # <-- Update this path
-OUTPUT_DIR = "../working/"
+BASE_DIR = Path(__file__).resolve().parent
+DATA_PATH = BASE_DIR / "datasets" / "jan to may police violation_anonymized791b166.csv"
+POI_DATA_PATH = BASE_DIR / "datasets" / "bangalore_pois.geojson"
+OUTPUT_DIR = BASE_DIR / "backend" / "models"
+LOCAL_TZ = "Asia/Kolkata"
 RANDOM_STATE = 42
 N_FOLDS = 5
 
@@ -47,7 +50,7 @@ df = pd.read_csv(DATA_PATH)
 print(f"  ✓ Loaded {len(df):,} records with {df.shape[1]} columns")
 
 print("\n[PHASE 1] Engineering base features (EDA Removed)...")
-df["created_datetime"] = pd.to_datetime(df["created_datetime"], errors="coerce", utc=True)
+df["created_datetime"] = pd.to_datetime(df["created_datetime"], errors="coerce", format="mixed", utc=True).dt.tz_convert(LOCAL_TZ)
 df["hour"] = df["created_datetime"].dt.hour
 df["day_of_week"] = df["created_datetime"].dt.dayofweek
 df["month"] = df["created_datetime"].dt.month
